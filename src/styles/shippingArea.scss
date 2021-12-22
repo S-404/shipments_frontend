@@ -1,0 +1,53 @@
+
+
+
+.gates {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+
+  .gate {
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(245, 245, 245);
+    border: solid 1px lightgray;
+    border-radius: var(--border-radius-val);
+
+    .place {
+      margin: 0 5px;
+      padding: 0 5px;
+      background-color: #c5c5c5;
+      border: 0;
+      border-radius: var(--border-radius-val);
+      min-width: 100px;
+      cursor: pointer;
+    }
+
+    .place:hover {
+      background-color: #b9b9b9;
+    }
+
+    .place:active {
+      background-color: #9f9f9f;
+    }
+  }
+}
+
+
+.dynamic-orderline {
+  padding: 2px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+
+  span {
+    text-align: center;
+    width: 100%;
+  }
+
+  button {
+    width: 100px;
+  }
+}
