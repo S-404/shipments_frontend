@@ -12,7 +12,13 @@ const Dispatcher = () => {
     const [gatesPlaces, setGatesPlaces] = useState([]);
 
     const [placeModal, setPlaceModal] = useState(false);
-    const [selectedPlace, setSelectedPlace] = useState({GATE_ID: 0, GATE: '00', PLACE: '00'});
+    const [selectedPlace, setSelectedPlace] = useState(
+        {
+            GATE_ID: 0,
+            GATE: '00',
+            PLACE: '00',
+            IS_LOADING: false}
+    );
 
     const [fetchShippingArea, isShippingAreaLoading, isShippingAreaError] = useFetching(
         async () => {
@@ -30,10 +36,15 @@ const Dispatcher = () => {
         setGatesPlaces(responseData);
     });
 
+    useEffect(async () =>
+            await fetchShippingArea()
+        , []);
+
     useEffect(async () => {
-        fetchShippingArea();
-        fetchGatesPlacesList();
-    }, []);
+        if (shippingArea.length) {
+            await fetchGatesPlacesList();
+        }
+    }, [shippingArea])
 
     useEffect(() => {
         let gates = gatesPlaces.reduce(function (arr, place) {
@@ -43,27 +54,69 @@ const Dispatcher = () => {
             return arr;
         }, []);
         setGates(gates);
+        let updSelectedPlace = gatesPlaces.filter(
+            order => order.GATE_ID === selectedPlace.GATE_ID
+        )
+        if (updSelectedPlace.length) {
+            setSelectedPlace({...selectedPlace, IS_LOADING: updSelectedPlace[0].IS_LOADING})
+        }
+
     }, [gatesPlaces]);
 
 
-    const addOrder = (newOrderObj)=>{
-        setShippingArea([...shippingArea, newOrderObj]);
+    const addOrder = async (newOrderObj) => {
+        const responseData = await ShipmentService.addData({
+            query: 'orders',
+            ORDER_NUM: newOrderObj.ORDER_NUM,
+            GATE_ID: newOrderObj.GATE_ID,
+        });
+        let id = responseData[0].ID;
+        if (id) {
+            setShippingArea([...shippingArea, {...newOrderObj, ORDER_ID: id}]);
+        }
     }
 
-    const removeOrder = (orderID) => {
+    const removeOrder = async (orderID) => {
         if (!window.confirm('Order will be removed')) return;
-        setShippingArea([...shippingArea.filter((order) => order.ORDER_ID !== orderID)]);
+        const responseData = await ShipmentService.deleteData({
+            query: 'orders/order',
+            ID: orderID,
+        });
+        let id = responseData[0].ID
+        if (id) {
+            setShippingArea([...shippingArea.filter((order) => order.ORDER_ID !== id)]);
+        }
     }
 
-    const removeOrders = (place)=>{
+    const removeOrders = async (place) => {
         if (!window.confirm('This place will be cleared')) return;
-        console.log( shippingArea.filter(
-            (order) => !(order.PLACE === place.PLACE && order.GATE === place.GATE)
-        ))
-        setShippingArea(
-            [...shippingArea.filter(
-                (order) => !(order.PLACE === place.PLACE && order.GATE === place.GATE)
-            )]);
+        const responseData = await ShipmentService.deleteData({
+            query: 'orders/gate',
+            GATE_ID: place.GATE_ID,
+        });
+        let gateID = responseData[0].GATE_ID;
+        if (gateID) {
+            setShippingArea(
+                [...shippingArea.filter(
+                    (order) => !(order.GATE_ID === gateID)
+                )]);
+        }
+    }
+
+    const updatePlaceStatus = async (place) => {
+        const responseData = await ShipmentService.updateData({
+            query: 'gates/gate/status',
+            ID: place.GATE_ID,
+        });
+        let gateID = responseData[0].ID;
+        if (gateID) {
+            let newGatesPlacesObj = Object.assign(gatesPlaces)
+            newGatesPlacesObj.filter(
+                gatePlace => gatePlace.ID === gateID
+            )[0].IS_LOADING = responseData[0].IS_LOADING
+            setGatesPlaces(newGatesPlacesObj);
+            setSelectedPlace({...selectedPlace, IS_LOADING: responseData[0].IS_LOADING})
+        }
     }
 
     return (
