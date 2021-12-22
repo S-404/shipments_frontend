@@ -18,8 +18,21 @@
   background-color: #c5c5c5;
   border: 0;
   border-radius: var(--border-radius-val);
-  min-width: 100px;
+  min-width: 120px;
+  min-height: 100px;
   cursor: pointer;
+}
+.gates .gate .place .place__place-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.gates .gate .place .place__place-header .place-header__loading-status {
+  font-size: small;
+}
+.gates .gate .place .place__place-header .place-header__last-upd {
+  font-size: small;
+  text-align: center;
 }
 .gates .gate .place:hover {
   background-color: #b9b9b9;
