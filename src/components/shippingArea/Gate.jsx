@@ -13,7 +13,14 @@ const Gate = ({gate, gatesPlaces, setSelectedPlace, setPlaceModal, shippingArea}
                         place={place}
                         shippingArea={shippingArea}
                         onClick={() => {
-                            setSelectedPlace({GATE_ID: place.ID, GATE: gate, PLACE: place.PLACE});
+                            setSelectedPlace(
+                                {
+                                    GATE_ID: place.ID,
+                                    GATE: gate,
+                                    PLACE: place.PLACE,
+                                    IS_LOADING: place.IS_LOADING
+                                }
+                            );
                             setPlaceModal(true);
                         }}
                     />

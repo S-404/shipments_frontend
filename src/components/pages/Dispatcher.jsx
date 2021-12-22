@@ -128,6 +128,7 @@ const Dispatcher = () => {
                     removeOrder={removeOrder}
                     removeOrders={removeOrders}
                     addOrder={addOrder}
+                    updatePlaceStatus={updatePlaceStatus}
                 />
             </MyModal>
                 <Gates
