@@ -71,8 +71,17 @@ const Dispatcher = () => {
             GATE_ID: newOrderObj.GATE_ID,
         });
         let id = responseData[0].ID;
-        if (id) {
-            setShippingArea([...shippingArea, {...newOrderObj, ORDER_ID: id}]);
+
+        if (responseData.length) {
+            const newObj = responseData.map(
+                (obj) => {
+                    obj.GATE = newOrderObj.GATE;
+                    obj.ORDER_ID = obj.ID;
+                    obj.PLACE = newOrderObj.PLACE;
+                    return obj
+                }
+                , {})
+            setShippingArea([...shippingArea, ...newObj]);
         }
     }
 
@@ -101,6 +110,8 @@ const Dispatcher = () => {
                     (order) => !(order.GATE_ID === gateID)
                 )]);
         }
+        await updatePlaceStatus(place);
+
     }
 
     const updatePlaceStatus = async (place) => {
