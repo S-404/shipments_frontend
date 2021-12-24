@@ -1,0 +1,21 @@
+.gate-place-form {
+  display: flex;
+  flex-direction: column;
+}
+.gate-place-form .gate-place-form__header {
+  display: flex;
+  flex-direction: column;
+}
+.gate-place-form .gate-place-form__header .header__buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.gate-place-form .gate-place-form__header .header__buttons-div .buttons-div__button {
+  width: 100%;
+}
+.gate-place-form .gate-place-form__body {
+  margin-top: 30px;
+}
+
+/*# sourceMappingURL=gatePlaceForm.css.map */
