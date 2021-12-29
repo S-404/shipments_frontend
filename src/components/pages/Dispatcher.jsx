@@ -17,7 +17,9 @@ const Dispatcher = () => {
             GATE_ID: 0,
             GATE: '00',
             PLACE: '00',
-            IS_LOADING: false}
+            IS_LOADING: false,
+            TRUCK: ''
+        }
     );
 
     const [fetchShippingArea, isShippingAreaLoading, isShippingAreaError] = useFetching(
@@ -58,7 +60,10 @@ const Dispatcher = () => {
             order => order.GATE_ID === selectedPlace.GATE_ID
         )
         if (updSelectedPlace.length) {
-            setSelectedPlace({...selectedPlace, IS_LOADING: updSelectedPlace[0].IS_LOADING})
+            setSelectedPlace({
+                ...selectedPlace,
+                IS_LOADING: updSelectedPlace[0].IS_LOADING,
+            })
         }
 
     }, [gatesPlaces]);
@@ -111,6 +116,8 @@ const Dispatcher = () => {
                 )]);
         }
         await updatePlaceStatus(place);
+        await updateTruck('',place.GATE_ID)
+        setPlaceModal(false)
 
     }
 
@@ -118,6 +125,7 @@ const Dispatcher = () => {
         const responseData = await ShipmentService.updateData({
             query: 'gates/gate/status',
             ID: place.GATE_ID,
+            IS_LOADING: !place.IS_LOADING,
         });
         let gateID = responseData[0].ID;
         if (gateID) {
@@ -130,26 +138,43 @@ const Dispatcher = () => {
         }
     }
 
-    return (
-        <div>
-            <MyModal visible={placeModal} setVisible={setPlaceModal}>
-                <GatePlaceForm
-                    selectedPlace={selectedPlace}
-                    shippingArea={shippingArea}
-                    removeOrder={removeOrder}
-                    removeOrders={removeOrders}
-                    addOrder={addOrder}
-                    updatePlaceStatus={updatePlaceStatus}
-                />
-            </MyModal>
-                <Gates
-                    gates={gates}
-                    gatesPlaces={gatesPlaces}
-                    setSelectedPlace={setSelectedPlace}
-                    setPlaceModal={setPlaceModal}
-                    shippingArea={shippingArea}/>
-        </div>
-    );
-};
+    const updateTruck = async (truck, id) => {
+        const responseData = await ShipmentService.updateData({
+            query: 'gates/gate/truck',
+            ID: id,
+            TRUCK: truck,
+        });
+        let gateID = responseData[0].ID;
+        if (gateID) {
+            let newGatesPlacesObj = Object.assign(gatesPlaces)
+            newGatesPlacesObj.filter(
+                gatePlace => gatePlace.ID === gateID
+            )[0].TRUCK = responseData[0].TRUCK
+            setGatesPlaces(newGatesPlacesObj);
+            setSelectedPlace({...selectedPlace, TRUCK: responseData[0].TRUCK})
+        }
+    }
+return (
+    <div>
+        <MyModal visible={placeModal} setVisible={setPlaceModal}>
+            <GatePlaceForm
+                selectedPlace={selectedPlace}
+                shippingArea={shippingArea}
+                removeOrder={removeOrder}
+                removeOrders={removeOrders}
+                addOrder={addOrder}
+                updatePlaceStatus={updatePlaceStatus}
+                updateTruck={updateTruck}
+            />
+        </MyModal>
+        <Gates
+            gates={gates}
+            gatesPlaces={gatesPlaces}
+            setSelectedPlace={setSelectedPlace}
+            setPlaceModal={setPlaceModal}
+            shippingArea={shippingArea}/>
+    </div>
+);
+}
 
 export default Dispatcher;

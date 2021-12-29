@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import DynamicOrderLine from "./DynamicOrderLine";
 import MyInput from "../../UI/input/myInput";
 import MySmallButton from "../../UI/button/mySmallButton";
 import ToggleSwitch from "../../UI/checkbox/toggleSwitch";
 import "../../../styles/gatePlaceForm.scss"
+import {isValidInput} from "../../../utils";
 
-const GatePlaceForm = ({selectedPlace, shippingArea, removeOrder, removeOrders, addOrder, updatePlaceStatus}) => {
+const GatePlaceForm = ({
+                           selectedPlace,
+                           shippingArea,
+                           removeOrder,
+                           removeOrders,
+                           addOrder,
+                           updatePlaceStatus,
+                           updateTruck
+                       }) => {
     const [newOrder, setNewOrder] = useState('')
     const [isMassUpload, setIsMassUpload] = useState(false)
-
+    const [truck, setTruck] = useState('')
 
     const addNewOrder = (orderNum) => {
         if (!orderNum.length) return;
@@ -51,36 +60,65 @@ const GatePlaceForm = ({selectedPlace, shippingArea, removeOrder, removeOrders, 
        if (orderListArr.length) addNewOrder(orderListArr.join(' '))
 
     }
+
+    const assignTruck = () => {
+            updateTruck(truck, selectedPlace.GATE_ID)
+    }
+
+    useEffect(() => {
+        setTruck(selectedPlace.TRUCK ? selectedPlace.TRUCK : '')
+    }, [selectedPlace])
+
+
     return (
         <div className='gate-place-form'>
             <div className='gate-place-form__header'>
                 <h1 className='gate-place-form__header header__name'>
                     {`GATE ${selectedPlace.GATE} - ${selectedPlace.PLACE}`}
                 </h1>
+                <div className='gate-place-form__header header__assign-truck-div'>
+                    <div className='header__assign-truck-div assign-truck-div__input'>
+                        <MyInput
+                            maxLength={20}
+                            placeholder='put truck num'
+                            value={truck}
+                            onChange={(e) => {
+                                if (isValidInput(e.target.value)) setTruck(e.target.value)
+                            }}
+                            labeltext='truck'
+                        />
+                    </div>
+                    <div className='header__assign-truck-div assign-truck-div__button'>
+                        <MySmallButton
+                            onClick={assignTruck}
+                            text='assign'
+                        />
+                    </div>
+
+                </div>
                 {selectedPlace.IS_LOADING ?
                     <div className='gate-place-form__header header__buttons-div'>
-                        <button
+                        <MySmallButton
                             className='header__buttons-div buttons-div__button'
-                            onClick={() => updatePlaceStatus(selectedPlace)}>
-                            stop loading
-                        </button>
-                        <button
+                            onClick={() => updatePlaceStatus(selectedPlace)}
+                            text='stop loading'
+                        />
+                        <MySmallButton
                             className='header__buttons-div buttons-div__button'
                             onClick={() => {
                                 removeOrders(selectedPlace);
-                            }}>
-                            finish loading
-                        </button>
+                            }}
+                            text='finish loading'
+                        />
                     </div>
                     :
                     filteredShippingArea().length ?
                         <div className='gate-place-form__header header__buttons-div'>
-                            <button
+                            <MySmallButton
                                 className='header__buttons-div buttons-div__button'
                                 onClick={() => updatePlaceStatus(selectedPlace)}
-                            >
-                                start loading
-                            </button>
+                                text='start loading'
+                            />
                         </div>
                         : null
                 }
@@ -110,17 +148,21 @@ const GatePlaceForm = ({selectedPlace, shippingArea, removeOrder, removeOrders, 
                             </div>
 
                             :
-                            <div className='body__input-div single-order-input'>
-                                <MyInput
-                                    maxLength={9}
-                                    placeholder='put order num'
-                                    value={newOrder}
-                                    onChange={(e) => {
-                                        if (!isNaN(e.target.value)) setNewOrder(e.target.value)
-                                    }}/>
-                                <MySmallButton onClick={() => addNewOrder(newOrder)} text='Add'/>
+                            <div className='body__input-div body__single-order-div'>
+                                <div className='body__single-order-div single-order-div__input'>
+                                    <MyInput
+                                        labeltext='order'
+                                        maxLength={9}
+                                        placeholder='put order num'
+                                        value={newOrder}
+                                        onChange={(e) => {
+                                            if (!isNaN(e.target.value)) setNewOrder(e.target.value)
+                                        }}/>
+                                </div>
+                                <div className='body__single-order-div single-order-div__button'>
+                                    <MySmallButton onClick={() => addNewOrder(newOrder)} text='Add'/>
+                                </div>
                             </div>
-
                         }
 
 

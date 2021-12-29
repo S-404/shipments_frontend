@@ -18,7 +18,8 @@ const Gate = ({gate, gatesPlaces, setSelectedPlace, setPlaceModal, shippingArea}
                                     GATE_ID: place.ID,
                                     GATE: gate,
                                     PLACE: place.PLACE,
-                                    IS_LOADING: place.IS_LOADING
+                                    IS_LOADING: place.IS_LOADING,
+                                    TRUCK: place.TRUCK
                                 }
                             );
                             setPlaceModal(true);

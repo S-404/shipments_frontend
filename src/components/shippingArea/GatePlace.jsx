@@ -9,16 +9,27 @@ const GatePlace = ({place, shippingArea, ...props}) => {
             {...props}
         >
             <div className='place__place-header'>
-                <h1 className='place-header__place-name'>
-                    {place.PLACE}
-                </h1>
-                {place.IS_LOADING ?
-                    <span className='place-header__loading-status'>⇦🚚</span>
-                    : null}
-                <span className='place-header__last-upd'>
+                <div className='place__place-header place-header__div'>
+                    <h1 className='place__place-header place-header__place-name'>
+                        {place.PLACE}
+                    </h1>
+                    {place.IS_LOADING ?
+                        <span className='place__place-header place-header__loading-status'>⇦🚚</span>
+                        : null}
+                    <span className='place__place-header place-header__last-upd'>
                     {place.MAX_DATE ? dateFormatHHMM(place.MAX_DATE) : null}
                 </span>
+                </div>
+                <div className='place__place-header place-header__div'>
+                    {place.TRUCK ?
+                        <span className='place__place-header place-header__assigned-truck'>
+                            {place.TRUCK}
+                        </span>
+                        : null}
+
+                </div>
             </div>
+
             {shippingArea
                 .filter((order) => order.GATE_ID === place.ID)
                 .map((orderline) => (
