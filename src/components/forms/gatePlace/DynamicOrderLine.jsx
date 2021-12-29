@@ -1,5 +1,5 @@
 import React from 'react';
-import StatusButton from "../../UI/button/statusButton";
+import MySmallButton from "../../UI/button/mySmallButton";
 
 const DynamicOrderLine = ({orderline, removeOrder, selectedPlace}) => {
     return (
@@ -8,7 +8,7 @@ const DynamicOrderLine = ({orderline, removeOrder, selectedPlace}) => {
             {selectedPlace.IS_LOADING ?
                 null
                 :
-                <StatusButton
+                <MySmallButton
                     text='remove'
                     onClick={() => removeOrder(orderline.ORDER_ID)}
                 />

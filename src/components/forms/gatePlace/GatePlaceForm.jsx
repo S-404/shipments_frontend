@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import DynamicOrderLine from "./DynamicOrderLine";
 import MyInput from "../../UI/input/myInput";
-import StatusButton from "../../UI/button/statusButton";
+import MySmallButton from "../../UI/button/mySmallButton";
 import ToggleSwitch from "../../UI/checkbox/toggleSwitch";
 import "../../../styles/gatePlaceForm.scss"
 
@@ -114,10 +114,11 @@ const GatePlaceForm = ({selectedPlace, shippingArea, removeOrder, removeOrders, 
                                 <MyInput
                                     maxLength={9}
                                     placeholder='put order num'
-                                    value={newOrder} onChange={(e) => {
-                                    if (!isNaN(e.target.value)) setNewOrder(e.target.value)
-                                }}/>
-                                <StatusButton onClick={() => addNewOrder(newOrder)} text='Add'/>
+                                    value={newOrder}
+                                    onChange={(e) => {
+                                        if (!isNaN(e.target.value)) setNewOrder(e.target.value)
+                                    }}/>
+                                <MySmallButton onClick={() => addNewOrder(newOrder)} text='Add'/>
                             </div>
 
                         }
