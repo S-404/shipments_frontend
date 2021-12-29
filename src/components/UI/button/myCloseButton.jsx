@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from "./myCloseButton.module.css";
 
-const MyCloseButton = () => {
+const MyCloseButton = ({...props}) => {
     return (
-        <div className={classes.myCloseButton}>✕</div>
+        <div className={classes.myCloseButton} {...props}>✕</div>
     );
 };
 
