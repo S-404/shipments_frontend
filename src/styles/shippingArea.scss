@@ -1,6 +1,3 @@
-
-
-
 .gates {
   display: flex;
   flex-direction: column;
@@ -21,23 +18,42 @@
       background-color: #c5c5c5;
       border: 0;
       border-radius: var(--border-radius-val);
-      min-width: 120px;
+      min-width: 130px;
       min-height: 100px;
       cursor: pointer;
-      .place__place-header{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .place-header__place-name{
 
+      .place__place-header {
+        display: flex;
+        flex-direction: column;
+
+        .place-header__div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .place-header__place-name {
+
+          }
+
+          .place-header__loading-status {
+            font-size: small;
+          }
+
+          .place-header__last-upd {
+            font-size: small;
+            text-align: center;
+          }
+
+          .place-header__assigned-truck {
+            background-color: #fafafa;
+            padding: 1px 3px;
+            border-radius: 3px;
+            border: 2px solid black;
+            width: 100%;
+            text-align: center;
+          }
         }
-        .place-header__loading-status{
-          font-size: small;
-        }
-        .place-header__last-upd{
-          font-size: small;
-          text-align: center;
-        }
+
       }
     }
 

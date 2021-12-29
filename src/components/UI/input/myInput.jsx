@@ -3,12 +3,17 @@ import MyLabel from '../label/myLabel';
 import classes from './myInput.module.css';
 
 const MyInput = React.forwardRef((props, ref) => {
-  return (
-    <div ref={ref} className={classes.myInput}>
-      <input className={classes.myInput__input} {...props} />
-      <MyLabel htmlFor={classes.myInput__input} labeltext={props.labeltext} />
-    </div>
-  );
+    return (
+        <div ref={ref} className={classes.myInput}>
+            <input className={classes.myInput__input} {...props} />
+            {
+                props.labeltext ?
+                    <MyLabel htmlFor={classes.myInput__input} labeltext={props.labeltext}/>
+                    :
+                    null
+            }
+        </div>
+    );
 });
 
 export default MyInput;

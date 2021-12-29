@@ -1,6 +1,8 @@
 .gate-place-form {
   display: flex;
   flex-direction: column;
+  justify-items: center;
+  justify-items: center;
 
   .gate-place-form__header {
     display: flex;
@@ -8,6 +10,21 @@
 
     .header__name {
 
+    }
+
+    .header__assign-truck-div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      .assign-truck-div__button{
+        display: flex;
+        flex-basis: 20%;
+        justify-content: center;
+      }
+      .assign-truck-div__input{
+
+      }
     }
 
     .header__buttons-div {
@@ -23,12 +40,26 @@
 
   .gate-place-form__body {
     margin-top: 30px;
+
     .body__info {
 
     }
 
     .body__input-div {
+      .body__single-order-div{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .single-order-div__input{
 
+        }
+        .single-order-div__button{
+          display: flex;
+          flex-basis: 20%;
+          justify-content: center;
+
+        }
+      }
     }
 
     .body__orderlines {
