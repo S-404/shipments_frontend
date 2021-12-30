@@ -1,0 +1,26 @@
+.picker-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.picker-form .picker-form__loader-div {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.picker-form .picker-form__locations {
+  font-size: x-large;
+}
+.picker-form .picker-form__locations .locations__order-num {
+  margin: 15px 0;
+  text-align: center;
+}
+.picker-form .picker-form__locations .locations__list .list__location {
+  text-align: center;
+  margin: 15px 0;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #eaeaea;
+}
+
+/*# sourceMappingURL=pickerForm.css.map */
