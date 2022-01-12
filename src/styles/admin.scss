@@ -1,0 +1,46 @@
+.admin-form__shipping-area{
+  .shipping-area__gates{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    .gates__gate{
+      margin: 5px;
+      display: flex;
+      flex-direction: row;
+      background-color: rgb(245, 245, 245);
+      border-radius: var(--border-radius-val);
+      .gate__header{
+        display: block;
+        .header__name{
+        }
+      }
+      .gate__places{
+        .places__place{
+          margin: 0 5px;
+          padding: 0 5px;
+          background-color: #c5c5c5;
+          border: 0;
+          border-radius: var(--border-radius-val);
+          min-width: 80px;
+          cursor: pointer;
+          text-align: center;
+          height: 100%;
+        }
+        .button-div{
+
+        }
+        .places__place:hover {
+          background-color: #b9b9b9;
+        }
+
+        .places__place:active {
+          background-color: #9f9f9f;
+        }
+      }
+
+    }
+    .button-div{
+
+    }
+  }
+}
