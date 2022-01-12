@@ -31,6 +31,14 @@
 .gate-place-form .gate-place-form__body {
   margin-top: 30px;
 }
+.gate-place-form .gate-place-form__body .body__info {
+  background-color: #679ece;
+  color: white;
+  display: table;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 10px;
+}
 .gate-place-form .gate-place-form__body .body__input-div .body__single-order-div {
   display: flex;
   flex-direction: row;

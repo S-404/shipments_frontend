@@ -125,11 +125,9 @@ const GatePlaceForm = ({
             </div>
             <div className='gate-place-form__body'>
                 {selectedPlace.IS_LOADING ?
-                    <span
-                        className='body__info'
-                    >
-                    TRUCK IS LOADING
-                </span>
+                    <span className='body__info'>
+                     TRUCK IS LOADING
+                    </span>
                     :
                     <div className='body__input-div'>
                         <ToggleSwitch

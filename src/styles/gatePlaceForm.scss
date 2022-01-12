@@ -15,12 +15,12 @@
       flex-direction: row;
       justify-content: center;
 
-      .assign-truck-div__button{
+      .assign-truck-div__button {
         display: flex;
         flex-basis: 20%;
         justify-content: center;
       }
-      .assign-truck-div__input{
+      .assign-truck-div__input {
         flex-basis: 80%;
       }
     }
@@ -40,18 +40,23 @@
     margin-top: 30px;
 
     .body__info {
-
+      background-color:rgb(103, 158, 206);
+      color: white;
+      display: table;
+      margin: 0 auto;
+      padding: 5px;
+      border-radius: 10px
     }
 
     .body__input-div {
-      .body__single-order-div{
+      .body__single-order-div {
         display: flex;
         flex-direction: row;
         width: 100%;
-        .single-order-div__input{
+        .single-order-div__input {
           flex-basis: 80%;
         }
-        .single-order-div__button{
+        .single-order-div__button {
           display: flex;
           flex-basis: 20%;
           justify-content: center;
