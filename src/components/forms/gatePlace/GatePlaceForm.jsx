@@ -22,7 +22,7 @@ const GatePlaceForm = ({
     const addNewOrder = (orderNum) => {
         if (!orderNum.length) return;
         let newOrderObj = {
-            GATE_ID: selectedPlace.GATE_ID,
+            PLACE_ID: selectedPlace.PLACE_ID,
             GATE: selectedPlace.GATE,
             PLACE: selectedPlace.PLACE,
             ORDER_NUM: orderNum,
@@ -62,7 +62,7 @@ const GatePlaceForm = ({
     }
 
     const assignTruck = () => {
-            updateTruck(truck, selectedPlace.GATE_ID)
+            updateTruck(truck, selectedPlace.PLACE_ID)
     }
 
     useEffect(() => {

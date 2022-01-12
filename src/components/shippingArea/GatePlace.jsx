@@ -30,7 +30,7 @@ const GatePlace = ({place, shippingArea, ...props}) => {
             </div>
             <div className='place__orders'>
             {shippingArea
-                .filter((order) => order.GATE_ID === place.ID)
+                .filter((order) => order.PLACE_ID === place.ID)
                 .map((orderline) => (
                     <OrderLine
                         key={`orderline_${orderline.ORDER_NUM}`}
