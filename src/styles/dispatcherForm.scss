@@ -1,0 +1,100 @@
+.dispatcher-form {
+  position: relative;
+
+  .dispatcher-form__loader-div {
+    margin-top: 10px;
+    position: fixed;
+    right: 20px;
+  }
+
+  .dispatcher-form__shipping-area {
+    .shipping-area__gates {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+
+      .gates__gate {
+        padding: 15px;
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(245, 245, 245);
+        border-radius: var(--border-radius-val);
+
+        .gate__places {
+          display: flex;
+          flex-direction: row;
+
+          .places__place {
+            margin: 0 5px;
+            padding: 0 5px;
+            background-color: #c5c5c5;
+            border: 0;
+            border-radius: var(--border-radius-val);
+            min-width: 130px;
+            min-height: 100px;
+            cursor: pointer;
+
+            .place__header {
+              display: flex;
+              flex-direction: column;
+
+              .header__indicators {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .indicators__name {
+
+                }
+
+                .indicators__loading-status {
+                  font-size: small;
+                }
+
+                .indicators__last-upd {
+                  font-size: small;
+                  text-align: center;
+                }
+
+                .indicators__assigned-truck {
+                  background-color: #fafafa;
+                  padding: 1px 3px;
+                  border-radius: 3px;
+                  border: 2px solid black;
+                  width: 100%;
+                  text-align: center;
+                }
+              }
+            }
+          }
+
+          .places__place:hover {
+            background-color: #b9b9b9;
+          }
+
+          .places__place:active {
+            background-color: #9f9f9f;
+          }
+        }
+      }
+    }
+  }
+
+  .dynamic-orderline {
+    padding: 2px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+
+    span {
+      text-align: center;
+      width: 100%;
+    }
+
+    button {
+      width: 100px;
+    }
+  }
+
+}

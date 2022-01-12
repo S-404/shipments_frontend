@@ -39,12 +39,12 @@ const Picker = () => {
                 <div className='picker-form__loader-div'><MyLoader/></div>
                 :
                 <div className='picker-form__locations'>
-                    <div className='picker-form__locations locations__order-num'>
+                    <div className='locations__order-num'>
                         {locations.length ? `Order: ${locations[0].ORDER_NUM}` : 'not found'}
                     </div>
-                    <div className='picker-form__locations locations__list'>
+                    <div className='locations__list'>
                         {locations.map((location, index) => (
-                            <div className='locations__list list__location'
+                            <div className='list__location'
                                  key={index + location}>
                                 {`GATE: ${location.GATE} - ${location.PLACE}`}
                             </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const OrderLine = ({orderline}) => {
     return (
         <div
-            className="orderline">
+            className="orders__order">
             {orderline.ORDER_NUM}
         </div>
     );

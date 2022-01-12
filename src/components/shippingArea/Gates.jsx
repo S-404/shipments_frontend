@@ -3,7 +3,7 @@ import Gate from "./Gate";
 
 const Gates = ({gates,gatesPlaces,setSelectedPlace,setPlaceModal,shippingArea}) => {
     return (
-        <div className="gates">
+        <div className="shipping-area__gates">
             {gates.map((gate) => (
                <Gate
                    key={`gate_${gate}`}

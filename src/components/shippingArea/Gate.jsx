@@ -3,8 +3,9 @@ import GatePlace from "./GatePlace";
 
 const Gate = ({gate, gatesPlaces, setSelectedPlace, setPlaceModal, shippingArea}) => {
     return (
-        <div className="gate">
+        <div className="gates__gate">
             <h1>{`GATE ${gate}`}</h1>
+            <div className="gate__places">
             {gatesPlaces
                 .filter((place) => place.GATE === gate)
                 .map((place) => (
@@ -26,6 +27,7 @@ const Gate = ({gate, gatesPlaces, setSelectedPlace, setPlaceModal, shippingArea}
                         }}
                     />
                 ))}
+            </div>
         </div>
     );
 };

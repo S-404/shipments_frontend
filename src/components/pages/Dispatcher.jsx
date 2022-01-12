@@ -4,7 +4,8 @@ import ShipmentService from "../../api/ShipmentService";
 import MyModal from "../UI/modal/myModal";
 import GatePlaceForm from "../forms/gatePlace/GatePlaceForm";
 import Gates from "../shippingArea/Gates";
-import "../../styles/shippingArea.scss"
+import "../../styles/dispatcherForm.scss"
+import MyLoader from "../UI/loader/myLoader";
 
 const Dispatcher = () => {
     const [shippingArea, setShippingArea] = useState([]);
@@ -154,27 +155,31 @@ const Dispatcher = () => {
             setSelectedPlace({...selectedPlace, TRUCK: responseData[0].TRUCK})
         }
     }
-return (
-    <div>
-        <MyModal visible={placeModal} setVisible={setPlaceModal}>
-            <GatePlaceForm
-                selectedPlace={selectedPlace}
-                shippingArea={shippingArea}
-                removeOrder={removeOrder}
-                removeOrders={removeOrders}
-                addOrder={addOrder}
-                updatePlaceStatus={updatePlaceStatus}
-                updateTruck={updateTruck}
-            />
-        </MyModal>
-        <Gates
-            gates={gates}
-            gatesPlaces={gatesPlaces}
-            setSelectedPlace={setSelectedPlace}
-            setPlaceModal={setPlaceModal}
-            shippingArea={shippingArea}/>
-    </div>
-);
+    return (
+        <div className='dispatcher-form'>
+            {isShippingAreaLoading || isGatesPlacesLoading ?
+                <div className='dispatcher-form__loader-div'><MyLoader/></div>:null }
+                <div className='dispatcher-form__shipping-area'>
+                    <MyModal visible={placeModal} setVisible={setPlaceModal}>
+                        <GatePlaceForm
+                            selectedPlace={selectedPlace}
+                            shippingArea={shippingArea}
+                            removeOrder={removeOrder}
+                            removeOrders={removeOrders}
+                            addOrder={addOrder}
+                            updatePlaceStatus={updatePlaceStatus}
+                            updateTruck={updateTruck}
+                        />
+                    </MyModal>
+                    <Gates
+                        gates={gates}
+                        gatesPlaces={gatesPlaces}
+                        setSelectedPlace={setSelectedPlace}
+                        setPlaceModal={setPlaceModal}
+                        shippingArea={shippingArea}/>
+                </div>
+        </div>
+    );
 }
 
 export default Dispatcher;

@@ -73,11 +73,11 @@ const GatePlaceForm = ({
     return (
         <div className='gate-place-form'>
             <div className='gate-place-form__header'>
-                <h1 className='gate-place-form__header header__name'>
+                <h1 className='header__name'>
                     {`GATE ${selectedPlace.GATE} - ${selectedPlace.PLACE}`}
                 </h1>
-                <div className='gate-place-form__header header__assign-truck-div'>
-                    <div className='header__assign-truck-div assign-truck-div__input'>
+                <div className='header__assign-truck-div'>
+                    <div className='assign-truck-div__input'>
                         <MyInput
                             maxLength={20}
                             placeholder='put truck num'
@@ -88,7 +88,7 @@ const GatePlaceForm = ({
                             labeltext='truck'
                         />
                     </div>
-                    <div className='header__assign-truck-div assign-truck-div__button'>
+                    <div className='assign-truck-div__button'>
                         <MySmallButton
                             onClick={assignTruck}
                             text='assign'
@@ -97,14 +97,14 @@ const GatePlaceForm = ({
 
                 </div>
                 {selectedPlace.IS_LOADING ?
-                    <div className='gate-place-form__header header__buttons-div'>
+                    <div className='header__buttons-div'>
                         <MySmallButton
-                            className='header__buttons-div buttons-div__button'
+                            className='buttons-div__button'
                             onClick={() => updatePlaceStatus(selectedPlace)}
                             text='stop loading'
                         />
                         <MySmallButton
-                            className='header__buttons-div buttons-div__button'
+                            className='buttons-div__button'
                             onClick={() => {
                                 removeOrders(selectedPlace);
                             }}
@@ -113,9 +113,9 @@ const GatePlaceForm = ({
                     </div>
                     :
                     filteredShippingArea().length ?
-                        <div className='gate-place-form__header header__buttons-div'>
+                        <div className='header__buttons-div'>
                             <MySmallButton
-                                className='header__buttons-div buttons-div__button'
+                                className='buttons-div__button'
                                 onClick={() => updatePlaceStatus(selectedPlace)}
                                 text='start loading'
                             />
@@ -126,19 +126,19 @@ const GatePlaceForm = ({
             <div className='gate-place-form__body'>
                 {selectedPlace.IS_LOADING ?
                     <span
-                        className='gate-place-form__body body__info'
+                        className='body__info'
                     >
                     TRUCK IS LOADING
                 </span>
                     :
-                    <div className='gate-place-form__body body__input-div'>
+                    <div className='body__input-div'>
                         <ToggleSwitch
                             text='Mass Upload'
                             checked={isMassUpload}
                             onChange={() => setIsMassUpload(!isMassUpload)}
                         />
                         {isMassUpload ?
-                            <div className='body__input-div mass-upload-input'>
+                            <div className='mass-upload-input'>
                                 <MyInput
                                     placeholder='put order list (paste from excel)'
                                     value=''
@@ -148,8 +148,8 @@ const GatePlaceForm = ({
                             </div>
 
                             :
-                            <div className='body__input-div body__single-order-div'>
-                                <div className='body__single-order-div single-order-div__input'>
+                            <div className='body__single-order-div'>
+                                <div className='single-order-div__input'>
                                     <MyInput
                                         labeltext='order'
                                         maxLength={9}
@@ -159,7 +159,7 @@ const GatePlaceForm = ({
                                             if (!isNaN(e.target.value)) setNewOrder(e.target.value)
                                         }}/>
                                 </div>
-                                <div className='body__single-order-div single-order-div__button'>
+                                <div className='single-order-div__button'>
                                     <MySmallButton onClick={() => addNewOrder(newOrder)} text='Add'/>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ const GatePlaceForm = ({
                     </div>
 
                 }
-                <div className='gate-place-form__body body__orderlines'>
+                <div className='body__orderlines'>
                     {filteredShippingArea().map((orderline, index) => (
                         <DynamicOrderLine
                             key={`dynamicOrderline_${orderline.ORDER_NUM}_${index}`}
