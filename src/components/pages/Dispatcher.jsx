@@ -6,6 +6,7 @@ import GatePlaceForm from "../forms/gatePlace/GatePlaceForm";
 import Gates from "../shippingArea/Gates";
 import "../../styles/dispatcherForm.scss"
 import MyLoader from "../UI/loader/myLoader";
+import {useInterval} from "../../hooks/useInterval";
 
 const Dispatcher = () => {
     const [shippingArea, setShippingArea] = useState([]);
@@ -41,6 +42,12 @@ const Dispatcher = () => {
         }
 
     });
+
+    useInterval(async () => {
+        if (!isShippingAreaLoading) {
+            await fetchShippingArea();
+        }
+    }, 8000)
 
     useEffect(async () =>
             await fetchShippingArea()
