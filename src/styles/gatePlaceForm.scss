@@ -2,12 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
-  justify-items: center;
 
   .gate-place-form__header {
     display: flex;
     flex-direction: column;
-
     .header__name {
 
     }
@@ -16,14 +14,14 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      width: 100%;
+
       .assign-truck-div__button{
         display: flex;
         flex-basis: 20%;
         justify-content: center;
       }
       .assign-truck-div__input{
-
+        flex-basis: 80%;
       }
     }
 
@@ -51,7 +49,7 @@
         flex-direction: row;
         width: 100%;
         .single-order-div__input{
-
+          flex-basis: 80%;
         }
         .single-order-div__button{
           display: flex;
