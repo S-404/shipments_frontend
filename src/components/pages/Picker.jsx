@@ -4,9 +4,11 @@ import {useFetching} from "../../hooks/useFetching";
 import ShipmentService from "../../api/ShipmentService";
 import MyLoader from "../UI/loader/myLoader";
 import '../../styles/pickerForm.scss'
+import scanBarcode from '../../assets/scan_barcode.svg'
 
 const Picker = () => {
     const [orderNum, setOrderNum] = useState('')
+    const [searchingOrder, setSearchingOrder] = useState('')
     const [locations, setLocations] = useState([{ORDER_NUM: '', GATE: '', PLACE: ''}])
 
 
@@ -15,11 +17,13 @@ const Picker = () => {
             query: 'orders/order', ORDER_NUM: orderNum
         });
         setLocations(responseData);
+        setOrderNum('');
     });
 
 
     useEffect(async () => {
             if (orderNum.length === 9) {
+                setSearchingOrder(orderNum)
                 await fetchLocation()
             }
         }
@@ -27,8 +31,9 @@ const Picker = () => {
 
     return (
         <div className='picker-form'>
+            <img className='picker-form__barcode' alt='scanBarcode' src={scanBarcode}/>
             <MyInput
-                labeltext={orderNum.length?'put order num':null}
+                labeltext={orderNum.length ? 'put order num' : null}
                 placeholder='put order num'
                 value={orderNum}
                 maxLength={9}
@@ -40,7 +45,10 @@ const Picker = () => {
                 :
                 <div className='picker-form__locations'>
                     <div className='locations__order-num'>
-                        {locations.length ? `Order: ${locations[0].ORDER_NUM}` : 'not found'}
+                        {locations.length ?
+                            `Order: ${locations[0].ORDER_NUM}` :
+                            `Order ${searchingOrder} is not found`
+                        }
                     </div>
                     <div className='locations__list'>
                         {locations.map((location, index) => (
