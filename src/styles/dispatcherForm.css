@@ -62,6 +62,9 @@
   color: #002f00;
   border-radius: 3px;
 }
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order_duplicated {
+  color: darkred;
+}
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:hover {
   background-color: #b9b9b9;
 }
@@ -77,6 +80,9 @@
 }
 .dispatcher-form .dynamic-order-line .order-line__order-num {
   text-align: center;
+}
+.dispatcher-form .dynamic-order-line .order-line__order-num_duplicated {
+  color: darkred;
 }
 .dispatcher-form .dynamic-order-line .order-line__order-status {
   text-align: center;

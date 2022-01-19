@@ -35,6 +35,7 @@ const GatePlace = ({place, shippingArea, ...props}) => {
                     <OrderLine
                         key={`orderline_${orderline.ORDER_NUM}`}
                         orderline={orderline}
+                        shippingArea={shippingArea}
                     />
                 ))}
             </div>

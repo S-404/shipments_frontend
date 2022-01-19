@@ -69,12 +69,15 @@
             }
             .place__orders{
               .orders__order{
-
+                
               }
               .orders__order_completed{
                 background-color: rgba(132, 194, 132, 0.86);
                 color: #002f00;
                 border-radius: 3px;
+              }
+              .orders__order_duplicated{
+                color: darkred;
               }
             }
           }
@@ -100,6 +103,10 @@
 
     .order-line__order-num {
       text-align: center;
+
+    }
+    .order-line__order-num_duplicated {
+      color: darkred;
 
     }
     .order-line__order-status {

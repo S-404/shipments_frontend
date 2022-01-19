@@ -1,9 +1,17 @@
 import React from 'react';
 
-const OrderLine = ({orderline}) => {
+const OrderLine = ({orderline, shippingArea}) => {
+    const setClass = (order) => {
+        let result = 'orders__order'
+        result += order.STATUS === 'COMPLETED' ? ' orders__order_completed' : '';
+        result += shippingArea.filter(ord => ord.ORDER_NUM === order.ORDER_NUM).length > 1 ?
+            ' orders__order_duplicated' :
+            '';
+        return result;
+    }
     return (
         <div
-            className={orderline.STATUS === 'COMPLETED' ? "orders__order orders__order_completed" : "orders__order"}>
+            className={setClass(orderline)}>
             {orderline.ORDER_NUM}
         </div>
     );
