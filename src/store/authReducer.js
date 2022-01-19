@@ -1,6 +1,7 @@
 const authState = {
-    isAuth: true
+    isAuth: false
 }
+
 
 export const isAuthReducer = (state = authState, action)=>{
     switch (action.type){

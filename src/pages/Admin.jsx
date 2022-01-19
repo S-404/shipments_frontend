@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {useFetching} from "../../hooks/useFetching";
-import ShipmentService from "../../api/ShipmentService";
-import "../../styles/admin.scss"
-import MyModal from "../UI/modal/myModal";
-import AddGate from "../forms/admin/AddGate";
-import AddPlace from "../forms/admin/AddPlace";
-import EditPlace from "../forms/admin/EditPlace";
-import EditGate from "../forms/admin/EditGate";
-import Gates from "../adminShippingArea/Gates";
+import {useFetching} from "../hooks/useFetching";
+import ShipmentService from "../api/ShipmentService";
+import "../styles/admin.scss"
+import MyModal from "../components/UI/modal/myModal";
+import AddGate from "../components/forms/admin/AddGate";
+import AddPlace from "../components/forms/admin/AddPlace";
+import EditPlace from "../components/forms/admin/EditPlace";
+import EditGate from "../components/forms/admin/EditGate";
+import Gates from "../components/adminShippingArea/Gates";
 
 const Admin = () => {
     const [gates, setGates] = useState([]);

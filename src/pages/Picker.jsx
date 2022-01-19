@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import MyInput from "../UI/input/myInput";
-import {useFetching} from "../../hooks/useFetching";
-import ShipmentService from "../../api/ShipmentService";
-import MyLoader from "../UI/loader/myLoader";
-import '../../styles/pickerForm.scss'
-import scanBarcode from '../../assets/scan_barcode.svg'
+import MyInput from "../components/UI/input/myInput";
+import {useFetching} from "../hooks/useFetching";
+import ShipmentService from "../api/ShipmentService";
+import MyLoader from "../components/UI/loader/myLoader";
+import '../styles/pickerForm.scss'
+import scanBarcode from '../assets/scan_barcode.svg'
 
 const Picker = () => {
     const [orderNum, setOrderNum] = useState('')

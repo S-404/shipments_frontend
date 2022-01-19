@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useFetching} from "../../hooks/useFetching";
-import ShipmentService from "../../api/ShipmentService";
-import MyModal from "../UI/modal/myModal";
-import GatePlaceForm from "../forms/gatePlace/GatePlaceForm";
-import Gates from "../shippingArea/Gates";
-import "../../styles/dispatcherForm.scss"
-import MyLoader from "../UI/loader/myLoader";
-import {useInterval} from "../../hooks/useInterval";
+import {useFetching} from "../hooks/useFetching";
+import ShipmentService from "../api/ShipmentService";
+import MyModal from "../components/UI/modal/myModal";
+import GatePlaceForm from "../components/forms/gatePlace/GatePlaceForm";
+import Gates from "../components/shippingArea/Gates";
+import "../styles/dispatcherForm.scss"
+import MyLoader from "../components/UI/loader/myLoader";
+import {useInterval} from "../hooks/useInterval";
 
 const Dispatcher = () => {
     const [shippingArea, setShippingArea] = useState([]);
