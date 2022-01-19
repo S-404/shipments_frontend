@@ -20,6 +20,24 @@
 .gate-place-form .gate-place-form__header .header__assign-truck-div .assign-truck-div__input {
   flex-basis: 80%;
 }
+.gate-place-form .gate-place-form__header .header__loading-time-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.gate-place-form .gate-place-form__header .header__loading-time-div .loading-time-div__header {
+  color: #ababab;
+}
+.gate-place-form .gate-place-form__header .header__loading-time-div .loading-time-div__time-picker {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.gate-place-form .gate-place-form__header .header__loading-time-div .loading-time-div__time-picker .time-picker__separator {
+  color: #ababab;
+  margin-right: 10px;
+}
 .gate-place-form .gate-place-form__header .header__buttons-div {
   display: flex;
   flex-direction: row;

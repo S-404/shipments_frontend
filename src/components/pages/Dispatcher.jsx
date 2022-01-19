@@ -37,8 +37,8 @@ const Dispatcher = () => {
         const responseData = await ShipmentService.getData({
             query: 'places/list',
         });
-        if(responseData.length){
-            setGatesPlaces(responseData.filter(place=>place.ID !== null));
+        if (responseData.length) {
+            setGatesPlaces(responseData.filter(place => place.ID !== null));
         }
 
     });
@@ -137,11 +137,11 @@ const Dispatcher = () => {
             ID: place.PLACE_ID,
             IS_LOADING: !place.IS_LOADING,
         });
-        let gateID = responseData[0].ID;
-        if (gateID) {
+        let placeID = responseData[0].ID;
+        if (placeID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
             newGatesPlacesObj.filter(
-                gatePlace => gatePlace.ID === gateID
+                gatePlace => gatePlace.ID === placeID
             )[0].IS_LOADING = responseData[0].IS_LOADING
             setGatesPlaces(newGatesPlacesObj);
             setSelectedPlace({...selectedPlace, IS_LOADING: responseData[0].IS_LOADING})
@@ -164,29 +164,53 @@ const Dispatcher = () => {
             setSelectedPlace({...selectedPlace, TRUCK: responseData[0].TRUCK})
         }
     }
+
+    const updateLoadingTime_HHMM = async (HH, MM, id) => {
+        const responseData = await ShipmentService.updateData({
+            query: 'places/loadingtime',
+            ID: id,
+            HH:HH,
+            MM:MM,
+        });
+        let placeID = responseData[0].ID;
+        if (placeID) {
+            let newGatesPlacesObj = Object.assign(gatesPlaces)
+            newGatesPlacesObj.filter(
+                gatePlace => gatePlace.ID === placeID
+            )[0].IS_LOADING = responseData[0].IS_LOADING
+            setGatesPlaces(newGatesPlacesObj);
+            setSelectedPlace({
+                ...selectedPlace,
+                LOADING_TIME_HH: responseData[0].LOADING_TIME_HH,
+                LOADING_TIME_MM: responseData[0].LOADING_TIME_MM,
+            })
+        }
+    }
+
     return (
         <div className='dispatcher-form'>
             {isShippingAreaLoading || isGatesPlacesLoading ?
-                <div className='dispatcher-form__loader-div'><MyLoader/></div>:null }
-                <div className='dispatcher-form__shipping-area'>
-                    <MyModal visible={placeModal} setVisible={setPlaceModal}>
-                        <GatePlaceForm
-                            selectedPlace={selectedPlace}
-                            shippingArea={shippingArea}
-                            removeOrder={removeOrder}
-                            removeOrders={removeOrders}
-                            addOrder={addOrder}
-                            updatePlaceStatus={updatePlaceStatus}
-                            updateTruck={updateTruck}
-                        />
-                    </MyModal>
-                    <Gates
-                        gates={gates}
-                        gatesPlaces={gatesPlaces}
-                        setSelectedPlace={setSelectedPlace}
-                        setPlaceModal={setPlaceModal}
-                        shippingArea={shippingArea}/>
-                </div>
+                <div className='dispatcher-form__loader-div'><MyLoader/></div> : null}
+            <div className='dispatcher-form__shipping-area'>
+                <MyModal visible={placeModal} setVisible={setPlaceModal}>
+                    <GatePlaceForm
+                        selectedPlace={selectedPlace}
+                        shippingArea={shippingArea}
+                        removeOrder={removeOrder}
+                        removeOrders={removeOrders}
+                        addOrder={addOrder}
+                        updatePlaceStatus={updatePlaceStatus}
+                        updateTruck={updateTruck}
+                        updateLoadingTime_HHMM={updateLoadingTime_HHMM}
+                    />
+                </MyModal>
+                <Gates
+                    gates={gates}
+                    gatesPlaces={gatesPlaces}
+                    setSelectedPlace={setSelectedPlace}
+                    setPlaceModal={setPlaceModal}
+                    shippingArea={shippingArea}/>
+            </div>
         </div>
     );
 }

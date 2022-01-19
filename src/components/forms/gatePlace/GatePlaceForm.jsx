@@ -4,7 +4,8 @@ import MyInput from "../../UI/input/myInput";
 import MySmallButton from "../../UI/button/mySmallButton";
 import ToggleSwitch from "../../UI/checkbox/toggleSwitch";
 import "../../../styles/gatePlaceForm.scss"
-import {isValidInput} from "../../../utils";
+import {getHHArr, getMMarr, isValidInput} from "../../../utils";
+import MySelect from "../../UI/select/mySelect";
 
 const GatePlaceForm = ({
                            selectedPlace,
@@ -13,11 +14,13 @@ const GatePlaceForm = ({
                            removeOrders,
                            addOrder,
                            updatePlaceStatus,
-                           updateTruck
+                           updateTruck,
+                           updateLoadingTime_HHMM
                        }) => {
     const [newOrder, setNewOrder] = useState('')
     const [isMassUpload, setIsMassUpload] = useState(false)
     const [truck, setTruck] = useState('')
+    const [loadingTime, setLoadingTime] = useState({HH: '00', MM: '00'})
 
     const addNewOrder = (orderNum) => {
         if (!orderNum.length) return;
@@ -44,9 +47,9 @@ const GatePlaceForm = ({
         let checkOrderListArr = str.split(' ')
         let orderListArr = []
         const isValid = (value) => {
-            if(!value) return false;
+            if (!value) return false;
             for (let x = 0; x < value.length; x++) {
-                if (isNaN(value[x]))return false;
+                if (isNaN(value[x])) return false;
             }
             return true;
         }
@@ -57,16 +60,26 @@ const GatePlaceForm = ({
             }
         }
 
-       if (orderListArr.length) addNewOrder(orderListArr.join(' '))
+        if (orderListArr.length) addNewOrder(orderListArr.join(' '))
 
     }
 
     const assignTruck = () => {
-            updateTruck(truck, selectedPlace.PLACE_ID)
+        updateTruck(truck, selectedPlace.PLACE_ID)
     }
 
     useEffect(() => {
         setTruck(selectedPlace.TRUCK ? selectedPlace.TRUCK : '')
+        if (selectedPlace.LOADING_TIME_HH) {
+            setLoadingTime({
+                HH: selectedPlace.LOADING_TIME_HH,
+                MM: selectedPlace.LOADING_TIME_MM,
+            })
+
+        }else {
+            setLoadingTime({HH:'00',MM:'00'})
+        }
+
     }, [selectedPlace])
 
 
@@ -76,6 +89,34 @@ const GatePlaceForm = ({
                 <h1 className='header__name'>
                     {`GATE ${selectedPlace.GATE} - ${selectedPlace.PLACE}`}
                 </h1>
+                <div className='header__loading-time-div'>
+                    <span className='loading-time-div__header'>Loading Time</span>
+                    <div className='loading-time-div__time-picker'>
+                        <MySelect
+                            className='time-picker__select'
+                            onChange={
+                                (selectedHH) => {
+                                    setLoadingTime({...loadingTime, HH: selectedHH});
+                                    updateLoadingTime_HHMM(selectedHH, loadingTime.MM, selectedPlace.PLACE_ID);
+                                }
+                            }
+                            options={getHHArr()}
+                            value={loadingTime.HH}
+                        />
+                        <span className={'time-picker__separator'}>:</span>
+                        <MySelect
+                            className={'time-picker__select'}
+                            onChange={
+                                (selectedMM) => {
+                                    setLoadingTime({...loadingTime, MM: selectedMM});
+                                    updateLoadingTime_HHMM(loadingTime.HH, selectedMM, selectedPlace.PLACE_ID)
+                                }
+                            }
+                            options={getMMarr()}
+                            value={loadingTime.MM}
+                        />
+                    </div>
+                </div>
                 <div className='header__assign-truck-div'>
                     <div className='assign-truck-div__input'>
                         <MyInput
@@ -94,8 +135,9 @@ const GatePlaceForm = ({
                             text='assign'
                         />
                     </div>
-
                 </div>
+
+
                 {selectedPlace.IS_LOADING ?
                     <div className='header__buttons-div'>
                         <MySmallButton
@@ -174,6 +216,7 @@ const GatePlaceForm = ({
                             orderline={orderline}
                             removeOrder={removeOrder}
                             selectedPlace={selectedPlace}
+                            shippingArea={shippingArea}
                         />
                     ))}
                 </div>

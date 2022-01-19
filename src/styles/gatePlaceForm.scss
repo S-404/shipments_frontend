@@ -6,6 +6,7 @@
   .gate-place-form__header {
     display: flex;
     flex-direction: column;
+
     .header__name {
 
     }
@@ -20,9 +21,37 @@
         flex-basis: 20%;
         justify-content: center;
       }
+
       .assign-truck-div__input {
         flex-basis: 80%;
       }
+    }
+
+    .header__loading-time-div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .loading-time-div__header {
+        color: #ababab;
+      }
+
+      .loading-time-div__time-picker {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        .time-picker__select {
+        }
+
+        .time-picker__separator {
+          color: #ababab;
+          margin-right: 10px;
+        }
+      }
+
+
     }
 
     .header__buttons-div {
@@ -40,7 +69,7 @@
     margin-top: 30px;
 
     .body__info {
-      background-color:rgb(103, 158, 206);
+      background-color: rgb(103, 158, 206);
       color: white;
       display: table;
       margin: 0 auto;
@@ -53,9 +82,11 @@
         display: flex;
         flex-direction: row;
         width: 100%;
+
         .single-order-div__input {
           flex-basis: 80%;
         }
+
         .single-order-div__button {
           display: flex;
           flex-basis: 20%;

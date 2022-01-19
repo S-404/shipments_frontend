@@ -1,0 +1,11 @@
+.mySelect {
+    position: relative;
+    padding: 5px 0;
+    margin: 5px 0;
+}
+
+.mySelect__select {
+    margin-right: 10px;
+    border-radius: 5px;
+    min-width: 80px;
+}

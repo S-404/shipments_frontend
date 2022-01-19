@@ -25,7 +25,7 @@
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place {
   margin: 0 5px;
-  padding: 0 5px;
+  padding: 10px;
   background-color: #c5c5c5;
   border: 0;
   border-radius: var(--border-radius-val);
@@ -45,9 +45,20 @@
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-status {
   font-size: small;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__last-upd {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time {
   font-size: small;
   text-align: center;
+  border-radius: 5px;
+  padding: 4px 3px 0;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_yellow {
+  background-color: rgba(255, 255, 0, 0.29);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_red {
+  background-color: rgba(255, 0, 0, 0.26);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_green {
+  background-color: rgba(132, 194, 132, 0.86);
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__assigned-truck {
   background-color: #fafafa;
@@ -58,7 +69,7 @@
   text-align: center;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order_completed {
-  background-color: rgba(132, 194, 132, 0.86);
+  background-color: rgba(177, 241, 177, 0.28);
   color: #002f00;
   border-radius: 3px;
 }
