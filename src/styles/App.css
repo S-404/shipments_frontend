@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: thin; /*mozilla scrollbar*/
-  font-size: 20px;
 }
 
 *::-webkit-scrollbar {

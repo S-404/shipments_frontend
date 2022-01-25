@@ -7,8 +7,11 @@ import Gates from "../components/shippingArea/Gates";
 import "../styles/dispatcherForm.scss"
 import MyLoader from "../components/UI/loader/myLoader";
 import {useInterval} from "../hooks/useInterval";
+import {useSelector} from "react-redux";
+import GateHistoryForm from "../components/forms/history/GateHistoryForm";
 
 const Dispatcher = () => {
+    const user = useSelector(state => state.user)
     const [shippingArea, setShippingArea] = useState([]);
     const [gates, setGates] = useState([]);
     const [gatesPlaces, setGatesPlaces] = useState([]);
@@ -23,6 +26,8 @@ const Dispatcher = () => {
             TRUCK: ''
         }
     );
+    const [selectedGate,setSelectedGate] = useState({GATE_ID: 0})
+    const [historyModal,setHistoryModal] =useState(false)
 
     const [fetchShippingArea, isShippingAreaLoading, isShippingAreaError] = useFetching(
         async () => {
@@ -61,8 +66,8 @@ const Dispatcher = () => {
 
     useEffect(() => {
         let gates = gatesPlaces.reduce(function (arr, place) {
-            if (arr.indexOf(place.GATE) === -1) {
-                arr.push(place.GATE);
+            if(!arr.filter((gate)=>gate.GATE_ID===place.GATE_ID).length) {
+                arr.push({GATE: place.GATE, GATE_ID: place.GATE_ID});
             }
             return arr;
         }, []);
@@ -85,8 +90,9 @@ const Dispatcher = () => {
             query: 'orders/order',
             ORDER_NUM: newOrderObj.ORDER_NUM,
             PLACE_ID: newOrderObj.PLACE_ID,
+            USER_ID: user.userid,
         });
-        let id = responseData[0].ID;
+        let id = responseData[0].ORDER_ID;
         if (id) {
             const newObj = responseData.map(
                 (obj) => {
@@ -105,8 +111,9 @@ const Dispatcher = () => {
         const responseData = await ShipmentService.deleteData({
             query: 'orders/order',
             ID: orderID,
+            USER_ID: user.userid,
         });
-        let id = responseData[0].ID
+        let id = responseData[0].ORDER_ID
         if (id) {
             setShippingArea([...shippingArea.filter((order) => order.ORDER_ID !== id)]);
         }
@@ -117,6 +124,7 @@ const Dispatcher = () => {
         const responseData = await ShipmentService.deleteData({
             query: 'orders/place',
             PLACE_ID: place.PLACE_ID,
+            USER_ID: user.userid,
         });
         let gateID = responseData[0].PLACE_ID;
         if (gateID) {
@@ -169,8 +177,8 @@ const Dispatcher = () => {
         const responseData = await ShipmentService.updateData({
             query: 'places/loadingtime',
             ID: id,
-            HH:HH,
-            MM:MM,
+            HH: HH,
+            MM: MM,
         });
         let placeID = responseData[0].ID;
         if (placeID) {
@@ -204,12 +212,23 @@ const Dispatcher = () => {
                         updateLoadingTime_HHMM={updateLoadingTime_HHMM}
                     />
                 </MyModal>
+                <MyModal visible={historyModal} setVisible={setHistoryModal}>
+                    <GateHistoryForm
+                        historyModal={historyModal}
+                        setHistoryModal={setHistoryModal}
+                        selectedGate={selectedGate}
+                    />
+                </MyModal>
                 <Gates
                     gates={gates}
                     gatesPlaces={gatesPlaces}
                     setSelectedPlace={setSelectedPlace}
                     setPlaceModal={setPlaceModal}
-                    shippingArea={shippingArea}/>
+                    shippingArea={shippingArea}
+                    setSelectedGate={setSelectedGate}
+                    setHistoryModal={setHistoryModal}
+                    selectedGate={selectedGate}
+                />
             </div>
         </div>
     );

@@ -1,0 +1,21 @@
+.gate-history-form .gate-history-form__gate-history-header {
+  font-size: 20px;
+}
+.gate-history-form .gate-history-form__gate-history-body .filters {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #e1e1e1;
+  border-radius: var(--border-radius-val);
+  padding: 10px;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+.gate-history-form .gate-history-form__gate-history-body .filters .filters__header {
+  font-size: 14px;
+  font-weight: unset;
+}
+.gate-history-form .gate-history-form__gate-history-body .filters .filters__filter {
+  flex-basis: 30%;
+}
+
+/*# sourceMappingURL=gateHistoryForm.css.map */
