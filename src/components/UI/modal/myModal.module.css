@@ -15,7 +15,7 @@
     padding: 30px;
     background: white;
     border-radius: 15px;
-    width: 500px;
+    min-width: 500px;
 }
 
 .myModal.active {

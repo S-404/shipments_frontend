@@ -20,6 +20,10 @@
   }
 
   .picker-form__locations {
+    background-color: #ababab;
+    padding: 5px;
+    border-radius: var(--border-radius-val);
+    margin: 15px 0;
     .locations__order-num {
       font-size: var(--fontsize);
       margin: 15px 0;
