@@ -76,11 +76,19 @@ const GatePlaceForm = ({
                 MM: selectedPlace.LOADING_TIME_MM,
             })
 
-        }else {
-            setLoadingTime({HH:'00',MM:'00'})
+        } else {
+            setLoadingTime({HH: '00', MM: '00'})
         }
 
     }, [selectedPlace])
+
+    const [hhArr, setHHArr] = useState([])
+    const [mmArr, setMMArr] = useState([])
+
+    useEffect(() => {
+        setHHArr(getHHArr());
+        setMMArr(getMMarr());
+    }, []);
 
 
     return (
@@ -100,7 +108,7 @@ const GatePlaceForm = ({
                                     updateLoadingTime_HHMM(selectedHH, loadingTime.MM, selectedPlace.PLACE_ID);
                                 }
                             }
-                            options={getHHArr()}
+                            options={hhArr}
                             value={loadingTime.HH}
                         />
                         <span className={'time-picker__separator'}>:</span>
@@ -112,7 +120,7 @@ const GatePlaceForm = ({
                                     updateLoadingTime_HHMM(loadingTime.HH, selectedMM, selectedPlace.PLACE_ID)
                                 }
                             }
-                            options={getMMarr()}
+                            options={mmArr}
                             value={loadingTime.MM}
                         />
                     </div>
