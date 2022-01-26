@@ -1,7 +1,7 @@
 .myLabel {
     position: absolute;
-    left: 5px;
-    top: 2px;
+    left: .5em;
+    top: .1em;
     color: #999;
     white-space: nowrap;
     font-size: small;
