@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MyInput from "../components/UI/input/myInput";
 import MySmallButton from "../components/UI/button/mySmallButton";
 import {useDispatch} from "react-redux";
@@ -6,9 +6,10 @@ import showPasswordIcon from '../assets/show.svg'
 import hidePasswordIcon from '../assets/hide.svg'
 import '../styles/login.scss'
 import {isValidInput} from "../utils";
+import LoaderSmall from "../components/UI/loader/loaderSmall";
+import LoginService from "../api/LoginService";
 
 const Login = () => {
-
     const dispatch = useDispatch();
 
     const [userid, setUserid] = useState('');
@@ -16,21 +17,37 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [passwordInput, setPasswordInput] = useState(null);
 
+    const [isLoading, setIsLoadin] = useState(false)
+
+    const checkPass = async () => {
+        setIsLoadin(true)
+        const responseData = await LoginService.queryData({
+            USER_LOGIN: userid,
+            USER_PASSWORD: password,
+        }, 'user/checkpassword', 'GET');
+        setIsLoadin(false)
+        return responseData[0]?.PASSWORD_CHECK
+
+    }
+
+    const tryLogin = async () => {
+        if (!userid || !password) return;
+        if (await checkPass()) {
+            login()
+        }
+    }
 
     const login = () => {
-
-        if (!userid || !password) return;
-
-
-        dispatch({type: 'SET_USERID', value: userid});
         localStorage.setItem('userid', userid)
+        dispatch({type: 'SET_USERID', value: userid});
 
-        dispatch({type: 'SET_AUTH', value: true});
         localStorage.setItem('auth', 'true')
+        dispatch({type: 'SET_AUTH', value: true});
+
     }
     const onKeyDownPassword = (e) => {
         if (e.key === 'Enter') {
-            login()
+            tryLogin()
         }
     }
     const onKeyDownUserID = (e) => {
@@ -38,7 +55,6 @@ const Login = () => {
             passwordInput.focus()
         }
     }
-
 
     return (
         <div className='login-form'>
@@ -78,12 +94,16 @@ const Login = () => {
                     </div>
                     : null
                 }
-
+                <div className='password-input__loader-div'>
+                    <div className='loader-div__loader'>
+                        <LoaderSmall isLoading={isLoading}/>
+                    </div>
+                </div>
 
             </div>
             <div className='login-form__login-button'>
                 <MySmallButton
-                    onClick={login}
+                    onClick={tryLogin}
                     text='LOGIN'/>
             </div>
 

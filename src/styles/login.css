@@ -27,6 +27,14 @@
   flex-direction: row;
   justify-content: flex-end;
 }
+.login-form .login-form__password-input .password-input__loader-div {
+  position: absolute;
+}
+.login-form .login-form__password-input .password-input__loader-div .loader-div__loader {
+  position: relative;
+  top: 0.7em;
+  right: -1.5em;
+}
 .login-form .login-form__password-input .password-input__show-password-icon-div {
   position: absolute;
   color: lightgray;
