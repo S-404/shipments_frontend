@@ -107,7 +107,6 @@ const Dispatcher = () => {
     }
 
     const removeOrder = async (orderID) => {
-        if (!window.confirm('Order will be removed')) return;
         const responseData = await ShipmentService.deleteData({
             query: 'orders/order',
             ID: orderID,
