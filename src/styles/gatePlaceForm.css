@@ -6,72 +6,144 @@
 .gate-place-form * {
   font-size: 20px;
 }
-.gate-place-form .gate-place-form__header {
+.gate-place-form .gate-place-form__truck {
   display: flex;
   flex-direction: column;
 }
-.gate-place-form .gate-place-form__header .header__assign-truck-div {
+.gate-place-form .gate-place-form__truck .truck__assign-truck-div {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.gate-place-form .gate-place-form__header .header__assign-truck-div .assign-truck-div__button {
+.gate-place-form .gate-place-form__truck .truck__assign-truck-div .assign-truck-div__button {
   display: flex;
   flex-basis: 20%;
   justify-content: center;
 }
-.gate-place-form .gate-place-form__header .header__assign-truck-div .assign-truck-div__input {
+.gate-place-form .gate-place-form__truck .truck__assign-truck-div .assign-truck-div__input {
   flex-basis: 80%;
 }
-.gate-place-form .gate-place-form__header .header__loading-time-div {
+.gate-place-form .gate-place-form__truck .truck__loading-time-div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.gate-place-form .gate-place-form__header .header__loading-time-div .loading-time-div__header {
+.gate-place-form .gate-place-form__truck .truck__loading-time-div .loading-time-div__header {
   color: #ababab;
 }
-.gate-place-form .gate-place-form__header .header__loading-time-div .loading-time-div__time-picker {
+.gate-place-form .gate-place-form__truck .truck__loading-time-div .loading-time-div__time-picker {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-.gate-place-form .gate-place-form__header .header__loading-time-div .loading-time-div__time-picker .time-picker__separator {
+.gate-place-form .gate-place-form__truck .truck__loading-time-div .loading-time-div__time-picker .time-picker__separator {
   color: #ababab;
   margin-right: 10px;
 }
-.gate-place-form .gate-place-form__header .header__buttons-div {
+.gate-place-form .gate-place-form__truck .truck__buttons-div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.gate-place-form .gate-place-form__header .header__buttons-div .buttons-div__button {
+.gate-place-form .gate-place-form__truck .truck__buttons-div .buttons-div__button {
   width: 100%;
 }
-.gate-place-form .gate-place-form__body {
-  margin-top: 30px;
+.gate-place-form .gate-place-form__order-list {
+  margin-top: 15px;
 }
-.gate-place-form .gate-place-form__body .body__info {
+.gate-place-form .gate-place-form__order-list .order-list__info {
   background-color: #679ece;
   color: white;
   display: table;
   margin: 0 auto;
   padding: 5px;
   border-radius: 10px;
+  width: 100%;
+  text-align: center;
 }
-.gate-place-form .gate-place-form__body .body__input-div .body__single-order-div {
+.gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-.gate-place-form .gate-place-form__body .body__input-div .body__single-order-div .single-order-div__input {
+.gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div .single-order-div__input {
   flex-basis: 80%;
 }
-.gate-place-form .gate-place-form__body .body__input-div .body__single-order-div .single-order-div__button {
+.gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div .single-order-div__button {
   display: flex;
   flex-basis: 20%;
   justify-content: center;
+}
+.gate-place-form .gate-place-form__order-list .order-list__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 15px;
+}
+.gate-place-form .gate-place-form__order-list .order-list__header span {
+  background-color: #a6a6a6;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 0.8em;
+  border-radius: var(--border-radius-val);
+  color: #fff;
+  flex-basis: 40%;
+  text-align: center;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line {
+  padding: 2px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-num {
+  text-align: center;
+  flex-basis: 50%;
+  border-radius: var(--border-radius-val);
+  padding: 2px;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-num_loaded {
+  background-color: #b8d8ef;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-num_duplicated {
+  color: darkred;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__loaded-status {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__text {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(51, 51, 51, 0.82);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin: -5px 0px 0 5px;
+  position: absolute;
+  z-index: 1;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__icon {
+  min-width: 20px;
+  height: 25px;
+  text-align: center;
+  color: #5b5b5b;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__icon_not-started {
+  filter: invert(22%) sepia(99%) saturate(5643%) hue-rotate(358deg) brightness(89%) contrast(126%);
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__icon_completed {
+  filter: invert(50%) sepia(67%) saturate(820%) hue-rotate(77deg) brightness(90%) contrast(80%);
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status:hover .order-status__text {
+  visibility: visible;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__button {
+  flex-basis: 30%;
 }
 
 /*# sourceMappingURL=gatePlaceForm.css.map */

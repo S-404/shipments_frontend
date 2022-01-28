@@ -47,7 +47,7 @@
   background-color: #c5c5c5;
   border: 0;
   border-radius: var(--border-radius-val);
-  min-width: 130px;
+  min-width: 140px;
   min-height: 100px;
   cursor: pointer;
 }
@@ -106,27 +106,6 @@
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:active {
   background-color: #9f9f9f;
-}
-.dispatcher-form .dynamic-order-line {
-  padding: 2px;
-  margin: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.dispatcher-form .dynamic-order-line .order-line__order-num {
-  text-align: center;
-}
-.dispatcher-form .dynamic-order-line .order-line__order-num_duplicated {
-  color: darkred;
-}
-.dispatcher-form .dynamic-order-line .order-line__order-status {
-  text-align: center;
-  flex-basis: 30%;
-  color: #5b5b5b;
-}
-.dispatcher-form .dynamic-order-line .order-line__button {
-  flex-basis: 30%;
 }
 
 /*# sourceMappingURL=dispatcherForm.css.map */

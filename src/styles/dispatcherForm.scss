@@ -55,7 +55,7 @@
             background-color: #c5c5c5;
             border: 0;
             border-radius: var(--border-radius-val);
-            min-width: 130px;
+            min-width: 140px;
             min-height: 100px;
             cursor: pointer;
 
@@ -139,34 +139,4 @@
       }
     }
   }
-
-  .dynamic-order-line {
-    padding: 2px;
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    .order-line__order-num {
-      text-align: center;
-
-    }
-
-    .order-line__order-num_duplicated {
-      color: darkred;
-
-    }
-
-    .order-line__order-status {
-      text-align: center;
-      flex-basis: 30%;
-      color: #5b5b5b;
-    }
-
-    .order-line__button {
-      flex-basis: 30%;
-    }
-
-  }
-
 }

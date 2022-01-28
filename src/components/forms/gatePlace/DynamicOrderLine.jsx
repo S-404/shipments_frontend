@@ -1,31 +1,32 @@
 import React from 'react';
 import MySmallButton from "../../UI/button/mySmallButton";
+import MyCheckBox from "../../UI/checkbox/myCheckBox";
+import OrderStatusIcon from "./OrderStatusIcon";
+import OrderNum from "./OrderNum";
 
-const DynamicOrderLine = ({orderline, removeOrder, selectedPlace, shippingArea}) => {
-
-    const setClass = (order) => {
-        let result = 'order-line__order-num'
-        result += shippingArea.filter(ord => ord.ORDER_NUM === order.ORDER_NUM).length > 1 ?
-            ' order-line__order-num_duplicated' :
-            '';
-        return result;
-    }
-
+const DynamicOrderLine = ({orderline, removeOrder, selectedPlace, shippingArea,updateOrderLoadingStatus}) => {
     return (
-        <div
-            className="dynamic-order-line">
-            <div className='order-line__button'>
+        <div>
             {selectedPlace.IS_LOADING ?
-                null
+                <div className="dynamic-order-line">
+                    <OrderNum orderline={orderline} shippingArea={shippingArea}/>
+                    <div className='dynamic-order-line__loaded-status'>
+                        <MyCheckBox
+                            checked={!!orderline.IS_LOADED}
+                            onChange={(e) => updateOrderLoadingStatus(orderline.ORDER_ID, e.target.checked)}
+                        />
+                    </div>
+
+                </div>
                 :
-                <MySmallButton
-                    text='remove'
-                    onClick={() => removeOrder(orderline.ORDER_ID)}
-                />
+                <div className="dynamic-order-line">
+                    <OrderStatusIcon orderline={orderline}/>
+                    <OrderNum orderline={orderline} shippingArea={shippingArea}/>
+                    <div className='dynamic-order-line__button'>
+                        <MySmallButton text='remove' onClick={() => removeOrder(orderline.ORDER_ID)}/>
+                    </div>
+                </div>
             }
-            </div>
-            <span className={setClass(orderline)}>{orderline.ORDER_NUM}</span>
-            <span className='order-line__order-status'>{orderline.STATUS}</span>
         </div>
     );
 };
