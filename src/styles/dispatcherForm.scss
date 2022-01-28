@@ -55,7 +55,7 @@
             background-color: #c5c5c5;
             border: 0;
             border-radius: var(--border-radius-val);
-            min-width: 130px;
+            min-width: 140px;
             min-height: 100px;
             cursor: pointer;
 
@@ -139,70 +139,4 @@
       }
     }
   }
-
-  .dynamic-order-line {
-    padding: 2px;
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    .order-line__order-num {
-      text-align: center;
-
-    }
-
-    .order-line__order-num_duplicated {
-      color: darkred;
-
-    }
-
-    .order-line__order-status{
-      .order-status__text{
-        visibility: hidden;
-        width: 120px;
-        background-color: rgba(51, 51, 51, 0.82);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        margin: -5px 0px 0 5px;
-
-
-        /* Position the tooltip */
-        position: absolute;
-        z-index: 1;
-      }
-      .order-status__icon{
-        height: 25px;
-        text-align: center;
-        flex-basis: 10%;
-        color: #5b5b5b;
-      }
-
-      .order-status__icon_not-started{
-        filter: invert(22%) sepia(99%) saturate(5643%) hue-rotate(358deg) brightness(89%) contrast(126%);
-      }
-      .order-status__icon_in-process{
-
-      }
-      .order-status__icon_completed{
-        filter: invert(50%) sepia(67%) saturate(820%) hue-rotate(77deg) brightness(90%) contrast(80%);
-      }
-    }
-
-    .order-line__order-status:hover{
-      .order-status__text{
-        visibility: visible;
-      }
-    }
-
-
-
-    .order-line__button {
-      flex-basis: 30%;
-    }
-
-  }
-
 }

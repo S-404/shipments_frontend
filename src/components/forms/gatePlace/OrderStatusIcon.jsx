@@ -27,7 +27,7 @@ const OrderStatusIcon = ({orderline}) => {
 
     }
     return (
-        <div className='order-line__order-status'>
+        <div className='dynamic-order-line__order-status'>
             <img
                 src={setStatusImg(orderline.STATUS)}
                 alt='status'

@@ -1,14 +1,17 @@
 import React from 'react';
 
 const OrderNum = ({orderline, shippingArea}) => {
-    const isDuplicated = (orderNum) => {
-        return shippingArea.filter(ord => ord.ORDER_NUM === orderNum).length > 1 ?
-            'order-line__order-num order-line__order-num_duplicated' :
-            'order-line__order-num'
+    const setModification = (orderline) => {
+        let result = 'dynamic-order-line__order-num ';
+        result += shippingArea.filter(ord => ord.ORDER_NUM === orderline.ORDER_NUM).length > 1 ?
+            'dynamic-order-line__order-num dynamic-order-line__order-num_duplicated' : '';
+        result+= orderline.IS_LOADED?' dynamic-order-line__order-num_loaded' : ''
+        return result
     }
+
     return (
             <span
-                className={isDuplicated(orderline.ORDER_NUM)}
+                className={setModification(orderline)}
             >
                 {orderline.ORDER_NUM}
             </span>

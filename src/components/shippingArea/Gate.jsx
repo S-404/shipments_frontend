@@ -2,7 +2,16 @@ import React from 'react';
 import GatePlace from "./GatePlace";
 import history_svg from "../../assets/history_icon.svg"
 
-const Gate = ({gate, gatesPlaces, setSelectedPlace, setPlaceModal, shippingArea,selectedGate, setSelectedGate, setHistoryModal}) => {
+const Gate = ({
+                  gate,
+                  gatesPlaces,
+                  setSelectedPlace,
+                  setPlaceModal,
+                  shippingArea,
+                  selectedGate,
+                  setSelectedGate,
+                  setHistoryModal
+              }) => {
     return (
         <div className="gates__gate">
             <div className='gate__gate-header'>
@@ -12,7 +21,7 @@ const Gate = ({gate, gatesPlaces, setSelectedPlace, setPlaceModal, shippingArea,
                     alt='history'
                     src={history_svg}
                     onClick={() => {
-                        setSelectedGate({...selectedGate,GATE_ID: gate.GATE_ID});
+                        setSelectedGate({...selectedGate, GATE_ID: gate.GATE_ID});
                         setHistoryModal(true);
                     }}
                 />

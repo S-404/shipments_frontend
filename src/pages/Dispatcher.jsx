@@ -138,6 +138,24 @@ const Dispatcher = () => {
 
     }
 
+    const updateOrderLoadingStatus = async (orderID, isLoaded) => {
+        const responseData = await ShipmentService.updateData({
+            query: 'orders/order/loading-status',
+            ID: orderID,
+            IS_LOADED: isLoaded,
+        });
+        let id = responseData[0].ID
+        if (id) {
+            let tmpArr = Object.assign(shippingArea);
+            if (tmpArr.length > 0) {
+                let updRowIndex = tmpArr.findIndex((order) => order.ORDER_ID === id)
+                tmpArr[updRowIndex].IS_LOADED = isLoaded;
+            }
+            setShippingArea([...tmpArr]);
+        }
+    }
+
+
     const updatePlaceStatus = async (place) => {
         const responseData = await ShipmentService.updateData({
             query: 'places/status',
@@ -182,9 +200,9 @@ const Dispatcher = () => {
         let placeID = responseData[0].ID;
         if (placeID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
-            newGatesPlacesObj.filter(
-                gatePlace => gatePlace.ID === placeID
-            )[0].IS_LOADING = responseData[0].IS_LOADING
+            // newGatesPlacesObj.filter(
+            //     gatePlace => gatePlace.ID === placeID
+            // )[0].IS_LOADING = responseData[0].IS_LOADING
             setGatesPlaces(newGatesPlacesObj);
             setSelectedPlace({
                 ...selectedPlace,
@@ -193,6 +211,7 @@ const Dispatcher = () => {
             })
         }
     }
+
 
     return (
         <div className='dispatcher-form'>
@@ -209,6 +228,7 @@ const Dispatcher = () => {
                         updatePlaceStatus={updatePlaceStatus}
                         updateTruck={updateTruck}
                         updateLoadingTime_HHMM={updateLoadingTime_HHMM}
+                        updateOrderLoadingStatus={updateOrderLoadingStatus}
                     />
                 </MyModal>
                 <MyModal visible={historyModal} setVisible={setHistoryModal}>
