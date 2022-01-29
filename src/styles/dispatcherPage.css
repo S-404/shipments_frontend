@@ -1,0 +1,111 @@
+.dispatcher-form {
+  position: relative;
+}
+.dispatcher-form .dispatcher-form__loader-div {
+  margin-top: 10px;
+  position: fixed;
+  right: 20px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates * {
+  font-size: 20px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate {
+  padding: 15px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  border-radius: var(--border-radius-val);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header .gate-header__gate-name {
+  font-size: 20px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header .gate-header__history-image {
+  max-height: 30px;
+  margin-top: 2px;
+  cursor: pointer;
+  position: relative;
+  left: -5px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places {
+  display: flex;
+  flex-direction: row;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place {
+  margin: 0 5px;
+  padding: 10px;
+  background-color: #c5c5c5;
+  border: 0;
+  border-radius: var(--border-radius-val);
+  min-width: 140px;
+  min-height: 100px;
+  cursor: pointer;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header {
+  display: flex;
+  flex-direction: column;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__name {
+  font-size: 20px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-status {
+  font-size: small;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time {
+  max-height: 20px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 4px 3px 0;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_yellow {
+  background-color: rgba(255, 255, 0, 0.29);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_red {
+  background-color: rgba(255, 0, 0, 0.26);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_green {
+  background-color: rgba(132, 194, 132, 0.86);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__assigned-truck {
+  background-color: #fafafa;
+  padding: 1px 3px;
+  border-radius: 3px;
+  border: 2px solid black;
+  width: 100%;
+  text-align: center;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order {
+  color: #525252;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order_completed {
+  color: #006500;
+  border-radius: 3px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order_duplicated {
+  color: darkred;
+  font-style: italic;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:hover {
+  background-color: #b9b9b9;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:active {
+  background-color: #9f9f9f;
+}
+
+/*# sourceMappingURL=dispatcherPage.css.map */

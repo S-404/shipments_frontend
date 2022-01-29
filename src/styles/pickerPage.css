@@ -1,0 +1,61 @@
+:root {
+  --fontsize: 45px;
+  --formwidth: 500px;
+}
+
+.picker-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: var(--formwidth);
+}
+.picker-form .picker-form__barcode {
+  margin: auto;
+  width: 60%;
+}
+.picker-form .picker-form__loader-div {
+  display: flex;
+  justify-content: center;
+}
+.picker-form .picker-form__locations {
+  background-color: #ababab;
+  padding: 5px;
+  border-radius: var(--border-radius-val);
+  margin: 15px 0;
+}
+.picker-form .picker-form__locations .locations__order-num {
+  font-size: var(--fontsize);
+  margin: 15px 0;
+  text-align: center;
+}
+.picker-form .picker-form__locations .locations__list .list__location {
+  font-size: var(--fontsize);
+  text-align: center;
+  margin: 15px 0;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #eaeaea;
+}
+.picker-form input {
+  font-size: var(--fontsize);
+}
+
+@media (min-height: 900px) {
+  :root {
+    --fontsize: 65px;
+  }
+}
+@media (min-height: 1200px) {
+  :root {
+    --fontsize: 85px;
+    --formwidth: 800px;
+  }
+}
+@media (min-height: 2000px) {
+  :root {
+    --fontsize: 105px;
+    --formwidth: 1000px;
+  }
+}
+
+/*# sourceMappingURL=pickerPage.css.map */

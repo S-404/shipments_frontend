@@ -1,10 +1,9 @@
-import Login from "../pages/Login";
-import About from "../pages/About";
-import Admin from "../pages/Admin";
-import Picker from "../pages/Picker";
-import Dispatcher from "../pages/Dispatcher";
-import Driver from "../pages/Driver";
-import NotFound from "../pages/NotFound";
+import Login from "../components/pages/Login";
+import About from "../components/pages/About";
+import Admin from "../components/pages/Admin";
+import Picker from "../components/pages/Picker";
+import Dispatcher from "../components/pages/Dispatcher";
+import Driver from "../components/pages/Driver";
 
 export const privateRoutes = [
     {path: '/about', component: About},
