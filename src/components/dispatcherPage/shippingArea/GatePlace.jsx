@@ -31,19 +31,23 @@ const GatePlace = ({place, shippingArea, ...props}) => {
     }
 
     const loadingStatus = (status) =>{
-        return status?'🚚':'';
-        // switch (status){
-        //     case 1: return '🚚';
-        //     case 2: return '🚚 ✓';
-        //     default: return '';
-        // }
+        switch (status){
+            case 1: return '🚚';
+            case 2: return '🚚 ✓';
+            default: return '';
+        }
+    }
+
+    const placeModification = (status)=>{
+        switch (status){
+            case 1: return 'places__place_in-process';
+            case 2: return 'places__place_completed';
+            default: return '';
+        }
     }
 
     return (
-        <div
-            className="places__place"
-            {...props}
-        >
+        <div className={`places__place ${placeModification(place.IS_LOADING)}`} {...props}>
             <div className='place__header'>
                 <div className='header__indicators'>
                     <h1 className='indicators__name'>

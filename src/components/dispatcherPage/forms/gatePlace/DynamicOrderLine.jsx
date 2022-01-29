@@ -4,7 +4,7 @@ import MyCheckBox from "../../../UI/checkbox/myCheckBox";
 import OrderStatusIcon from "./OrderStatusIcon";
 import OrderNum from "./OrderNum";
 
-const DynamicOrderLine = ({orderline, removeOrder, selectedPlace, shippingArea,updateOrderLoadingStatus}) => {
+const DynamicOrderLine = ({orderline, removeOrder, selectedPlace, shippingArea, updateOrderLoadingStatus}) => {
     return (
         <div>
             {selectedPlace.IS_LOADING ?
@@ -13,7 +13,11 @@ const DynamicOrderLine = ({orderline, removeOrder, selectedPlace, shippingArea,u
                     <div className='dynamic-order-line__loaded-status'>
                         <MyCheckBox
                             checked={!!orderline.IS_LOADED}
-                            onChange={(e) => updateOrderLoadingStatus(orderline.ORDER_ID, e.target.checked)}
+                            onChange={(e) => {
+                                if (selectedPlace.IS_LOADING === 1) {
+                                    updateOrderLoadingStatus(orderline.ORDER_ID, e.target.checked)
+                                }
+                            }}
                         />
                     </div>
 

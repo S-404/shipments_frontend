@@ -65,6 +65,8 @@
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-status {
   font-size: small;
+  font-weight: bold;
+  color: #000;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time {
   max-height: 20px;
@@ -106,6 +108,12 @@
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:active {
   background-color: #9f9f9f;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place_completed {
+  background-color: #56ad5d;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place_in-process {
+  background-color: #679ece;
 }
 
 /*# sourceMappingURL=dispatcherPage.css.map */

@@ -74,12 +74,10 @@
 
                 .indicators__loading-status {
                   font-size: small;
+                  font-weight: bold;
+                  color: #000;
                 }
 
-                //.indicators__last-upd {
-                //  font-size: small;
-                //  text-align: center;
-                //}
                 .indicators__loading-time {
                   max-height: 20px;
                   font-size: 12px;
@@ -134,6 +132,14 @@
 
           .places__place:active {
             background-color: #9f9f9f;
+          }
+
+          .places__place_completed {
+            background-color: #56ad5d;
+          }
+
+          .places__place_in-process {
+            background-color: #679ece;
           }
         }
       }
