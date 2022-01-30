@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import DynamicOrderLine from "./DynamicOrderLine";
 import "../../../../styles/gatePlaceForm.scss"
 import OrderListInputs from "./OrderListInputs";
@@ -77,9 +77,7 @@ const GatePlaceForm = ({
                     ))}
                 </div>
                 {selectedPlace.IS_LOADING === 1 ?
-                    <div className={
-                        'order-list__finish-loading-confirm '
-                    }>
+                    <div className={'order-list__finish-loading-confirm '}>
                         <div className={
                             `finish-loading-confirm__buttons-div 
                             ${!leftToLoad ?
@@ -94,9 +92,17 @@ const GatePlaceForm = ({
                             />
                         </div>
                     </div>
-                    : null
+                    :
+                    selectedPlace.IS_LOADING === 2 ?
+                        <div className={'order-list__clear-place-confirm '}>
+                            <MySmallButton
+                                className='buttons-div__button'
+                                onClick={() => removeOrders(selectedPlace)}
+                                text='clear this place'
+                            />
+                        </div>
+                        : null
                 }
-
             </div>
         </div>
     );

@@ -33,7 +33,7 @@
 
           .gate-header__gate-name {
             font-size: 20px;
-
+            white-space: nowrap;
           }
 
           .gate-header__history-image {
@@ -45,60 +45,146 @@
           }
         }
 
-        .gate__places {
+        .gate__gate-body {
           display: flex;
           flex-direction: row;
+          width: 100%;
+          justify-content: space-between;
 
-          .places__place {
+          .gate-body__places {
+            display: flex;
+            flex-direction: row;
+
+            .places__place {
+              margin: 0 5px;
+              padding: 10px;
+              background-color: #c5c5c5;
+              border: 2px solid #c5c5c5;
+              border-radius: var(--border-radius-val);
+              min-width: 140px;
+              min-height: 100px;
+              cursor: pointer;
+
+              .place__header {
+                display: flex;
+                flex-direction: column;
+
+                .header__indicators {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+
+                  .indicators__name {
+                    font-size: 20px;
+                  }
+
+                  .indicators__loading-status {
+                    font-size: small;
+                    font-weight: bold;
+                    color: #000;
+                  }
+
+                  .indicators__loading-time {
+                    max-height: 20px;
+                    font-size: 12px;
+                    text-align: center;
+                    border-radius: 5px;
+                    padding: 4px 3px 0;
+                  }
+
+                  .indicators__loading-time_yellow {
+                    background-color: rgba(255, 255, 0, 0.29);
+                  }
+
+                  .indicators__loading-time_red {
+                    background-color: rgba(255, 0, 0, 0.26);
+                  }
+
+                  .indicators__loading-time_green {
+                    background-color: rgba(132, 194, 132, 0.86);
+                  }
+
+                  .indicators__assigned-truck {
+                    background-color: #fafafa;
+                    padding: 1px 3px;
+                    border-radius: 3px;
+                    border: 2px solid black;
+                    width: 100%;
+                    text-align: center;
+                  }
+                }
+              }
+
+              .place__orders {
+                .orders__order {
+                  color: #525252;
+                }
+
+                .orders__order_completed {
+                  color: #006500;
+                  border-radius: 3px;
+                }
+
+                .orders__order_duplicated {
+                  color: darkred;
+                  font-style: italic;
+                }
+              }
+            }
+
+            .places__place:hover {
+              //background-color: #b9b9b9;
+              border-color: black;
+            }
+
+            .places__place:active {
+              background-color: #9f9f9f;
+            }
+
+            .places__place_completed {
+              background-color: #fff;
+              border-color: #fff;
+            }
+
+            .places__place_in-process {
+              background-color: #c4def5;
+              border-color: #c4def5;
+            }
+          }
+
+          .gate-body__trucks {
             margin: 0 5px;
             padding: 10px;
-            background-color: #c5c5c5;
+            background-color: #e0e0e0;
             border: 0;
             border-radius: var(--border-radius-val);
-            min-width: 140px;
+            min-width: 200px;
             min-height: 100px;
-            cursor: pointer;
 
-            .place__header {
+
+            .trucks__header {
+
+            }
+
+            .trucks__truck-list {
               display: flex;
               flex-direction: column;
-
-              .header__indicators {
+            *{
+              font-size:15px;
+            }
+              .truck_list__truck {
                 display: flex;
-                flex-direction: row;
-                justify-content: space-between;
+                flex-direction: column;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-radius: var(--border-radius-val);
 
-                .indicators__name {
-                  font-size: 20px;
+
+                .truck__dt {
+
                 }
 
-                .indicators__loading-status {
-                  font-size: small;
-                  font-weight: bold;
-                  color: #000;
-                }
-
-                .indicators__loading-time {
-                  max-height: 20px;
-                  font-size: 12px;
-                  text-align: center;
-                  border-radius: 5px;
-                  padding: 4px 3px 0;
-                }
-
-                .indicators__loading-time_yellow {
-                  background-color: rgba(255, 255, 0, 0.29);
-                }
-
-                .indicators__loading-time_red {
-                  background-color: rgba(255, 0, 0, 0.26);
-                }
-
-                .indicators__loading-time_green {
-                  background-color: rgba(132, 194, 132, 0.86);
-                }
-
-                .indicators__assigned-truck {
+                .truck__name {
                   background-color: #fafafa;
                   padding: 1px 3px;
                   border-radius: 3px;
@@ -106,42 +192,51 @@
                   width: 100%;
                   text-align: center;
                 }
+
+                .truck__location {
+                  display: flex;
+                  flex-direction: row;
+
+                  .location__gate-place {
+
+                  }
+
+                }
+
+                .truck__time-status {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  .time-status__status {
+
+                  }
+
+                  .time-status__time {
+                    .time__hh-mm {
+
+                    }
+                  }
+
+                }
+
+              }
+              .truck_list__truck_waiting{
+                background-color: #a6a6a6;
+              }
+              .truck_list__truck_ready{
+                background-color: #b7e1b7;
+              }
+              .truck_list__truck_loading{
+                background-color: #c4def5;
+              }
+              .truck_list__truck_completed{
+
               }
             }
-
-            .place__orders {
-              .orders__order {
-                color: #525252;
-              }
-
-              .orders__order_completed {
-                color: #006500;
-                border-radius: 3px;
-              }
-
-              .orders__order_duplicated {
-                color: darkred;
-                font-style: italic;
-              }
-            }
-          }
-
-          .places__place:hover {
-            background-color: #b9b9b9;
-          }
-
-          .places__place:active {
-            background-color: #9f9f9f;
-          }
-
-          .places__place_completed {
-            background-color: #56ad5d;
-          }
-
-          .places__place_in-process {
-            background-color: #679ece;
           }
         }
+
+
       }
     }
   }

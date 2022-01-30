@@ -1,6 +1,7 @@
 import React from 'react';
 import GatePlace from "./GatePlace";
 import history_svg from "../../../assets/history_icon.svg"
+import Trucks from "./Trucks";
 
 const Gate = ({
                   gate,
@@ -26,33 +27,44 @@ const Gate = ({
                     }}
                 />
             </div>
-
-            <div className="gate__places">
-                {gatesPlaces
-                    .filter((place) => place.GATE_ID === gate.GATE_ID)
-                    .map((place) => (
-                        <GatePlace
-                            key={`GatePlace_${place.ID}`}
-                            place={place}
-                            shippingArea={shippingArea}
-                            onClick={() => {
-                                setSelectedPlace(
-                                    {
-                                        PLACE_ID: place.ID,
-                                        GATE: gate.GATE,
-                                        PLACE: place.PLACE,
-                                        IS_LOADING: place.IS_LOADING,
-                                        TRUCK: place.TRUCK,
-                                        LOADING_TIME_HH: place.LOADING_TIME_HH,
-                                        LOADING_TIME_MM: place.LOADING_TIME_MM,
-                                    }
-                                );
-                                setPlaceModal(true);
-                            }}
-                        />
-                    ))}
+            <div className='gate__gate-body'>
+                <div className="gate-body__places">
+                    {gatesPlaces
+                        .filter((place) => place.GATE_ID === gate.GATE_ID)
+                        .map((place) => (
+                            <GatePlace
+                                key={`GatePlace_${place.ID}`}
+                                place={place}
+                                shippingArea={shippingArea}
+                                onClick={() => {
+                                    setSelectedPlace(
+                                        {
+                                            PLACE_ID: place.ID,
+                                            GATE: gate.GATE,
+                                            PLACE: place.PLACE,
+                                            IS_LOADING: place.IS_LOADING,
+                                            TRUCK: place.TRUCK,
+                                            LOADING_TIME_HH: place.LOADING_TIME_HH,
+                                            LOADING_TIME_MM: place.LOADING_TIME_MM,
+                                        }
+                                    );
+                                    setPlaceModal(true);
+                                }}
+                            />
+                        ))}
+                </div>
+                <div className='gate-body__trucks'>
+                    <Trucks
+                        key={`Trucks_${gate.ID}`}
+                        gate={gate}
+                        gatesPlaces={gatesPlaces}
+                        shippingArea={shippingArea}
+                    />
+                </div>
             </div>
         </div>
+
+
     );
 };
 
