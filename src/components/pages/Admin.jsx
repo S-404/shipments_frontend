@@ -13,9 +13,7 @@ const Admin = () => {
     const [gates, setGates] = useState([]);
     const [gatesPlaces, setGatesPlaces] = useState([]);
     const [fetchGatesPlacesList, isGatesPlacesLoading, isGatesPlacesError] = useFetching(async () => {
-        const responseData = await ShipmentService.getData({
-            query: 'places/list',
-        });
+        const responseData = await ShipmentService.queryData({}, 'places/list', 'GET');
         setGatesPlaces(responseData);
     });
     const [modalForms, setModalForms] = useState({
@@ -43,9 +41,9 @@ const Admin = () => {
 
     const createGate = async (newGateName) => {
         let param = {
-            query: 'gates/gate', GATE: newGateName,
+            GATE: newGateName,
         };
-        const responseData = await ShipmentService.addData(param);
+        const responseData = await ShipmentService.queryData(param, 'gates/gate', 'POST');
         let id = responseData[0].ID;
         if (id) {
             setGates([...gates, {...responseData[0], GATE_ID: id}])
@@ -54,9 +52,9 @@ const Admin = () => {
 
     const updateGate = async (gateObj) => {
         let param = {
-            query: 'gates/gate', ...gateObj
+            ...gateObj
         }
-        const responseData = await ShipmentService.updateData(param);
+        const responseData = await ShipmentService.queryData(param,'gates/gate','PUT');
         let id = responseData[0].ID;
         if (id) {
             let newGateObj = Object.assign(gates);
@@ -68,10 +66,9 @@ const Admin = () => {
 
     const deleteGate = async (gateID) => {
         let param = {
-            query: 'gates/gate', ID: gateID,
+            ID: gateID,
         }
-        console.log(param)
-        const responseData = await ShipmentService.deleteData(param);
+        const responseData = await ShipmentService.queryData(param, 'gates/gate', 'DELETE');
         let id = responseData[0].ID;
         if (id) {
             let newGatesObj = [...gates.filter(gate => gate.GATE_ID !== id),]
@@ -81,10 +78,10 @@ const Admin = () => {
 
     const createPlace = async (newPlaceName) => {
         let param = {
-            query: 'places/place', PLACE: newPlaceName, GATE_ID: selectedGate.GATE_ID
+            PLACE: newPlaceName, GATE_ID: selectedGate.GATE_ID
         }
-        console.log(param)
-        const responseData = await ShipmentService.addData(param);
+
+        const responseData = await ShipmentService.queryData(param, 'places/place', 'POST');
         let id = responseData[0].ID;
         if (id) {
             setGatesPlaces([...gatesPlaces, {...responseData[0]}])
@@ -93,9 +90,9 @@ const Admin = () => {
 
     const updatePlace = async (placeObj) => {
         let param = {
-            query: 'places/place', ...placeObj
+            ...placeObj
         }
-        const responseData = await ShipmentService.updateData(param);
+        const responseData = await ShipmentService.queryData(param,'places/place','PUT');
         console.log(responseData[0])
         let id = responseData[0].ID;
         if (id) {
@@ -108,10 +105,9 @@ const Admin = () => {
 
     const deletePlace = async (placeID) => {
         let param = {
-            query: 'places/place', ID: placeID,
+            ID: placeID,
         }
-        console.log(param)
-        const responseData = await ShipmentService.deleteData(param);
+        const responseData = await ShipmentService.queryData(param, 'places/place', 'DELETE');
         let id = responseData[0].ID;
         if (id) {
             setGatesPlaces([...gatesPlaces.filter(place => place.ID !== id)])

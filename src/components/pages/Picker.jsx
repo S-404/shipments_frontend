@@ -13,9 +13,9 @@ const Picker = () => {
 
 
     const [fetchLocation, isLocationLoading, isLocationError] = useFetching(async () => {
-        const responseData = await ShipmentService.getData({
-            query: 'orders/order', ORDER_NUM: orderNum
-        });
+        const responseData = await ShipmentService.queryData({
+            ORDER_NUM: orderNum
+        }, 'orders/order', 'GET');
         setLocations(responseData);
         setOrderNum('');
     });

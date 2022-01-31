@@ -31,17 +31,13 @@ const Dispatcher = () => {
 
     const [fetchShippingArea, isShippingAreaLoading, isShippingAreaError] = useFetching(
         async () => {
-            const responseData = await ShipmentService.getData({
-                query: 'orders/list',
-            });
+            const responseData = await ShipmentService.queryData({},'orders/list','GET');
             setShippingArea(responseData);
         }
     );
 
     const [fetchGatesPlacesList, isGatesPlacesLoading, isGatesPlacesError] = useFetching(async () => {
-        const responseData = await ShipmentService.getData({
-            query: 'places/list',
-        });
+        const responseData = await ShipmentService.queryData({},'places/list','GET');
         if (responseData.length) {
             setGatesPlaces(responseData.filter(place => place.ID !== null));
         }
@@ -86,12 +82,11 @@ const Dispatcher = () => {
 
 
     const addOrder = async (newOrderObj) => {
-        const responseData = await ShipmentService.addData({
-            query: 'orders/order',
+        const responseData = await ShipmentService.queryData({
             ORDER_NUM: newOrderObj.ORDER_NUM,
             PLACE_ID: newOrderObj.PLACE_ID,
             USER_ID: user.userid,
-        });
+        },'orders/order','POST');
         let id = responseData[0].ORDER_ID;
         if (id) {
             const newObj = responseData.map(
@@ -107,11 +102,10 @@ const Dispatcher = () => {
     }
 
     const removeOrder = async (orderID) => {
-        const responseData = await ShipmentService.deleteData({
-            query: 'orders/order',
+        const responseData = await ShipmentService.queryData({
             ID: orderID,
             USER_ID: user.userid,
-        });
+        },'orders/order','DELETE');
         let id = responseData[0].ORDER_ID
         if (id) {
             setShippingArea([...shippingArea.filter((order) => order.ORDER_ID !== id)]);
@@ -120,11 +114,10 @@ const Dispatcher = () => {
 
     const removeOrders = async (place) => {
         if (!window.confirm('This place will be cleared')) return;
-        const responseData = await ShipmentService.deleteData({
-            query: 'orders/place',
+        const responseData = await ShipmentService.queryData({
             PLACE_ID: place.PLACE_ID,
             USER_ID: user.userid,
-        });
+        },'orders/place','DELETE');
         let gateID = responseData[0].PLACE_ID;
         if (gateID) {
             setShippingArea(
@@ -139,11 +132,10 @@ const Dispatcher = () => {
     }
 
     const updateOrderLoadingStatus = async (orderID, isLoaded) => {
-        const responseData = await ShipmentService.updateData({
-            query: 'orders/order/loading-status',
+        const responseData = await ShipmentService.queryData({
             ID: orderID,
             IS_LOADED: isLoaded,
-        });
+        },'orders/order/loading-status','PUT');
         let id = responseData[0].ID
         if (id) {
             let tmpArr = Object.assign(shippingArea);
@@ -157,11 +149,10 @@ const Dispatcher = () => {
 
 
     const updatePlaceStatus = async (PLACE_ID,IS_LOADING) => {
-        const responseData = await ShipmentService.updateData({
-            query: 'places/status',
+        const responseData = await ShipmentService.queryData({
             ID: PLACE_ID,
             IS_LOADING,
-        });
+        },'places/status','PUT');
         let placeID = responseData[0].ID;
         if (placeID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
@@ -174,11 +165,10 @@ const Dispatcher = () => {
     }
 
     const updateTruck = async (truck, id) => {
-        const responseData = await ShipmentService.updateData({
-            query: 'places/truck',
+        const responseData = await ShipmentService.queryData({
             ID: id,
             TRUCK: truck,
-        });
+        },'places/truck','PUT');
         let gateID = responseData[0].ID;
         if (gateID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
@@ -191,12 +181,11 @@ const Dispatcher = () => {
     }
 
     const updateLoadingTime_HHMM = async (HH, MM, id) => {
-        const responseData = await ShipmentService.updateData({
-            query: 'places/loadingtime',
+        const responseData = await ShipmentService.queryData({
             ID: id,
-            HH: HH,
-            MM: MM,
-        });
+            HH,
+            MM,
+        },'places/loadingtime','PUT');
         let placeID = responseData[0].ID;
         if (placeID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
