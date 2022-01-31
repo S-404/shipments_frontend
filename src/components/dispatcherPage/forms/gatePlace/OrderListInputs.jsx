@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ToggleSwitch from "../../../UI/checkbox/toggleSwitch";
 import MyInput from "../../../UI/input/myInput";
-import MySmallButton from "../../../UI/button/mySmallButton";
 
 const OrderListInputs = ({selectedPlace, addOrder}) => {
 
@@ -37,6 +36,9 @@ const OrderListInputs = ({selectedPlace, addOrder}) => {
         addOrder(newOrderObj);
         setNewOrder('')
     }
+    useEffect(()=> {
+        if (newOrder?.length === 9) addNewOrder(newOrder)
+    },[newOrder])
 
     return (
         <div className='order-list__input-div'>
@@ -60,14 +62,11 @@ const OrderListInputs = ({selectedPlace, addOrder}) => {
                         <MyInput
                             labeltext='order'
                             maxLength={9}
-                            placeholder='put order num'
+                            placeholder='put 9-digit order num'
                             value={newOrder}
                             onChange={(e) => {
                                 if (!isNaN(e.target.value)) setNewOrder(e.target.value)
                             }}/>
-                    </div>
-                    <div className='single-order-div__button'>
-                        <MySmallButton onClick={() => addNewOrder(newOrder)} text='add'/>
                     </div>
                 </div>
             }

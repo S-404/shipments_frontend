@@ -68,12 +68,7 @@
   width: 100%;
 }
 .gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div .single-order-div__input {
-  flex-basis: 80%;
-}
-.gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div .single-order-div__button {
-  display: flex;
-  flex-basis: 20%;
-  justify-content: center;
+  width: 100%;
 }
 .gate-place-form .gate-place-form__order-list .order-list__header {
   display: flex;
@@ -90,6 +85,12 @@
   color: #fff;
   flex-basis: 40%;
   text-align: center;
+}
+.gate-place-form .gate-place-form__order-list .order-list__orderlines {
+  margin-top: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 40vh;
 }
 .gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line {
   padding: 2px;

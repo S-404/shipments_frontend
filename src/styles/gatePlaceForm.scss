@@ -75,10 +75,11 @@
       text-align: center;
     }
 
-    .order-list__info_completed{
+    .order-list__info_completed {
       background-color: rgb(86, 173, 93);
     }
-    .order-list__info_in-process{
+
+    .order-list__info_in-process {
       background-color: rgb(103, 158, 206);
     }
 
@@ -89,15 +90,9 @@
         width: 100%;
 
         .single-order-div__input {
-          flex-basis: 80%;
+          width: 100%;
         }
 
-        .single-order-div__button {
-          display: flex;
-          flex-basis: 20%;
-          justify-content: center;
-
-        }
       }
     }
 
@@ -121,6 +116,11 @@
     }
 
     .order-list__orderlines {
+      margin-top: 20px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 40vh;
+
       .dynamic-order-line {
         padding: 2px;
         margin: 5px;
@@ -202,11 +202,13 @@
       .finish-loading-confirm__buttons-div {
         padding: 15px;
         border-radius: var(--border-radius-val);
+
         .buttons-div__button {
           width: 100%;
         }
       }
-      .finish-loading-confirm__buttons-div_is-ready{
+
+      .finish-loading-confirm__buttons-div_is-ready {
         background-color: rgb(103, 158, 206);
       }
     }
