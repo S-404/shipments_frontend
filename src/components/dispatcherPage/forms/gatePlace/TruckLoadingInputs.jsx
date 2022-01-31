@@ -9,7 +9,6 @@ const TruckLoadingInputs = ({
                                 updateTruck,
                                 updateLoadingTime_HHMM,
                                 updatePlaceStatus,
-                                removeOrders,
                                 filteredShippingArea
                             }) => {
     const [truck, setTruck] = useState('')
@@ -34,23 +33,16 @@ const TruckLoadingInputs = ({
                 <div className='truck__buttons-div'>
                     <MySmallButton
                         className='buttons-div__button'
-                        onClick={() => updatePlaceStatus(selectedPlace)}
+                        onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID,0)}
                         text='stop loading'
-                    />
-                    <MySmallButton
-                        className='buttons-div__button'
-                        onClick={() => {
-                            removeOrders(selectedPlace);
-                        }}
-                        text='finish loading'
                     />
                 </div>
                 :
-                filteredShippingArea.length ?
+                filteredShippingArea.length && selectedPlace.TRUCK ?
                     <div className='truck__buttons-div'>
                         <MySmallButton
                             className='buttons-div__button'
-                            onClick={() => updatePlaceStatus(selectedPlace)}
+                            onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID,1)}
                             text='start loading'
                         />
                     </div>

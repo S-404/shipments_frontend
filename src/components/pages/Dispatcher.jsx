@@ -132,7 +132,7 @@ const Dispatcher = () => {
                     (order) => !(order.PLACE_ID === gateID)
                 )]);
         }
-        await updatePlaceStatus(place);
+        await updatePlaceStatus(place.PLACE_ID, 0);
         await updateTruck('', place.PLACE_ID)
         setPlaceModal(false)
 
@@ -156,11 +156,11 @@ const Dispatcher = () => {
     }
 
 
-    const updatePlaceStatus = async (place) => {
+    const updatePlaceStatus = async (PLACE_ID,IS_LOADING) => {
         const responseData = await ShipmentService.updateData({
             query: 'places/status',
-            ID: place.PLACE_ID,
-            IS_LOADING: !place.IS_LOADING,
+            ID: PLACE_ID,
+            IS_LOADING,
         });
         let placeID = responseData[0].ID;
         if (placeID) {

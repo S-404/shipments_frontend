@@ -6,9 +6,8 @@ const GatePlace = ({place, shippingArea, ...props}) => {
     const loadingTimeModification = () => {
         let result = ''
         if (place.LOADING_TIME_HH) {
-
             let orderLines = shippingArea.filter(place_ => place_.PLACE_ID === place.ID && place_.ORDER_NUM !== null).length
-            let completedOrders = shippingArea.filter(place_ => place_.PLACE_ID === place.ID && place_.STATUS === 'COMPLETED').length
+            let completedOrders = shippingArea.filter(place_ => place_.PLACE_ID === place.ID && place_.STATUS === 2).length
             if (orderLines && (orderLines !== completedOrders)) {
                 let HH = +place.LOADING_TIME_HH;
                 let MM = +place.LOADING_TIME_MM;
@@ -30,30 +29,43 @@ const GatePlace = ({place, shippingArea, ...props}) => {
         return result
     }
 
-    const loadingStatus = (status) =>{
-        return status?'🚚':'';
-        // switch (status){
-        //     case 1: return '🚚';
-        //     case 2: return '🚚 ✓';
-        //     default: return '';
-        // }
+
+    const loadingStatus = (status) => {
+        switch (status) {
+            case 1:
+                return '🚚';
+            case 2:
+                return '🚚 ✓';
+            default:
+                return '';
+        }
+    }
+
+    const placeModification = (status) => {
+        switch (status) {
+            case 1:
+                return 'places__place_in-process';
+            case 2:
+                return 'places__place_completed';
+            default:
+                return '';
+        }
     }
 
     return (
-        <div
-            className="places__place"
-            {...props}
-        >
+        <div className={`places__place ${placeModification(place.IS_LOADING)}`} {...props}>
             <div className='place__header'>
                 <div className='header__indicators'>
                     <h1 className='indicators__name'>
                         {place.PLACE}
                     </h1>
-                        <span className='indicators__loading-status'>{loadingStatus(place.IS_LOADING)}</span>
-                    <span
-                        className={`indicators__loading-time ${loadingTimeModification()}`}>
+                    <span className='indicators__loading-status'>{loadingStatus(place.IS_LOADING)}</span>
+                    {place.IS_LOADING !== 2 ?
+                        <span
+                            className={`indicators__loading-time ${loadingTimeModification()}`}>
                          {place.LOADING_TIME_HH ? `${place.LOADING_TIME_HH}:${place.LOADING_TIME_MM}` : null}
                     </span>
+                        : null}
                 </div>
                 <div className='header__indicators'>
                     {place.TRUCK ?

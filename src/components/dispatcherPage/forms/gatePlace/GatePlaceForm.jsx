@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import DynamicOrderLine from "./DynamicOrderLine";
 import "../../../../styles/gatePlaceForm.scss"
 import OrderListInputs from "./OrderListInputs";
 import TruckLoadingInputs from "./TruckLoadingInputs";
 import {useFilteredShippingArea} from "../../../../hooks/useShippingArea";
+import MySmallButton from "../../../UI/button/mySmallButton";
 
 
 const GatePlaceForm = ({
@@ -19,6 +20,17 @@ const GatePlaceForm = ({
                        }) => {
 
     const filteredShippingArea = useFilteredShippingArea(shippingArea, selectedPlace)
+    const [leftToLoad, setLeftToLoad] = useState(0)
+
+    useEffect(() => {
+        if (shippingArea.length && selectedPlace?.IS_LOADING) {
+            setLeftToLoad(shippingArea
+                .filter(order =>
+                    order.PLACE_ID === selectedPlace.PLACE_ID &&
+                    !order.IS_LOADED
+                ).length)
+        }
+    }, [shippingArea, selectedPlace])
 
     return (
         <div className='gate-place-form'>
@@ -33,8 +45,19 @@ const GatePlaceForm = ({
             <div className='gate-place-form__order-list'>
                 {selectedPlace.IS_LOADING ?
                     <div>
-                    <span className='order-list__info'>TRUCK IS LOADING</span>
-                    <div className='order-list__header'><span>ORDER_NUM</span> <span>IS_LOADED</span></div>
+                        {selectedPlace.IS_LOADING === 2 ?
+                            <span className='order-list__info order-list__info_completed'>
+                                LOADING IS COMPLETE
+                                </span>
+                            :
+                            <span className='order-list__info order-list__info_in-process'>
+                                TRUCK IS LOADING
+                                </span>
+                        }
+                        <div className='order-list__header'>
+                            <span>ORDER_NUM</span>
+                            <span>IS_LOADED</span>
+                        </div>
                     </div>
                     :
                     <OrderListInputs selectedPlace={selectedPlace} addOrder={addOrder}/>
@@ -53,6 +76,33 @@ const GatePlaceForm = ({
                         />
                     ))}
                 </div>
+                {selectedPlace.IS_LOADING === 1 ?
+                    <div className={'order-list__finish-loading-confirm '}>
+                        <div className={
+                            `finish-loading-confirm__buttons-div 
+                            ${!leftToLoad ?
+                                'finish-loading-confirm__buttons-div_is-ready'
+                                : null}`}>
+                            <MySmallButton
+                                className='buttons-div__button'
+                                onClick={() => {
+                                    updatePlaceStatus(selectedPlace.PLACE_ID, 2);
+                                }}
+                                text='finish loading'
+                            />
+                        </div>
+                    </div>
+                    :
+                    selectedPlace.IS_LOADING === 2 ?
+                        <div className={'order-list__clear-place-confirm '}>
+                            <MySmallButton
+                                className='buttons-div__button'
+                                onClick={() => removeOrders(selectedPlace)}
+                                text='clear this place'
+                            />
+                        </div>
+                        : null
+                }
             </div>
         </div>
     );

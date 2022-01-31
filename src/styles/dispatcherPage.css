@@ -29,6 +29,7 @@
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header .gate-header__gate-name {
   font-size: 20px;
+  white-space: nowrap;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header .gate-header__history-image {
   max-height: 30px;
@@ -37,52 +38,60 @@
   position: relative;
   left: -5px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places {
   display: flex;
   flex-direction: row;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place {
   margin: 0 5px;
   padding: 10px;
   background-color: #c5c5c5;
-  border: 0;
+  border: 2px solid #c5c5c5;
   border-radius: var(--border-radius-val);
   min-width: 140px;
   min-height: 100px;
   cursor: pointer;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header {
   display: flex;
   flex-direction: column;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__name {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__name {
   font-size: 20px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-status {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__loading-status {
   font-size: small;
+  font-weight: bold;
+  color: #000;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__loading-time {
   max-height: 20px;
   font-size: 12px;
   text-align: center;
   border-radius: 5px;
   padding: 4px 3px 0;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_yellow {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__loading-time_yellow {
   background-color: rgba(255, 255, 0, 0.29);
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_red {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__loading-time_red {
   background-color: rgba(255, 0, 0, 0.26);
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__loading-time_green {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__loading-time_green {
   background-color: rgba(132, 194, 132, 0.86);
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__header .header__indicators .indicators__assigned-truck {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__assigned-truck {
   background-color: #fafafa;
   padding: 1px 3px;
   border-radius: 3px;
@@ -90,22 +99,79 @@
   width: 100%;
   text-align: center;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order {
   color: #525252;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order_completed {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_completed {
   color: #006500;
   border-radius: 3px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place .place__orders .orders__order_duplicated {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_duplicated {
   color: darkred;
   font-style: italic;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:hover {
-  background-color: #b9b9b9;
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place:hover {
+  border-color: black;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:active {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place:active {
   background-color: #9f9f9f;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place_completed {
+  background-color: #fff;
+  border-color: #fff;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place_in-process {
+  background-color: #c4def5;
+  border-color: #c4def5;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks {
+  margin: 0 5px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: 0;
+  border-radius: var(--border-radius-val);
+  min-width: 200px;
+  min-height: 100px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list {
+  display: flex;
+  flex-direction: column;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list * {
+  font-size: 15px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: var(--border-radius-val);
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck .truck__name {
+  background-color: #fafafa;
+  padding: 1px 3px;
+  border-radius: 3px;
+  border: 2px solid black;
+  width: 100%;
+  text-align: center;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck .truck__location {
+  display: flex;
+  flex-direction: row;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck .truck__time-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck_waiting {
+  background-color: #a6a6a6;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck_ready {
+  background-color: #b7e1b7;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck_loading {
+  background-color: #c4def5;
 }
 
 /*# sourceMappingURL=dispatcherPage.css.map */
