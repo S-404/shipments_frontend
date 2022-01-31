@@ -38,7 +38,7 @@ const TruckLoadingInputs = ({
                     />
                 </div>
                 :
-                filteredShippingArea.length ?
+                filteredShippingArea.length && selectedPlace.TRUCK ?
                     <div className='truck__buttons-div'>
                         <MySmallButton
                             className='buttons-div__button'
