@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import LoadingTimePicker from "./LoadingTimePicker";
 import TruckAssign from "./TruckAssign";
 import MySmallButton from "../../../UI/button/mySmallButton";
 
@@ -10,12 +9,16 @@ const TruckLoadingInputs = ({
                                 updatePlaceStatus,
                                 filteredShippingArea
                             }) => {
+
     const [truck, setTruck] = useState('')
 
     const assignTruck = () => {
-        updateTruck(truck, selectedPlace.PLACE_ID)
+          updateTruck(truck, selectedPlace.PLACE_ID)
     }
 
+    const updLoadingStatus = (placeID,newStatus) =>{
+            updatePlaceStatus(placeID, newStatus);
+    }
     useEffect(() => {
         setTruck(selectedPlace.TRUCK ? selectedPlace.TRUCK : '')
 
@@ -27,7 +30,7 @@ const TruckLoadingInputs = ({
                 <div className='truck__buttons-div'>
                     <MySmallButton
                         className='buttons-div__button'
-                        onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID, 0)}
+                        onClick={() => updLoadingStatus(selectedPlace.PLACE_ID, 0)}
                         text='stop loading'
                     />
                 </div>
@@ -36,7 +39,7 @@ const TruckLoadingInputs = ({
                     <div className='truck__buttons-div'>
                         <MySmallButton
                             className='buttons-div__button'
-                            onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID, 1)}
+                            onClick={() => updLoadingStatus(selectedPlace.PLACE_ID, 1)}
                             text='start loading'
                         />
                     </div>
