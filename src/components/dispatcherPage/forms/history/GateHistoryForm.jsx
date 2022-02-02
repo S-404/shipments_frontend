@@ -20,10 +20,9 @@ const GateHistoryForm = ({historyModal, selectedGate,}) => {
     const sortedFilteredHistory = useHistoryList(gateHistory, filter);
 
     const [fetchHistory, isHistoryLoading, isHistoryError] = useFetching(async () => {
-        const responseData = await ShipmentService.getData({
-            query: 'orders/log',
+        const responseData = await ShipmentService.queryData({
             GATE_ID: selectedGate.GATE_ID,
-        });
+        },'orders/log','GET');
         setGateHistory(responseData);
     })
 

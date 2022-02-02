@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const loginPath = 'http://localhost:5002/login/'
+const backendAddress = process.env.REACT_APP_BACKEND_ADDRESS
+const loginPath = `${backendAddress}/login/`
 
 export default class LoginService {
 

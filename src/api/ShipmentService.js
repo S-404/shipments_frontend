@@ -1,39 +1,17 @@
 import axios from 'axios';
 
+const backendAddress = process.env.REACT_APP_BACKEND_ADDRESS;
+const apiPath = `${backendAddress}/api/`;
+
 export default class ShipmentService {
-    static async getData({...param}) {
+
+    static async queryData({...param},query,method){
         const response = await axios({
-            method: 'GET',
-            url: `http://localhost:5002/api/${param.query}`,
+            method,
+            url: `${apiPath}${query}`,
             params: {...param},
         })
         return response.data;
     }
 
-    static async addData({...param}) {
-        const response = await axios({
-            method: 'POST',
-            url: `http://localhost:5002/api/${param.query}`,
-            params: {...param},
-        })
-        return response.data;
-    }
-
-    static async deleteData({...param}) {
-        const response = await axios({
-            method: 'DELETE',
-            url: `http://localhost:5002/api/${param.query}`,
-            params: {...param},
-        })
-        return response.data;
-    }
-
-    static async updateData({...param}) {
-        const response = await axios({
-            method: 'PUT',
-            url: `http://localhost:5002/api/${param.query}`,
-            params: {...param},
-        })
-        return response.data;
-    }
 }

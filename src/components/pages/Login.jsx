@@ -26,22 +26,25 @@ const Login = () => {
             USER_PASSWORD: password,
         }, 'user/checkpassword', 'GET');
         setIsLoadin(false)
-        return responseData[0]?.PASSWORD_CHECK
-
+        return responseData[0]
     }
 
     const tryLogin = async () => {
         if (!userid || !password) return;
-        if (await checkPass()) {
-            login()
+        const checkPassResponse = await checkPass();
+        if (checkPassResponse?.PASSWORD_CHECK) {
+            login(checkPassResponse?.USER_ACCESS)
         }
     }
 
-    const login = () => {
+    const login = (access) => {
+        localStorage.setItem('admin',!!access?.admin?.read)
+        dispatch({type: 'SET_ADMIN_ACCESS', value: !!access?.admin?.read})
+
         localStorage.setItem('userid', userid)
         dispatch({type: 'SET_USERID', value: userid});
 
-        localStorage.setItem('auth', 'true')
+        localStorage.setItem('auth', JSON.stringify({value: 'true',timeStamp: Date.now()}) )
         dispatch({type: 'SET_AUTH', value: true});
 
     }
@@ -91,8 +94,7 @@ const Login = () => {
                             className='password-input__show-password-icon'
                             alt='show/hide-pass'
                             src={showPassword ? hidePasswordIcon : showPasswordIcon}/>
-                    </div>
-                    : null
+                    </div>:null
                 }
                 <div className='password-input__loader-div'>
                     <div className='loader-div__loader'>

@@ -1,0 +1,61 @@
+.manage-access-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.manage-access-container .manage-access-container__header {
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: var(--border-radius-val);
+}
+.manage-access-container .manage-access-container__access-manager {
+  margin-top: 50px;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__loader-div {
+  position: relative;
+  height: 0;
+  top: -20px;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__access {
+  display: flex;
+  flex-direction: column;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__access .access__options .options__option {
+  margin: 10px 0;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__password-div {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__password-div .password-div__password {
+  flex-basis: 80%;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__password-div .password_div__button {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__user .user__buttons-div {
+  margin-top: 20px;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__users {
+  background-color: #b9b9b9;
+  padding: 30px;
+  border-radius: var(--border-radius-val);
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__users .users__user-list .user-list__user {
+  background-color: #fff;
+  margin: 10px;
+  padding: 5px 20px;
+  border-radius: var(--border-radius-val);
+  cursor: pointer;
+  text-align: center;
+}
+.manage-access-container .manage-access-container__access-manager .access-manager__users .users__user-list .user-list__user:hover {
+  background-color: #d5d5d5;
+}
+
+/*# sourceMappingURL=adminAccessPage.css.map */
