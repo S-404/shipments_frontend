@@ -9,9 +9,11 @@ import MyLoader from "../UI/loader/myLoader";
 import {useInterval} from "../../hooks/useInterval";
 import {useSelector} from "react-redux";
 import GateHistoryForm from "../dispatcherPage/forms/history/GateHistoryForm";
+import Trucks from "../dispatcherPage/shippingArea/Trucks";
 
 const Dispatcher = () => {
     const user = useSelector(state => state.user)
+    const access = useSelector(state => state.access)
     const [shippingArea, setShippingArea] = useState([]);
     const [gates, setGates] = useState([]);
     const [gatesPlaces, setGatesPlaces] = useState([]);
@@ -26,18 +28,18 @@ const Dispatcher = () => {
             TRUCK: ''
         }
     );
-    const [selectedGate,setSelectedGate] = useState({GATE_ID: 0})
-    const [historyModal,setHistoryModal] =useState(false)
+    const [selectedGate, setSelectedGate] = useState({GATE_ID: 0})
+    const [historyModal, setHistoryModal] = useState(false)
 
     const [fetchShippingArea, isShippingAreaLoading, isShippingAreaError] = useFetching(
         async () => {
-            const responseData = await ShipmentService.queryData({},'orders/list','GET');
+            const responseData = await ShipmentService.queryData({}, 'orders/list', 'GET');
             setShippingArea(responseData);
         }
     );
 
     const [fetchGatesPlacesList, isGatesPlacesLoading, isGatesPlacesError] = useFetching(async () => {
-        const responseData = await ShipmentService.queryData({},'places/list','GET');
+        const responseData = await ShipmentService.queryData({}, 'places/list', 'GET');
         if (responseData.length) {
             setGatesPlaces(responseData.filter(place => place.ID !== null));
         }
@@ -62,7 +64,7 @@ const Dispatcher = () => {
 
     useEffect(() => {
         let gates = gatesPlaces.reduce(function (arr, place) {
-            if(!arr.filter((gate)=>gate.GATE_ID===place.GATE_ID).length) {
+            if (!arr.filter((gate) => gate.GATE_ID === place.GATE_ID).length) {
                 arr.push({GATE: place.GATE, GATE_ID: place.GATE_ID});
             }
             return arr;
@@ -82,11 +84,15 @@ const Dispatcher = () => {
 
 
     const addOrder = async (newOrderObj) => {
+        if(!access?.dispatcher?.ordersListManage) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ORDER_NUM: newOrderObj.ORDER_NUM,
             PLACE_ID: newOrderObj.PLACE_ID,
             USER_ID: user.userid,
-        },'orders/order','POST');
+        }, 'orders/order', 'POST');
         let id = responseData[0].ORDER_ID;
         if (id) {
             const newObj = responseData.map(
@@ -102,10 +108,14 @@ const Dispatcher = () => {
     }
 
     const removeOrder = async (orderID) => {
+        if(!access?.dispatcher?.ordersListManage) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: orderID,
             USER_ID: user.userid,
-        },'orders/order','DELETE');
+        }, 'orders/order', 'DELETE');
         let id = responseData[0].ORDER_ID
         if (id) {
             setShippingArea([...shippingArea.filter((order) => order.ORDER_ID !== id)]);
@@ -113,11 +123,15 @@ const Dispatcher = () => {
     }
 
     const removeOrders = async (place) => {
+        if(!access?.dispatcher?.ordersListManage) {
+            alert(`you don't have permission access`)
+            return
+        }
         if (!window.confirm('This place will be cleared')) return;
         const responseData = await ShipmentService.queryData({
             PLACE_ID: place.PLACE_ID,
             USER_ID: user.userid,
-        },'orders/place','DELETE');
+        }, 'orders/place', 'DELETE');
         let gateID = responseData[0].PLACE_ID;
         if (gateID) {
             setShippingArea(
@@ -132,10 +146,14 @@ const Dispatcher = () => {
     }
 
     const updateOrderLoadingStatus = async (orderID, isLoaded) => {
+        if(!access?.dispatcher?.trucksLoad) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: orderID,
             IS_LOADED: isLoaded,
-        },'orders/order/loading-status','PUT');
+        }, 'orders/order/loading-status', 'PUT');
         let id = responseData[0].ID
         if (id) {
             let tmpArr = Object.assign(shippingArea);
@@ -148,11 +166,15 @@ const Dispatcher = () => {
     }
 
 
-    const updatePlaceStatus = async (PLACE_ID,IS_LOADING) => {
+    const updatePlaceStatus = async (PLACE_ID, IS_LOADING) => {
+        if(!access?.dispatcher?.trucksLoad) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: PLACE_ID,
             IS_LOADING,
-        },'places/status','PUT');
+        }, 'places/status', 'PUT');
         let placeID = responseData[0].ID;
         if (placeID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
@@ -165,10 +187,14 @@ const Dispatcher = () => {
     }
 
     const updateTruck = async (truck, id) => {
+        if(!access?.dispatcher?.trucksAssign) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: id,
             TRUCK: truck,
-        },'places/truck','PUT');
+        }, 'places/truck', 'PUT');
         let gateID = responseData[0].ID;
         if (gateID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
@@ -180,12 +206,10 @@ const Dispatcher = () => {
         }
     }
 
-    const updateLoadingTime_HHMM = async (HH, MM, id) => {
+    const updateLoadingTime_HHMM = async (HH, MM, ID) => {
         const responseData = await ShipmentService.queryData({
-            ID: id,
-            HH,
-            MM,
-        },'places/loadingtime','PUT');
+            ID, HH, MM,
+        }, 'places/loadingtime', 'PUT');
         let placeID = responseData[0].ID;
         if (placeID) {
             let newGatesPlacesObj = Object.assign(gatesPlaces)
@@ -236,6 +260,10 @@ const Dispatcher = () => {
                     setSelectedGate={setSelectedGate}
                     setHistoryModal={setHistoryModal}
                     selectedGate={selectedGate}
+                />
+                <Trucks
+                    gatesPlaces={gatesPlaces}
+                    shippingArea={shippingArea}
                 />
             </div>
         </div>

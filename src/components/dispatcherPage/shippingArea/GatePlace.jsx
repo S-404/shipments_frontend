@@ -78,12 +78,22 @@ const GatePlace = ({place, shippingArea, ...props}) => {
             <div className='place__orders'>
                 {shippingArea
                     .filter((order) => order.PLACE_ID === place.ID)
-                    .map((orderline) => (
-                        <OrderLine
-                            key={`orderline_${orderline.ORDER_ID}`}
-                            orderline={orderline}
-                            shippingArea={shippingArea}
-                        />
+                    .map((orderline, index, arr) => (
+                        index < 3 ?
+                            <OrderLine
+                                key={`orderline_${orderline.ORDER_ID}`}
+                                orderline={orderline}
+                                shippingArea={shippingArea}
+                            />
+                            :
+                            index === 3 ?
+                                <div
+                                    key={`orders-counter_${place.ID}`}
+                                    className={'orders__orders-counter-div'}
+                                >
+                                <span className='orders-counter-div__counter'>{arr.length} orders</span>
+                                </div>
+                                : null
                     ))}
             </div>
         </div>

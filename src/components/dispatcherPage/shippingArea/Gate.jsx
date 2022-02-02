@@ -53,14 +53,6 @@ const Gate = ({
                             />
                         ))}
                 </div>
-                <div className='gate-body__trucks'>
-                    <Trucks
-                        key={`Trucks_${gate.ID}`}
-                        gate={gate}
-                        gatesPlaces={gatesPlaces}
-                        shippingArea={shippingArea}
-                    />
-                </div>
             </div>
         </div>
 

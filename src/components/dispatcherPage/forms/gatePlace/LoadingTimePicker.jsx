@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import MySelect from "../../../UI/select/mySelect";
 import {pad} from "../../../../utils/formats";
+import {useSelector} from "react-redux";
 
 const LoadingTimePicker = ({updateLoadingTime_HHMM,selectedPlace}) => {
+    const access = useSelector(state => state.access)
     const [loadingTime, setLoadingTime] = useState({HH: '00', MM: '00'})
     useEffect(() => {
 
@@ -44,33 +46,42 @@ const LoadingTimePicker = ({updateLoadingTime_HHMM,selectedPlace}) => {
 
 
     return (
-        <div className='truck__loading-time-div'>
+        <div className='gate-place-form__loading-time-div'>
             <span className='loading-time-div__header'>Loading Time</span>
-            <div className='loading-time-div__time-picker'>
-                <MySelect
-                    className='time-picker__select'
-                    onChange={
-                        (selectedHH) => {
-                            setLoadingTime({...loadingTime, HH: selectedHH});
-                            updateLoadingTime_HHMM(selectedHH, loadingTime.MM, selectedPlace.PLACE_ID);
+
+                {access?.dispatcher?.trucksAssign ?
+                    <div className='loading-time-div__time-picker'>
+                    <MySelect
+                        className='time-picker__select'
+                        onChange={
+                            (selectedHH) => {
+                                setLoadingTime({...loadingTime, HH: selectedHH});
+                                updateLoadingTime_HHMM(selectedHH, loadingTime.MM, selectedPlace.PLACE_ID);
+                            }
                         }
-                    }
-                    options={hhArr}
-                    value={loadingTime.HH}
-                />
-                <span className={'time-picker__separator'}>:</span>
-                <MySelect
+                        options={hhArr}
+                        value={loadingTime.HH}
+                    />
+                    <span className={'time-picker__separator'}>:</span>
+                    <MySelect
                     className={'time-picker__select'}
                     onChange={
-                        (selectedMM) => {
-                            setLoadingTime({...loadingTime, MM: selectedMM});
-                            updateLoadingTime_HHMM(loadingTime.HH, selectedMM, selectedPlace.PLACE_ID)
-                        }
-                    }
+                    (selectedMM) => {
+                    setLoadingTime({...loadingTime, MM: selectedMM});
+                    updateLoadingTime_HHMM(loadingTime.HH, selectedMM, selectedPlace.PLACE_ID)
+                }
+                }
                     options={mmArr}
                     value={loadingTime.MM}
-                />
-            </div>
+                    />
+                    </div>
+                :
+                    <div className='loading-time-div__time-picker'>
+                        <span>{`${loadingTime.HH}:${loadingTime.MM}`}</span>
+                    </div>
+                }
+
+
         </div>
     );
 };
