@@ -6,10 +6,14 @@
   position: fixed;
   right: 20px;
 }
+.dispatcher-form .dispatcher-form__shipping-area {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+}
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates * {
   font-size: 20px;
@@ -110,6 +114,9 @@
   color: darkred;
   font-style: italic;
 }
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__orders-counter-div .orders-counter-div__counter {
+  color: #5f5f5f;
+}
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place:hover {
   border-color: black;
 }
@@ -124,53 +131,64 @@
   background-color: #c4def5;
   border-color: #c4def5;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks {
-  margin: 0 5px;
+.dispatcher-form .shipping-area__trucks {
+  display: flex;
+  margin: 5px 5px;
   padding: 10px;
   background-color: #e0e0e0;
   border: 0;
   border-radius: var(--border-radius-val);
-  min-width: 200px;
-  min-height: 100px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list {
   display: flex;
   flex-direction: column;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list * {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list * {
   font-size: 15px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin-bottom: 10px;
+  flex-direction: row;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  align-items: center;
   border-radius: var(--border-radius-val);
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck .truck__name {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__dt {
+  margin: 0 5px;
+}
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__name {
   background-color: #fafafa;
   padding: 1px 3px;
   border-radius: 3px;
   border: 2px solid black;
   width: 100%;
+  min-width: 100px;
   text-align: center;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck .truck__location {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__location {
   display: flex;
   flex-direction: row;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck .truck__time-status {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__location .location__gate-place {
+  white-space: nowrap;
+  font-weight: bold;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck_waiting {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__time-status {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__time-status .time-status__time .time__hh-mm {
+  font-weight: bold;
+}
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck_waiting {
   background-color: #a6a6a6;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck_ready {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck_ready {
   background-color: #b7e1b7;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__trucks .trucks__truck-list .truck_list__truck_loading {
+.dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck_loading {
   background-color: #c4def5;
 }
 
