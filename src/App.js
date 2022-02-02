@@ -10,6 +10,7 @@ function App() {
     const login = () => {
         dispatch({type: 'SET_USERID', value: localStorage.getItem('userid')})
         dispatch({type: 'SET_ADMIN_ACCESS', value: JSON.parse(localStorage.getItem('admin'))})
+        dispatch({type: 'SET_USER_ACCESS', value: JSON.parse(localStorage.getItem('access'))})
         dispatch({type: 'SET_AUTH', value: true})
     }
 
@@ -21,7 +22,8 @@ function App() {
     useEffect(() => {
         if (
             isNotExpiredTimeStamp(localStorage.getItem('auth')) &&
-            localStorage.getItem('userid')
+            localStorage.getItem('userid') &&
+            localStorage.getItem('admin')
         ) {
             login();
         }

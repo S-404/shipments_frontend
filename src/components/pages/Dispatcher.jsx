@@ -13,6 +13,7 @@ import Trucks from "../dispatcherPage/shippingArea/Trucks";
 
 const Dispatcher = () => {
     const user = useSelector(state => state.user)
+    const access = useSelector(state => state.access)
     const [shippingArea, setShippingArea] = useState([]);
     const [gates, setGates] = useState([]);
     const [gatesPlaces, setGatesPlaces] = useState([]);
@@ -83,6 +84,10 @@ const Dispatcher = () => {
 
 
     const addOrder = async (newOrderObj) => {
+        if(!access?.dispatcher?.ordersListManage) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ORDER_NUM: newOrderObj.ORDER_NUM,
             PLACE_ID: newOrderObj.PLACE_ID,
@@ -103,6 +108,10 @@ const Dispatcher = () => {
     }
 
     const removeOrder = async (orderID) => {
+        if(!access?.dispatcher?.ordersListManage) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: orderID,
             USER_ID: user.userid,
@@ -114,6 +123,10 @@ const Dispatcher = () => {
     }
 
     const removeOrders = async (place) => {
+        if(!access?.dispatcher?.ordersListManage) {
+            alert(`you don't have permission access`)
+            return
+        }
         if (!window.confirm('This place will be cleared')) return;
         const responseData = await ShipmentService.queryData({
             PLACE_ID: place.PLACE_ID,
@@ -133,6 +146,10 @@ const Dispatcher = () => {
     }
 
     const updateOrderLoadingStatus = async (orderID, isLoaded) => {
+        if(!access?.dispatcher?.trucksLoad) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: orderID,
             IS_LOADED: isLoaded,
@@ -150,6 +167,10 @@ const Dispatcher = () => {
 
 
     const updatePlaceStatus = async (PLACE_ID, IS_LOADING) => {
+        if(!access?.dispatcher?.trucksLoad) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: PLACE_ID,
             IS_LOADING,
@@ -166,6 +187,10 @@ const Dispatcher = () => {
     }
 
     const updateTruck = async (truck, id) => {
+        if(!access?.dispatcher?.trucksAssign) {
+            alert(`you don't have permission access`)
+            return
+        }
         const responseData = await ShipmentService.queryData({
             ID: id,
             TRUCK: truck,
@@ -181,11 +206,9 @@ const Dispatcher = () => {
         }
     }
 
-    const updateLoadingTime_HHMM = async (HH, MM, id) => {
+    const updateLoadingTime_HHMM = async (HH, MM, ID) => {
         const responseData = await ShipmentService.queryData({
-            ID: id,
-            HH,
-            MM,
+            ID, HH, MM,
         }, 'places/loadingtime', 'PUT');
         let placeID = responseData[0].ID;
         if (placeID) {

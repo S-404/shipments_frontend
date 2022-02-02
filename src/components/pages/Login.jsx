@@ -41,6 +41,9 @@ const Login = () => {
         localStorage.setItem('admin',!!access?.admin?.read)
         dispatch({type: 'SET_ADMIN_ACCESS', value: !!access?.admin?.read})
 
+        localStorage.setItem('access', JSON.stringify(access))
+        dispatch({type: 'SET_USER_ACCESS', value: access})
+
         localStorage.setItem('userid', userid)
         dispatch({type: 'SET_USERID', value: userid});
 

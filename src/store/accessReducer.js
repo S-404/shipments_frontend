@@ -21,10 +21,8 @@ export const accessReducer = (state = accessState, action)=>{
             return {...state, sa: action.value}
         case "SET_ADMIN_ACCESS":
             return {...state, admin:{...state.admin , read: action.value}}
-        // case "SET_DISPATCHER_ACCESS":
-        //     return {...state, dispatcher: action.value}
-        // case "SET_PICKER_ACCESS":
-        //     return {...state, picker: action.value}
+        case "SET_USER_ACCESS":
+            return {...state, ...action.value}
         default:
             return state
     }
