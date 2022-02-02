@@ -1,39 +1,26 @@
-.admin-form__shipping-area .shipping-area__gates {
+.admin-page-container {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
+  justify-items: center;
+  align-items: center;
 }
-.admin-form__shipping-area .shipping-area__gates .gates__gate {
-  padding: 15px;
-  margin: 5px;
-  display: flex;
-  flex-direction: row;
-  background-color: whitesmoke;
+.admin-page-container .admin-page-container__header {
+  background-color: #e0e0e0;
+  padding: 10px;
   border-radius: var(--border-radius-val);
 }
-.admin-form__shipping-area .shipping-area__gates .gates__gate .gate__header {
-  display: block;
-}
-.admin-form__shipping-area .shipping-area__gates .gates__gate .gate__places {
-  display: flex;
-  flex-direction: row;
-}
-.admin-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place {
-  margin: 0 5px;
-  padding: 0 5px;
-  background-color: #c5c5c5;
-  border: 0;
-  border-radius: var(--border-radius-val);
-  min-width: 80px;
-  cursor: pointer;
-  text-align: center;
-  height: 100%;
-}
-.admin-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:hover {
+.admin-page-container .admin-page-container__links {
+  margin-top: 50px;
   background-color: #b9b9b9;
+  padding: 30px;
+  border-radius: var(--border-radius-val);
 }
-.admin-form__shipping-area .shipping-area__gates .gates__gate .gate__places .places__place:active {
-  background-color: #9f9f9f;
+.admin-page-container .admin-page-container__links .links__link-div {
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: var(--border-radius-val);
 }
 
 /*# sourceMappingURL=adminPage.css.map */
