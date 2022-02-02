@@ -44,7 +44,7 @@ const LoadingTimePicker = ({updateLoadingTime_HHMM,selectedPlace}) => {
 
 
     return (
-        <div className='truck__loading-time-div'>
+        <div className='gate-place-form__loading-time-div'>
             <span className='loading-time-div__header'>Loading Time</span>
             <div className='loading-time-div__time-picker'>
                 <MySelect

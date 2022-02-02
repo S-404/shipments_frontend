@@ -6,6 +6,24 @@
 .gate-place-form * {
   font-size: 20px;
 }
+.gate-place-form .gate-place-form__loading-time-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.gate-place-form .gate-place-form__loading-time-div .loading-time-div__header {
+  color: #ababab;
+}
+.gate-place-form .gate-place-form__loading-time-div .loading-time-div__time-picker {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.gate-place-form .gate-place-form__loading-time-div .loading-time-div__time-picker .time-picker__separator {
+  color: #ababab;
+  margin-right: 10px;
+}
 .gate-place-form .gate-place-form__truck {
   display: flex;
   flex-direction: column;
@@ -23,31 +41,29 @@
 .gate-place-form .gate-place-form__truck .truck__assign-truck-div .assign-truck-div__input {
   flex-basis: 80%;
 }
-.gate-place-form .gate-place-form__truck .truck__loading-time-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.gate-place-form .gate-place-form__truck .truck__loading-time-div .loading-time-div__header {
-  color: #ababab;
-}
-.gate-place-form .gate-place-form__truck .truck__loading-time-div .loading-time-div__time-picker {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
-.gate-place-form .gate-place-form__truck .truck__loading-time-div .loading-time-div__time-picker .time-picker__separator {
-  color: #ababab;
-  margin-right: 10px;
-}
 .gate-place-form .gate-place-form__truck .truck__buttons-div .buttons-div__button {
   width: 100%;
 }
 .gate-place-form .gate-place-form__order-list {
   margin-top: 15px;
 }
-.gate-place-form .gate-place-form__order-list .order-list__info {
+.gate-place-form .gate-place-form__order-list .order-list__info-div .info-div__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 15px;
+}
+.gate-place-form .gate-place-form__order-list .order-list__info-div .info-div__header span {
+  background-color: #a6a6a6;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 0.8em;
+  border-radius: var(--border-radius-val);
+  color: #fff;
+  flex-basis: 40%;
+  text-align: center;
+}
+.gate-place-form .gate-place-form__order-list .order-list__info-div .info-div__info {
   color: white;
   display: table;
   margin: 0 auto;
@@ -56,10 +72,10 @@
   width: 100%;
   text-align: center;
 }
-.gate-place-form .gate-place-form__order-list .order-list__info_completed {
+.gate-place-form .gate-place-form__order-list .order-list__info-div .info-div__info_completed {
   background-color: #56ad5d;
 }
-.gate-place-form .gate-place-form__order-list .order-list__info_in-process {
+.gate-place-form .gate-place-form__order-list .order-list__info-div .info-div__info_in-process {
   background-color: #679ece;
 }
 .gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div {
@@ -69,22 +85,6 @@
 }
 .gate-place-form .gate-place-form__order-list .order-list__input-div .input-div__single-order-div .single-order-div__input {
   width: 100%;
-}
-.gate-place-form .gate-place-form__order-list .order-list__header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 15px;
-}
-.gate-place-form .gate-place-form__order-list .order-list__header span {
-  background-color: #a6a6a6;
-  font-weight: bold;
-  padding: 5px;
-  font-size: 0.8em;
-  border-radius: var(--border-radius-val);
-  color: #fff;
-  flex-basis: 40%;
-  text-align: center;
 }
 .gate-place-form .gate-place-form__order-list .order-list__orderlines {
   margin-top: 20px;

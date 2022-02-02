@@ -7,7 +7,6 @@ import MySmallButton from "../../../UI/button/mySmallButton";
 const TruckLoadingInputs = ({
                                 selectedPlace,
                                 updateTruck,
-                                updateLoadingTime_HHMM,
                                 updatePlaceStatus,
                                 filteredShippingArea
                             }) => {
@@ -23,17 +22,12 @@ const TruckLoadingInputs = ({
     }, [selectedPlace])
     return (
         <div className='gate-place-form__truck'>
-            <h1 className='truck__name'>{`GATE ${selectedPlace.GATE} - ${selectedPlace.PLACE}`}</h1>
-            <LoadingTimePicker
-                selectedPlace={selectedPlace}
-                updateLoadingTime_HHMM={updateLoadingTime_HHMM}
-            />
             <TruckAssign assignTruck={assignTruck} truck={truck} setTruck={setTruck}/>
             {selectedPlace.IS_LOADING ?
                 <div className='truck__buttons-div'>
                     <MySmallButton
                         className='buttons-div__button'
-                        onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID,0)}
+                        onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID, 0)}
                         text='stop loading'
                     />
                 </div>
@@ -42,7 +36,7 @@ const TruckLoadingInputs = ({
                     <div className='truck__buttons-div'>
                         <MySmallButton
                             className='buttons-div__button'
-                            onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID,1)}
+                            onClick={() => updatePlaceStatus(selectedPlace.PLACE_ID, 1)}
                             text='start loading'
                         />
                     </div>

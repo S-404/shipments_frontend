@@ -5,6 +5,7 @@ import OrderListInputs from "./OrderListInputs";
 import TruckLoadingInputs from "./TruckLoadingInputs";
 import {useFilteredShippingArea} from "../../../../hooks/useShippingArea";
 import MySmallButton from "../../../UI/button/mySmallButton";
+import LoadingTimePicker from "./LoadingTimePicker";
 
 
 const GatePlaceForm = ({
@@ -34,9 +35,13 @@ const GatePlaceForm = ({
 
     return (
         <div className='gate-place-form'>
-            <TruckLoadingInputs
+            <h1 className='gate-place-form__header'>{`GATE ${selectedPlace.GATE} - ${selectedPlace.PLACE}`}</h1>
+            <LoadingTimePicker
                 selectedPlace={selectedPlace}
                 updateLoadingTime_HHMM={updateLoadingTime_HHMM}
+            />
+            <TruckLoadingInputs
+                selectedPlace={selectedPlace}
                 updateTruck={updateTruck}
                 filteredShippingArea={filteredShippingArea}
                 removeOrders={removeOrders}
@@ -44,17 +49,17 @@ const GatePlaceForm = ({
             />
             <div className='gate-place-form__order-list'>
                 {selectedPlace.IS_LOADING ?
-                    <div>
+                    <div className='order-list__info-div'>
                         {selectedPlace.IS_LOADING === 2 ?
-                            <span className='order-list__info order-list__info_completed'>
+                            <span className='info-div__info info-div__info_completed'>
                                 LOADING IS COMPLETE
-                                </span>
+                            </span>
                             :
-                            <span className='order-list__info order-list__info_in-process'>
+                            <span className='info-div__info info-div__info_in-process'>
                                 TRUCK IS LOADING
-                                </span>
+                            </span>
                         }
-                        <div className='order-list__header'>
+                        <div className='info-div__header'>
                             <span>ORDER_NUM</span>
                             <span>IS_LOADED</span>
                         </div>
