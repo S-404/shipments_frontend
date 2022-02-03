@@ -186,6 +186,9 @@
           }
 
           .order-status__icon_completed {
+            filter: invert(78%) sepia(62%) saturate(2088%) hue-rotate(331deg) brightness(90%) contrast(86%);
+          }
+          .order-status__icon_picked {
             filter: invert(50%) sepia(67%) saturate(820%) hue-rotate(77deg) brightness(90%) contrast(80%);
           }
         }

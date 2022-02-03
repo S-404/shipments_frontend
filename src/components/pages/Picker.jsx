@@ -16,8 +16,14 @@ const Picker = () => {
         const responseData = await ShipmentService.queryData({
             ORDER_NUM: orderNum
         }, 'orders/order', 'GET');
+
         setLocations(responseData);
         setOrderNum('');
+        if(responseData[0]?.ORDER_NUM){
+              await ShipmentService.queryData({
+                ORDER_NUM: orderNum
+            }, 'orders/order/picked-status', 'PUT');
+        }
     });
 
 

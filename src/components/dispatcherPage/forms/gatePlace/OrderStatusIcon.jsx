@@ -1,11 +1,12 @@
 import React from 'react';
 import notStarted from "../../../../assets/warning.svg";
-import completed from "../../../../assets/checked.svg";
+import checked from "../../../../assets/checked.svg";
 import inProcess from "../../../../assets/timer.svg";
 
 const OrderStatusIcon = ({orderline}) => {
-    const defineStatus = (status) => {
-        switch (status) {
+    const defineStatus = (order) => {
+        if(order.IS_PICKED) return 'picked'
+        switch (order.STATUS) {
             case 0:
                 return 'not-started';
             case 2:
@@ -15,12 +16,13 @@ const OrderStatusIcon = ({orderline}) => {
         }
     }
 
-    const setStatusImg = (status) => {
-        switch (status) {
+    const setStatusImg = (order) => {
+        if(order.IS_PICKED) return checked;
+        switch (order.STATUS) {
             case 0:
                 return notStarted;
             case 2:
-                return completed;
+                return checked;
             default:
                 return inProcess;
         }
@@ -29,11 +31,11 @@ const OrderStatusIcon = ({orderline}) => {
     return (
         <div className='dynamic-order-line__order-status'>
             <img
-                src={setStatusImg(orderline.STATUS)}
+                src={setStatusImg(orderline)}
                 alt='status'
-                className={'order-status__icon order-status__icon_' + defineStatus(orderline.STATUS)}
+                className={'order-status__icon order-status__icon_' + defineStatus(orderline)}
             />
-            <span className={'order-status__text'}>{defineStatus(orderline.STATUS)}</span>
+            <span className={'order-status__text'}>{defineStatus(orderline)}</span>
         </div>
     );
 };

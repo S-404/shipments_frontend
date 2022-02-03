@@ -128,8 +128,12 @@
                 }
 
                 .orders__order_completed {
-                  color: #006500;
+                  color: #d78f3b;
                   border-radius: 3px;
+                }
+
+                .orders__order_picked {
+                  color: #006500;
                 }
 
                 .orders__order_duplicated {
