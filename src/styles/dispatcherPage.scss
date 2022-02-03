@@ -37,6 +37,9 @@
           .gate-header__gate-name {
             font-size: 20px;
             white-space: nowrap;
+            min-width: 140px;
+            display: flex;
+            flex-direction: column;
           }
 
           .gate-header__history-image {
@@ -217,10 +220,11 @@
         .truck__location {
           display: flex;
           flex-direction: row;
-
+          min-width: 100%;
           .location__gate-place {
             white-space: nowrap;
             font-weight: bold;
+
           }
 
         }

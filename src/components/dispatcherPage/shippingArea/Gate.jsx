@@ -1,7 +1,6 @@
 import React from 'react';
 import GatePlace from "./GatePlace";
 import history_svg from "../../../assets/history_icon.svg"
-import Trucks from "./Trucks";
 
 const Gate = ({
                   gate,
@@ -16,7 +15,10 @@ const Gate = ({
     return (
         <div className="gates__gate">
             <div className='gate__gate-header'>
-                <h1 className='gate-header__gate-name'>{`GATE ${gate.GATE}`}</h1>
+                <h1 className='gate-header__gate-name'>
+                    <span className={'gate-name__gate'}>GATE</span>
+                    <span className={'gate-name__name'}>{gate.GATE}</span>
+                </h1>
                 <img
                     className='gate-header__history-image'
                     alt='history'

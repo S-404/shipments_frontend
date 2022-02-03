@@ -34,6 +34,9 @@
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header .gate-header__gate-name {
   font-size: 20px;
   white-space: nowrap;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-header .gate-header__history-image {
   max-height: 30px;
@@ -169,6 +172,7 @@
 .dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__location {
   display: flex;
   flex-direction: row;
+  min-width: 100%;
 }
 .dispatcher-form .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__location .location__gate-place {
   white-space: nowrap;
