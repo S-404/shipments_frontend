@@ -16,7 +16,7 @@ const OrderLine = ({orderline, shippingArea}) => {
                 break;
         }
 
-        if(order.IS_PICKED) result = 'orders__order orders__order_picked';
+        if(order.IS_INPLACE) result = 'orders__order orders__order_in-place';
 
         result += shippingArea.filter(ord => ord.ORDER_NUM === order.ORDER_NUM).length > 1 ?
             ' orders__order_duplicated' : '';

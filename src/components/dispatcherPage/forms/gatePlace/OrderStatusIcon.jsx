@@ -5,7 +5,7 @@ import inProcess from "../../../../assets/timer.svg";
 
 const OrderStatusIcon = ({orderline}) => {
     const defineStatus = (order) => {
-        if(order.IS_PICKED) return 'picked'
+        if(order.IS_INPLACE) return 'in-place'
         switch (order.STATUS) {
             case 0:
                 return 'not-started';
@@ -17,7 +17,7 @@ const OrderStatusIcon = ({orderline}) => {
     }
 
     const setStatusImg = (order) => {
-        if(order.IS_PICKED) return checked;
+        if(order.IS_INPLACE) return checked;
         switch (order.STATUS) {
             case 0:
                 return notStarted;

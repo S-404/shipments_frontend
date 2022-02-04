@@ -113,7 +113,7 @@
   color: #d78f3b;
   border-radius: 3px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_picked {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_in-place {
   color: #006500;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_duplicated {

@@ -140,7 +140,7 @@
 .gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__icon_completed {
   filter: invert(78%) sepia(62%) saturate(2088%) hue-rotate(331deg) brightness(90%) contrast(86%);
 }
-.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__icon_picked {
+.gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status .order-status__icon_in-place {
   filter: invert(50%) sepia(67%) saturate(820%) hue-rotate(77deg) brightness(90%) contrast(80%);
 }
 .gate-place-form .gate-place-form__order-list .order-list__orderlines .dynamic-order-line .dynamic-order-line__order-status:hover .order-status__text {
