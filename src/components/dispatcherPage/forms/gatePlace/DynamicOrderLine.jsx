@@ -10,7 +10,10 @@ const DynamicOrderLine = ({orderline, removeOrder, selectedPlace, shippingArea, 
             {selectedPlace.IS_LOADING ?
                 <div className="dynamic-order-line">
                     <OrderNum orderline={orderline} shippingArea={shippingArea}/>
-                    <div className='dynamic-order-line__loaded-status'>
+                    <div className='dynamic-order-line__weight dynamic-order-line__col-2'>
+                        {orderline.ORDER_WEIGHT === null ? '' : Math.round(orderline.ORDER_WEIGHT * 10) / 10}
+                    </div>
+                    <div className='dynamic-order-line__loaded-status dynamic-order-line__col-3'>
                         <MyCheckBox
                             checked={!!orderline.IS_LOADED}
                             onChange={(e) => {

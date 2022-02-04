@@ -60,8 +60,9 @@ const GatePlaceForm = ({
                             </span>
                         }
                         <div className='info-div__header'>
-                            <span>ORDER_NUM</span>
-                            <span>IS_LOADED</span>
+                            <span className='header__col header__col-1'>ORDER_NUM</span>
+                            <span className='header__col header__col-2'>WEIGHT</span>
+                            <span className='header__col header__col-3'>IS_LOADED</span>
                         </div>
                     </div>
                     :

@@ -70,10 +70,10 @@
       .info-div__header {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        margin: 15px;
+        justify-content:space-around;
+        margin-top: 15px;
 
-        span {
+        .header__col {
           background-color: #a6a6a6;
           font-weight: bold;
 
@@ -81,8 +81,17 @@
           font-size: .8em;
           border-radius: var(--border-radius-val);
           color: #fff;
-          flex-basis: 40%;
+
           text-align: center;
+        }
+        .header__col-1{
+          flex-basis: 33%;
+        }
+        .header__col-2{
+          flex-basis: 25%;
+        }
+        .header__col-3{
+          flex-basis: 20%;
         }
       }
 
@@ -135,7 +144,7 @@
 
         .dynamic-order-line__order-num {
           text-align: center;
-          flex-basis: 50%;
+
           border-radius: var(--border-radius-val);
           padding: 2px;
         }
@@ -148,10 +157,24 @@
           color: darkred;
         }
 
-        .dynamic-order-line__loaded-status {
-          flex-basis: 50%;
+        .dynamic-order-line__weight{
           display: flex;
           justify-content: center;
+        }
+
+        .dynamic-order-line__loaded-status {
+          display: flex;
+          justify-content: center;
+        }
+
+        .dynamic-order-line__col-1{
+          flex-basis: 30%;
+        }
+        .dynamic-order-line__col-2{
+          flex-basis: 20%;
+        }
+        .dynamic-order-line__col-3{
+          flex-basis: 20%;
         }
 
         .dynamic-order-line__order-status {
