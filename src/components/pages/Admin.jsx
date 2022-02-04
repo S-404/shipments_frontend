@@ -10,11 +10,10 @@ const Admin = () => {
         {name: 'Manage Access', to: '/admin/access'},
         {name: 'Manage Shipping Area', to: '/admin/shipping-area'},
     ]
-
+    if (!access?.admin?.read) return ( <span>You don't have permission to access</span>)
     return (
             <div className='admin-page-container'>
                 <h1 className='admin-page-container__header'>Admin Page</h1>
-                {access?.admin?.read || access.sa ?
                     <div className={`admin-page-container__links`}>
                         {adminOptions.map((option, index) => (
                             <div key={'option_' + option.name + index} className='links__link-div'>
@@ -25,8 +24,6 @@ const Admin = () => {
                             </div>
                         ))}
                     </div>
-                    :
-                    <span>You don't have permission to access</span>}
             </div>
 
     )

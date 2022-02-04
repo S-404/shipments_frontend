@@ -225,7 +225,7 @@ const Dispatcher = () => {
         }
     }
 
-
+    if (!access?.dispatcher?.read) return ( <span>You don't have permission to access</span>)
     return (
         <div className='dispatcher-form'>
             {isShippingAreaLoading || isGatesPlacesLoading ?

@@ -5,6 +5,7 @@ import ShipmentService from "../../api/ShipmentService";
 import MyLoader from "../UI/loader/myLoader";
 import '../../styles/pickerPage.scss'
 import scanBarcode from '../../assets/scan_barcode.svg'
+import {useSelector} from "react-redux";
 
 const Picker = () => {
     const [orderNum, setOrderNum] = useState('')
@@ -34,6 +35,9 @@ const Picker = () => {
             }
         }
         , [orderNum])
+
+    const access = useSelector(state => state.access)
+    if (!access?.picker?.read) return ( <span>You don't have permission to access</span>)
 
     return (
         <div className='picker-form'>
