@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../styles/truckList.scss'
 
 const Trucks = ({gate, gatesPlaces, shippingArea}) => {
 

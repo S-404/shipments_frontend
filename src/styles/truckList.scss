@@ -1,0 +1,90 @@
+.shipping-area__trucks{
+  display: flex;
+  margin: 5px 5px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: 0;
+  border-radius: var(--border-radius-val);
+
+  .trucks__header {
+  }
+
+  .trucks__truck-list {
+    display: flex;
+    flex-direction: column;
+
+
+    * {
+      font-size: 15px;
+    }
+
+    .truck_list__truck {
+      display: flex;
+      flex-direction: row;
+      padding: 5px 10px;
+      margin-bottom: 5px;
+      align-items: center;
+      border-radius: var(--border-radius-val);
+
+      .truck__dt {
+        margin: 0 5px;
+      }
+
+      .truck__name {
+        background-color: #fafafa;
+        padding: 1px 3px;
+        border-radius: 3px;
+        border: 2px solid black;
+        width: 100%;
+        min-width: 100px;
+        text-align: center;
+      }
+
+      .truck__location {
+        display: flex;
+        flex-direction: row;
+        min-width: 100%;
+        .location__gate-place {
+          white-space: nowrap;
+          font-weight: bold;
+
+        }
+
+      }
+
+      .truck__time-status {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .time-status__status {
+
+        }
+
+        .time-status__time {
+          .time__hh-mm {
+            font-weight: bold;
+          }
+        }
+
+      }
+
+    }
+
+    .truck_list__truck_waiting {
+      background-color: #a6a6a6;
+    }
+
+    .truck_list__truck_ready {
+      background-color: #b7e1b7;
+    }
+
+    .truck_list__truck_loading {
+      background-color: #c4def5;
+    }
+
+    .truck_list__truck_completed {
+
+    }
+  }
+}
