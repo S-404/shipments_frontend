@@ -24,9 +24,7 @@ const NavbarVertical = () => {
     return (
         isAuth ?
             <div className={`${classes.navbar} ${enabled ? classes.navbar_expanded : ''}`}>
-                <HamburgerButton onClick={() => {
-                    setEnabled(!enabled);
-                }}/>
+                <HamburgerButton onClick={() => {setEnabled(!enabled)}}/>
                 {
                     navbarOptions.map((option, index) => (
                         <Link
