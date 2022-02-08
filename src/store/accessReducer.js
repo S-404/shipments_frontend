@@ -1,4 +1,4 @@
-const accessState = {
+export const defaultAccessState = {
     sa: false,
     admin: {
         read: false
@@ -14,6 +14,8 @@ const accessState = {
         read: false
     },
 }
+
+const accessState = {...defaultAccessState}
 
 export const accessReducer = (state = accessState, action)=>{
     switch (action.type){

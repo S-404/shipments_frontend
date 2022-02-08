@@ -1,11 +1,11 @@
-import Login from "../components/pages/Login";
-import About from "../components/pages/About";
-import Admin from "../components/pages/Admin";
-import Picker from "../components/pages/Picker";
-import Dispatcher from "../components/pages/Dispatcher";
-import Driver from "../components/pages/Driver";
-import AdminAccessPage from "../components/pages/AdminAccessPage";
-import AdminShippingAreaPage from "../components/pages/AdminShippingAreaPage";
+import Login from "../pages/LoginPage/Login";
+import About from "../pages/AboutPage/About";
+import Admin from "../pages/AdminPages/AdminPage/Admin";
+import Picker from "../pages/PickerPage/Picker";
+import Dispatcher from "../pages/DispatcherPage/Dispatcher";
+import Driver from "../pages/DriverPage/Driver";
+import AdminAccessPage from "../pages/AdminPages/AdminAccessPage/AdminAccessPage";
+import AdminShippingAreaPage from "../pages/AdminPages/AdminShippingAreaPage/AdminShippingAreaPage";
 
 export const privateRoutes = [
     {path: '/about', component: About},

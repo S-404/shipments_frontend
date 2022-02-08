@@ -1,0 +1,64 @@
+.gate-log-table {
+  display: flex;
+  overflow-y: scroll;
+  max-height: 600px;
+  margin-right: 20px;
+}
+.gate-log-table * {
+  font-size: 14px;
+}
+
+.table__container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.table__container .container__responsive-table .responsive-table__row-object {
+  border-radius: 5px;
+  padding: 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.table__container .container__responsive-table .responsive-table__row-object .responsive-table__col {
+  width: 100px;
+  text-align: center;
+}
+.table__container .container__responsive-table .responsive-table__row-object .col-1 {
+  flex-basis: 10%;
+}
+.table__container .container__responsive-table .responsive-table__row-object .col-2 {
+  flex-basis: 10%;
+}
+.table__container .container__responsive-table .responsive-table__row-object .col-3 {
+  flex-basis: 15%;
+}
+.table__container .container__responsive-table .responsive-table__row-object .col-4 {
+  flex-basis: 15%;
+}
+.table__container .container__responsive-table .responsive-table__row-object .col-5 {
+  flex-basis: 25%;
+}
+.table__container .container__responsive-table .responsive-table__row-object .col-6 {
+  flex-basis: 25%;
+}
+.table__container .container__responsive-table .responsive-table__table-header {
+  background-color: #95A5A6;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+}
+.table__container .container__responsive-table .responsive-table__table-data .table-data__table-row:hover {
+  background-color: #e0e0e0;
+}
+.table__container .container__responsive-table .responsive-table__table-data .table-data__table-row_add {
+  background-color: #b7e1b7;
+}
+.table__container .container__responsive-table .responsive-table__table-data .table-data__table-row_delete {
+  background-color: #eac5c5;
+}
+
+/*# sourceMappingURL=historyTable.css.map */
