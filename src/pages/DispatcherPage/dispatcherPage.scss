@@ -1,3 +1,7 @@
+:root{
+  --shipping-area-max-width: 60vw;
+}
+
 .dispatcher-form {
   position: relative;
 
@@ -29,6 +33,7 @@
         background-color: rgb(245, 245, 245);
         border-radius: var(--border-radius-val);
 
+
         .gate__gate-header {
           display: flex;
           flex-direction: column;
@@ -53,16 +58,18 @@
 
         .gate__gate-body {
           display: flex;
-          flex-direction: row;
-          width: 100%;
+          flex-direction:column;
           justify-content: space-between;
+
 
           .gate-body__places {
             display: flex;
             flex-direction: row;
+            max-width: var(--shipping-area-max-width);
+            flex-wrap:wrap;
 
             .places__place {
-              margin: 0 5px;
+              margin: 5px 5px;
               padding: 10px;
               background-color: #c5c5c5;
               border: 2px solid #c5c5c5;

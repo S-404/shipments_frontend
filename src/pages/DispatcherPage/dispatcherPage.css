@@ -1,3 +1,7 @@
+:root {
+  --shipping-area-max-width: 60vw;
+}
+
 .dispatcher-form {
   position: relative;
 }
@@ -47,16 +51,17 @@
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
   justify-content: space-between;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places {
   display: flex;
   flex-direction: row;
+  max-width: var(--shipping-area-max-width);
+  flex-wrap: wrap;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place {
-  margin: 0 5px;
+  margin: 5px 5px;
   padding: 10px;
   background-color: #c5c5c5;
   border: 2px solid #c5c5c5;

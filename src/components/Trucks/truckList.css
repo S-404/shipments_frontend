@@ -15,28 +15,26 @@
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 5px 10px;
-  margin-bottom: 5px;
-  align-items: center;
+  margin: 5px 0;
   border-radius: var(--border-radius-val);
+  min-width: 200px;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__dt {
-  margin: 0 5px;
+  margin: 1px 0;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__name {
+  display: flex;
+  justify-content: center;
   background-color: #fafafa;
   padding: 1px 3px;
   border-radius: 3px;
   border: 2px solid black;
-  width: 100%;
-  min-width: 100px;
-  text-align: center;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__location {
   display: flex;
   flex-direction: row;
-  min-width: 100%;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__location .location__gate-place {
   white-space: nowrap;
@@ -44,8 +42,10 @@
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__time-status {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: row;
+}
+.shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__time-status .time-status__time {
+  margin-right: 5px;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__time-status .time-status__time .time__hh-mm {
   font-weight: bold;
