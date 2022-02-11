@@ -53,8 +53,11 @@
 .shipping-area__trucks .trucks__truck-list .truck_list__truck_waiting {
   background-color: #a6a6a6;
 }
+.shipping-area__trucks .trucks__truck-list .truck_list__truck_waiting_not-complete {
+  background-color: #d78f3b;
+}
 .shipping-area__trucks .trucks__truck-list .truck_list__truck_ready {
-  background-color: #b7e1b7;
+  background-color: #7cb67c;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck_loading {
   background-color: #c4def5;
