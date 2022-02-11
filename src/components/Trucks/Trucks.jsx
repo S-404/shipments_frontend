@@ -1,6 +1,6 @@
 import React from 'react';
 import './truckList.scss'
-import {isOrdersCompleted} from "../../helpers/statuses";
+import {isOrdersInPlace,orderListOfPlace} from "../../helpers/statuses";
 import Truck from "./Truck";
 
 const Trucks = ({gatesPlaces, shippingArea}) => {
@@ -11,16 +11,16 @@ const Trucks = ({gatesPlaces, shippingArea}) => {
                 <br/>
                 {gatesPlaces
                     .filter((place) =>
-                        // place.GATE_ID === gate.GATE_ID &&
-                        place.TRUCK &&
-                        place.IS_LOADING !== 2
+                        place.TRUCK && // truck is assigned
+                        place.IS_LOADING !== 2 && // truck is loading
+                        place.MAX_DATE // there are orders in place ('max_date' shows when the last order was added)
                     )
                     .sort((a, b) => {
                             if (a.IS_LOADING < b.IS_LOADING) return -1;
                             if (a.IS_LOADING > b.IS_LOADING) return 1;
 
-                            let aCompleted = isOrdersCompleted(a, shippingArea);
-                            let bCompleted = isOrdersCompleted(b, shippingArea)
+                            let aCompleted = isOrdersInPlace(orderListOfPlace(a, shippingArea));
+                            let bCompleted = isOrdersInPlace(orderListOfPlace(b, shippingArea));
                             if (aCompleted < bCompleted) return 1;
                             if (aCompleted > bCompleted) return -1;
 
