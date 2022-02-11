@@ -1,0 +1,40 @@
+.about-page {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.about-page .about-page__header {
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: var(--border-radius-val);
+}
+.about-page .about-page__description {
+  max-width: 600px;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: var(--border-radius-val);
+}
+.about-page .about-page__working-method {
+  background-color: #b9b9b9;
+  padding: 30px;
+  border-radius: var(--border-radius-val);
+}
+.about-page .about-page__working-method .working-method__header {
+  margin: 10px 0;
+}
+.about-page .about-page__working-method .working-method__method-blocks {
+  overflow-y: scroll;
+  max-height: 600px;
+}
+.about-page .about-page__working-method .working-method__method-blocks .method-blocks__method-block {
+  max-width: 600px;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: var(--border-radius-val);
+}
+
+/*# sourceMappingURL=aboutPage.css.map */
