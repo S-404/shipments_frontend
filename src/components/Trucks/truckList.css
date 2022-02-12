@@ -19,7 +19,7 @@
   padding: 5px 10px;
   margin: 5px 0;
   border-radius: var(--border-radius-val);
-  min-width: 200px;
+  min-width: 315px;
 }
 .shipping-area__trucks .trucks__truck-list .truck_list__truck .truck__dt {
   margin: 1px 0;

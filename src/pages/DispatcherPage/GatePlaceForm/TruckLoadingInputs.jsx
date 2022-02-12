@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import TruckAssign from "./TruckAssign";
 import MySmallButton from "../../../components/UI/button/mySmallButton";
+import {isOrdersInPlace} from "../../../helpers/statuses";
 
 
 const TruckLoadingInputs = ({
@@ -35,7 +36,8 @@ const TruckLoadingInputs = ({
                     />
                 </div>
                 :
-                filteredShippingArea.length && selectedPlace.TRUCK ?
+                selectedPlace.TRUCK &&
+                isOrdersInPlace(filteredShippingArea)?
                     <div className='truck__buttons-div'>
                         <MySmallButton
                             className='buttons-div__button'

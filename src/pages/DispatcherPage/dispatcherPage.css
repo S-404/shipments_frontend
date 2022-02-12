@@ -4,14 +4,45 @@
 
 .dispatcher-form {
   position: relative;
+  margin-top: 40px;
 }
 .dispatcher-form .dispatcher-form__loader-div {
   margin-top: 10px;
   position: fixed;
   right: 20px;
+  top: 10px;
+}
+.dispatcher-form .dispatcher-form__find-order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: var(--border-radius-val);
+  margin: 5px;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__input {
+  max-width: 150px;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places {
+  display: flex;
+  flex-direction: row;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places .find-order__place {
+  margin: 0 15px;
+  padding: 5px;
+  background-color: #c5c5c5;
+  border: 1px solid #c5c5c5;
+  border-radius: var(--border-radius-val);
+  cursor: pointer;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places .find-order__place:hover {
+  border-color: black;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places .find-order__place:active {
+  background-color: #9f9f9f;
 }
 .dispatcher-form .dispatcher-form__shipping-area {
-  margin-top: 40px;
   display: flex;
   flex-direction: row;
 }
@@ -104,29 +135,41 @@
   background-color: rgba(132, 194, 132, 0.86);
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__header .header__indicators .indicators__assigned-truck {
-  background-color: #fafafa;
+  background-color: #e0e0e0;
   padding: 1px 3px;
-  border-radius: 3px;
-  border: 2px solid black;
+  margin: 5px 0;
+  border-radius: var(--border-radius-val);
+  border: 2px solid #989898;
   width: 100%;
   text-align: center;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order {
-  color: #525252;
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters {
+  display: flex;
+  flex-direction: column;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_completed {
-  color: #d78f3b;
-  border-radius: 3px;
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters .counters__counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 2px 0;
+  border-radius: var(--border-radius-val);
+  background-color: #e0e0e0;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_in-place {
-  color: #006500;
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters .counters__counter .counter__text {
+  font-size: 15px;
 }
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__order_duplicated {
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters .counters__counter .counter__value {
+  font-size: 15px;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters .counters__counter_not-started {
+  background-color: #e39e9e;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters .counters__counter_in-place {
+  background-color: #7cb67c;
+}
+.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__counters .counters__counter_has-duplicate {
   color: darkred;
-  font-style: italic;
-}
-.dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place .place__orders .orders__orders-counter-div .orders-counter-div__counter {
-  color: #5f5f5f;
 }
 .dispatcher-form .dispatcher-form__shipping-area .shipping-area__gates .gates__gate .gate__gate-body .gate-body__places .places__place:hover {
   border-color: black;

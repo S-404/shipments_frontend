@@ -1,7 +1,8 @@
 import React from 'react';
 import './truckList.scss'
-import {isOrdersInPlace,orderListOfPlace} from "../../helpers/statuses";
 import Truck from "./Truck";
+import {isOrdersInPlace} from "../../helpers/statuses";
+import {orderListOfPlace} from "../../helpers/orders";
 
 const Trucks = ({gatesPlaces, shippingArea}) => {
     return (

@@ -1,17 +1,9 @@
+import {orderListOfPlace} from "./orders";
 
-export const  orderListOfPlace = (place, shippingArea) => {
-    return Object.assign(
-        shippingArea.filter(place_ =>
-            place_.PLACE_ID === place.ID &&
-            place_.ORDER_NUM !== null
-        )
-    )
-}
-
-export const isOrdersNotCompleted = (orderList) => {
+export const isOrdersPickingInProcess = (orderList) => {
     let orderLines = orderList.length
-    let notCompletedOrders = orderList.filter(place_ => place_.STATUS !== 2).length
-    return orderLines && (notCompletedOrders)
+    let completedOrders = orderList.filter(place_ => place_.STATUS === 2).length
+    return orderLines && completedOrders
 }
 
 
@@ -32,7 +24,6 @@ export const truckStatusString = (place, shippingArea) => {
     let thisPlaceOrders = orderListOfPlace(place, shippingArea)
 
 
-
     switch (place.IS_LOADING) {
         case 0:
             if(isOrdersInPlace(thisPlaceOrders)) {
@@ -44,7 +35,7 @@ export const truckStatusString = (place, shippingArea) => {
                     statusString: 'waiting: picking is not started'
                 }
             }
-            if(isOrdersNotCompleted(thisPlaceOrders)) {
+            if(isOrdersPickingInProcess(thisPlaceOrders)) {
                 return  {
                     className:'waiting_not-complete',
                     statusString: 'waiting: picking is not complete'

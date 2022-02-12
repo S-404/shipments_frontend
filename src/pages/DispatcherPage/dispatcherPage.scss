@@ -1,19 +1,58 @@
-:root{
+:root {
   --shipping-area-max-width: 60vw;
 }
 
 .dispatcher-form {
   position: relative;
+  margin-top: 40px;
 
   .dispatcher-form__loader-div {
     margin-top: 10px;
     position: fixed;
     right: 20px;
+    top: 10px;
   }
 
 
+  .dispatcher-form__find-order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--border-radius-val);
+    margin: 5px;
+
+    .find-order__input {
+      max-width: 150px;
+    }
+
+    .find-order__places {
+      display: flex;
+      flex-direction: row;
+
+      .find-order__place {
+        margin: 0 15px;
+        padding: 5px;
+        background-color: #c5c5c5;
+        border: 1px solid #c5c5c5;
+        border-radius: var(--border-radius-val);
+        cursor: pointer;
+      }
+
+      .find-order__place:hover {
+        border-color: black;
+      }
+
+      .find-order__place:active {
+        background-color: #9f9f9f;
+      }
+    }
+
+  }
+
   .dispatcher-form__shipping-area {
-    margin-top: 40px;
+
     display: flex;
     flex-direction: row;
 
@@ -58,7 +97,7 @@
 
         .gate__gate-body {
           display: flex;
-          flex-direction:column;
+          flex-direction: column;
           justify-content: space-between;
 
 
@@ -66,7 +105,7 @@
             display: flex;
             flex-direction: row;
             max-width: var(--shipping-area-max-width);
-            flex-wrap:wrap;
+            flex-wrap: wrap;
 
             .places__place {
               margin: 5px 5px;
@@ -118,10 +157,11 @@
                   }
 
                   .indicators__assigned-truck {
-                    background-color: #fafafa;
+                    background-color: #e0e0e0;
                     padding: 1px 3px;
-                    border-radius: 3px;
-                    border: 2px solid black;
+                    margin: 5px 0;
+                    border-radius: var(--border-radius-val);
+                    border: 2px solid #989898;
                     width: 100%;
                     text-align: center;
                   }
@@ -130,30 +170,40 @@
 
               .place__orders {
 
-                .orders__order {
-                  color: #525252;
-                }
+                .orders__counters {
+                  display: flex;
+                  flex-direction: column;
 
-                .orders__order_completed {
-                  color: #d78f3b;
-                  border-radius: 3px;
-                }
+                  .counters__counter {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
 
-                .orders__order_in-place {
-                  color: #006500;
-                }
+                    padding: 5px;
+                    margin: 2px 0;
+                    border-radius: var(--border-radius-val);
+                    background-color: #e0e0e0;
 
-                .orders__order_duplicated {
-                  color: darkred;
-                  font-style: italic;
-                }
+                    .counter__text {
+                      font-size: 15px;
+                    }
 
-                .orders__orders-counter-div {
-
-                  .orders-counter-div__counter {
-                    color: #5f5f5f;
+                    .counter__value {
+                      font-size: 15px;
+                    }
                   }
 
+                  .counters__counter_not-started {
+                    background-color: #e39e9e;
+                  }
+
+                  .counters__counter_in-place {
+                    background-color: #7cb67c;
+                  }
+
+                  .counters__counter_has-duplicate {
+                    color: darkred;
+                  }
                 }
               }
             }
