@@ -141,8 +141,7 @@ const Dispatcher = () => {
                     (order) => !(order.PLACE_ID === gateID)
                 )]);
         }
-        await updatePlaceStatus(place.PLACE_ID, 0);
-        await updateTruck('', place.PLACE_ID)
+         await updatePlaceStatus(place.PLACE_ID, 0);
         setPlaceModal(false)
 
     }
