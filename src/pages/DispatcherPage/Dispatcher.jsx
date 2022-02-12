@@ -11,6 +11,7 @@ import {useSelector} from "react-redux";
 import GateHistoryForm from "../../components/History/GateHistoryForm";
 import Trucks from "../../components/Trucks/Trucks";
 import ShipmentAreaService from "../../api/ShipmentAreaService";
+import FindOrder from "../../components/findOrder/findOrder";
 
 const Dispatcher = () => {
     const user = useSelector(state => state.user)
@@ -85,7 +86,7 @@ const Dispatcher = () => {
 
 
     const addOrder = async (newOrderObj) => {
-        if(!access?.dispatcher?.ordersListManage) {
+        if (!access?.dispatcher?.ordersListManage) {
             alert(`you don't have permission access`)
             return
         }
@@ -110,7 +111,7 @@ const Dispatcher = () => {
     }
 
     const removeOrder = async (orderID) => {
-        if(!access?.dispatcher?.ordersListManage) {
+        if (!access?.dispatcher?.ordersListManage) {
             alert(`you don't have permission access`)
             return
         }
@@ -125,7 +126,7 @@ const Dispatcher = () => {
     }
 
     const removeOrders = async (place) => {
-        if(!access?.dispatcher?.ordersListManage) {
+        if (!access?.dispatcher?.ordersListManage) {
             alert(`you don't have permission access`)
             return
         }
@@ -141,13 +142,13 @@ const Dispatcher = () => {
                     (order) => !(order.PLACE_ID === gateID)
                 )]);
         }
-         await updatePlaceStatus(place.PLACE_ID, 0);
+        await updatePlaceStatus(place.PLACE_ID, 0);
         setPlaceModal(false)
 
     }
 
     const updateOrderLoadingStatus = async (orderID, isLoaded) => {
-        if(!access?.dispatcher?.trucksLoad) {
+        if (!access?.dispatcher?.trucksLoad) {
             alert(`you don't have permission access`)
             return
         }
@@ -168,7 +169,7 @@ const Dispatcher = () => {
 
 
     const updatePlaceStatus = async (PLACE_ID, IS_LOADING) => {
-        if(!access?.dispatcher?.trucksLoad) {
+        if (!access?.dispatcher?.trucksLoad) {
             alert(`you don't have permission access`)
             return
         }
@@ -188,7 +189,7 @@ const Dispatcher = () => {
     }
 
     const updateTruck = async (truck, id) => {
-        if(!access?.dispatcher?.trucksAssign) {
+        if (!access?.dispatcher?.trucksAssign) {
             alert(`you don't have permission access`)
             return
         }
@@ -223,11 +224,19 @@ const Dispatcher = () => {
         }
     }
 
-    if (!access?.dispatcher?.read) return ( <span>You don't have permission to access</span>)
+    if (!access?.dispatcher?.read) return (<span>You don't have permission to access</span>)
     return (
         <div className='dispatcher-form'>
+
             {isShippingAreaLoading || isGatesPlacesLoading ?
                 <div className='dispatcher-form__loader-div'><MyLoader/></div> : null}
+
+            <FindOrder
+                shippingArea={shippingArea}
+                setPlaceModal={setPlaceModal}
+                setSelectedPlace={setSelectedPlace}
+            />
+
             <div className='dispatcher-form__shipping-area'>
                 <MyModal visible={placeModal} setVisible={setPlaceModal}>
                     <GatePlaceForm

@@ -4,16 +4,55 @@
 
 .dispatcher-form {
   position: relative;
+  margin-top: 40px;
 
   .dispatcher-form__loader-div {
     margin-top: 10px;
     position: fixed;
     right: 20px;
+    top: 10px;
   }
 
 
+  .dispatcher-form__find-order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--border-radius-val);
+    margin: 5px;
+
+    .find-order__input {
+      max-width: 150px;
+    }
+
+    .find-order__places {
+      display: flex;
+      flex-direction: row;
+
+      .find-order__place {
+        margin: 0 15px;
+        padding: 5px;
+        background-color: #c5c5c5;
+        border: 1px solid #c5c5c5;
+        border-radius: var(--border-radius-val);
+        cursor: pointer;
+      }
+
+      .find-order__place:hover {
+        border-color: black;
+      }
+
+      .find-order__place:active {
+        background-color: #9f9f9f;
+      }
+    }
+
+  }
+
   .dispatcher-form__shipping-area {
-    margin-top: 40px;
+
     display: flex;
     flex-direction: row;
 

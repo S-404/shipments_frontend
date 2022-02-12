@@ -4,14 +4,45 @@
 
 .dispatcher-form {
   position: relative;
+  margin-top: 40px;
 }
 .dispatcher-form .dispatcher-form__loader-div {
   margin-top: 10px;
   position: fixed;
   right: 20px;
+  top: 10px;
+}
+.dispatcher-form .dispatcher-form__find-order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: var(--border-radius-val);
+  margin: 5px;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__input {
+  max-width: 150px;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places {
+  display: flex;
+  flex-direction: row;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places .find-order__place {
+  margin: 0 15px;
+  padding: 5px;
+  background-color: #c5c5c5;
+  border: 1px solid #c5c5c5;
+  border-radius: var(--border-radius-val);
+  cursor: pointer;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places .find-order__place:hover {
+  border-color: black;
+}
+.dispatcher-form .dispatcher-form__find-order .find-order__places .find-order__place:active {
+  background-color: #9f9f9f;
 }
 .dispatcher-form .dispatcher-form__shipping-area {
-  margin-top: 40px;
   display: flex;
   flex-direction: row;
 }
