@@ -7,7 +7,7 @@ const OrderStatusIcon = ({orderline}) => {
     const defineStatus = (order) => {
         if(order.IS_INPLACE) return 'in-place'
         switch (order.STATUS) {
-            case 0:
+            case 0 || null:
                 return 'not-started';
             case 2:
                 return 'completed';
@@ -19,7 +19,7 @@ const OrderStatusIcon = ({orderline}) => {
     const setStatusImg = (order) => {
         if(order.IS_INPLACE) return checked;
         switch (order.STATUS) {
-            case 0:
+            case 0 || null:
                 return notStarted;
             case 2:
                 return checked;

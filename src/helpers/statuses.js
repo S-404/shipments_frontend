@@ -1,12 +1,4 @@
-
-export const  orderListOfPlace = (place, shippingArea) => {
-    return Object.assign(
-        shippingArea.filter(place_ =>
-            place_.PLACE_ID === place.ID &&
-            place_.ORDER_NUM !== null
-        )
-    )
-}
+import {orderListOfPlace} from "./orders";
 
 export const isOrdersPickingInProcess = (orderList) => {
     let orderLines = orderList.length
@@ -30,7 +22,6 @@ export const isOrdersNotStarted = (orderList) => {
 export const truckStatusString = (place, shippingArea) => {
 
     let thisPlaceOrders = orderListOfPlace(place, shippingArea)
-
 
 
     switch (place.IS_LOADING) {

@@ -1,9 +1,10 @@
-import React from 'react';
-import OrderLine from "./OrderLine";
+import React, {useMemo} from 'react';
+import {orderListOfPlace,} from "../../../helpers/orders";
+import OrdersCounters from "./OrdersCounters";
 
 const GatePlace = ({place, shippingArea, ...props}) => {
 
-    const loadingTimeModification = () => {
+    const loadingTimeModification = useMemo (() => {
         let result = ''
         if (place.LOADING_TIME_HH) {
             let orderLines = shippingArea.filter(place_ => place_.PLACE_ID === place.ID && place_.ORDER_NUM !== null).length
@@ -27,7 +28,7 @@ const GatePlace = ({place, shippingArea, ...props}) => {
             }
         }
         return result
-    }
+    },[place,shippingArea])
 
 
     const loadingStatus = (status) => {
@@ -52,6 +53,10 @@ const GatePlace = ({place, shippingArea, ...props}) => {
         }
     }
 
+    const ordersList = useMemo(() => {
+        return orderListOfPlace(place, shippingArea)
+    },[place, shippingArea])
+
     return (
         <div className={`places__place ${placeModification(place.IS_LOADING)}`} {...props}>
             <div className='place__header'>
@@ -62,7 +67,7 @@ const GatePlace = ({place, shippingArea, ...props}) => {
                     <span className='indicators__loading-status'>{loadingStatus(place.IS_LOADING)}</span>
                     {place.IS_LOADING !== 2 ?
                         <span
-                            className={`indicators__loading-time ${loadingTimeModification()}`}>
+                            className={`indicators__loading-time ${loadingTimeModification}`}>
                          {place.LOADING_TIME_HH ? `${place.LOADING_TIME_HH}:${place.LOADING_TIME_MM}` : null}
                     </span>
                         : null}
@@ -76,25 +81,12 @@ const GatePlace = ({place, shippingArea, ...props}) => {
                 </div>
             </div>
             <div className='place__orders'>
-                {shippingArea
-                    .filter((order) => order.PLACE_ID === place.ID)
-                    .map((orderline, index, arr) => (
-                        index < 3 ?
-                            <OrderLine
-                                key={`orderline_${orderline.ORDER_ID}`}
-                                orderline={orderline}
-                                shippingArea={shippingArea}
-                            />
-                            :
-                            index === 3 ?
-                                <div
-                                    key={`orders-counter_${place.ID}`}
-                                    className={'orders__orders-counter-div'}
-                                >
-                                <span className='orders-counter-div__counter'>{arr.length} orders</span>
-                                </div>
-                                : null
-                    ))}
+                {ordersList.length ?
+                    <OrdersCounters
+                        shippingArea={shippingArea}
+                        ordersList={ordersList}
+                    /> : null
+                }
             </div>
         </div>
     );
