@@ -43,10 +43,10 @@ export default class OrdersService {
         )
     }
 
-    static async getOrder(param){
+    static async getOrderLocation(param, criteria){
         return await Fetching.queryData(
             param,
-            'api/orders/order',
+            `api/orders/location/${criteria}`,
             'GET'
         )
     }

@@ -1,26 +1,26 @@
-.admin-page-container {
+.page-container {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
 }
-.admin-page-container .admin-page-container__header {
+.page-container .page-container__header {
   background-color: #e0e0e0;
   padding: 10px;
   border-radius: var(--border-radius-val);
 }
-.admin-page-container .admin-page-container__links {
+.page-container .page-container__links {
   margin-top: 50px;
   background-color: #b9b9b9;
   padding: 30px;
   border-radius: var(--border-radius-val);
 }
-.admin-page-container .admin-page-container__links .links__link-div {
+.page-container .page-container__links .links__link-div {
   background-color: #fff;
   margin: 20px;
   padding: 20px;
   border-radius: var(--border-radius-val);
 }
 
-/*# sourceMappingURL=adminPage.css.map */
+/*# sourceMappingURL=navPage.css.map */
