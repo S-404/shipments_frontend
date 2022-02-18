@@ -27,12 +27,12 @@ const FindPlace = ({maxLength, criteria}) => {
         }
     });
 
-    const [uncheckIsInPlace] = useFetching(async ()=>{
+    const [uncheckIsInPlace] = useFetching(async () => {
         const responseData = await OrdersService.updOrderStatus({
             ORDER_NUM: searchedNum,
             IS_INPLACE: 0
         })
-        if(responseData[0]?.ORDER_NUM){
+        if (responseData[0]?.ORDER_NUM) {
             setLocations(defaultLocations);
             setSearchedNum('')
         }
@@ -66,14 +66,19 @@ const FindPlace = ({maxLength, criteria}) => {
                     <div className='locations__order-num'>
                         {locations.length ?
                             `${criteria}: ${locations[0].ORDER_NUM}` :
-                            `${criteria} ${searchedNum} is not found`
+                            <div>
+                                <p>{criteria}</p>
+                                <p>{searchedNum}</p>
+                                <p>is not found</p>
+                            </div>
+
                         }
                     </div>
                     <div className='locations__list'>
                         {locations.map((location, index) => (
                             <div className='list__location'
                                  key={index + location}>
-                                {`GATE: ${location.GATE} - ${location.PLACE}`}
+                                {`GATE: ${location.GATE} - ${location.PLACE} - ${location.POSITION ? location.POSITION : 0}`}
                             </div>
                         ))}
                     </div>
