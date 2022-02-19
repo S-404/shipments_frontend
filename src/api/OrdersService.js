@@ -10,6 +10,14 @@ export default class OrdersService {
         )
     }
 
+    static async deferOrder(param){
+        return await Fetching.queryData(
+            param,
+            'api/orders/defer',
+            'POST'
+        )
+    }
+
     static async removeOrder(param){
         return await Fetching.queryData(
             param,
@@ -39,6 +47,14 @@ export default class OrdersService {
         return await Fetching.queryData(
             {},
             'api/orders/list',
+            'GET'
+        )
+    }
+
+    static async getDeferredOrderList(){
+        return await Fetching.queryData(
+            {},
+            'api/orders/defer',
             'GET'
         )
     }
@@ -74,5 +90,7 @@ export default class OrdersService {
             'PUT'
         )
     }
+
+
 
 }

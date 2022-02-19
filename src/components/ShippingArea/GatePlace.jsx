@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {orderListOfPlace,} from "../../../helpers/orders";
+import {orderListOfPlace,} from "../../helpers/orders";
 import OrdersCounters from "./OrdersCounters";
 
 const GatePlace = ({place, shippingArea, ...props}) => {

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import MySelect from "../../../components/UI/select/mySelect";
+import MySelect from "../../UI/select/mySelect";
 import {pad} from "../../../helpers/formats";
 import {useSelector} from "react-redux";
 

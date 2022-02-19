@@ -4,8 +4,11 @@ import "./gatePlaceForm.scss"
 import OrderListInputs from "./OrderListInputs";
 import TruckLoadingInputs from "./TruckLoadingInputs";
 import {useFilteredSortedShippingArea} from "../../../hooks/useShippingArea";
-import MySmallButton from "../../../components/UI/button/mySmallButton";
+import MySmallButton from "../../UI/button/mySmallButton";
 import LoadingTimePicker from "./LoadingTimePicker";
+import {useFetching} from "../../../hooks/useFetching";
+import OrdersService from "../../../api/OrdersService";
+import {useSelector} from "react-redux";
 
 
 const GatePlaceForm = ({
@@ -19,9 +22,12 @@ const GatePlaceForm = ({
                            updateLoadingTime_HHMM,
                            updateOrderLoadingStatus,
                            increaseOrderPosition,
-                           decreaseOrderPosition
+                           decreaseOrderPosition,
+                           setShippingArea
                        }) => {
 
+    const user = useSelector(state => state.user)
+    const access = useSelector(state => state.access)
     const filteredShippingArea = useFilteredSortedShippingArea(shippingArea, selectedPlace)
     const [leftToLoad, setLeftToLoad] = useState(0)
 
@@ -34,6 +40,28 @@ const GatePlaceForm = ({
                 ).length)
         }
     }, [shippingArea, selectedPlace])
+
+    const [deferOrder, deferOrderLoading] = useFetching(
+        async (orderline) => {
+            if (!access?.dispatcher?.trucksLoad) {
+                alert(`you don't have permission access`)
+                return
+            }
+            const responseData = await OrdersService.deferOrder({
+                ID: orderline.ORDER_ID,
+                USER_ID: user.userid,
+            });
+            let orderNum = responseData[0].ORDER_NUM
+            if (orderNum) {
+                setShippingArea([...shippingArea
+                    .filter((order) =>
+                        order.ORDER_ID !== orderline.ORDER_ID &&
+                        order.PLACE_ID === selectedPlace.PLACE_ID
+                    )
+                ]);
+            }
+        }
+    )
 
     return (
         <div className='gate-place-form'>
@@ -86,6 +114,8 @@ const GatePlaceForm = ({
                             updateOrderLoadingStatus={updateOrderLoadingStatus}
                             increaseOrderPosition={increaseOrderPosition}
                             decreaseOrderPosition={decreaseOrderPosition}
+                            deferOrder={deferOrder}
+                            deferOrderLoading={deferOrderLoading}
                         />
                     ))}
                 </div>

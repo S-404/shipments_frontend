@@ -1,10 +1,11 @@
 import React from 'react';
-import MySmallButton from "../../../../components/UI/button/mySmallButton";
+import MySmallButton from "../../../UI/button/mySmallButton";
 import OrderStatusIcon from "./OrderStatusIcon";
 import OrderNum from "./OrderNum";
 import OrderWeight from "./OrderWeight";
 import OrderLoadedStatus from "./OrderLoadedStatus";
 import OrderPosition from "./OrderPostition";
+import DeferOrderButton from "./DeferOrderButton";
 
 
 const DynamicOrderLine = ({
@@ -15,6 +16,8 @@ const DynamicOrderLine = ({
                               updateOrderLoadingStatus,
                               increaseOrderPosition,
                               decreaseOrderPosition,
+                              deferOrder,
+                              deferOrderLoading,
                           }) => {
     function changeStatus(e) {
         if (selectedPlace.IS_LOADING === 1) {
@@ -26,6 +29,7 @@ const DynamicOrderLine = ({
         <div>
             {selectedPlace.IS_LOADING ?
                 <div className="dynamic-order-line">
+                    <DeferOrderButton deferOrderLoading={deferOrderLoading} orderline={orderline} deferOrder={deferOrder}/>
                     <OrderNum orderline={orderline} shippingArea={shippingArea}/>
                     <OrderWeight orderline={orderline}/>
                     <OrderLoadedStatus orderline={orderline} changeStatus={changeStatus}/>

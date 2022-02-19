@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import ToggleSwitch from "../../../components/UI/checkbox/toggleSwitch";
-import MyInput from "../../../components/UI/input/myInput/myInput";
+import ToggleSwitch from "../../UI/checkbox/toggleSwitch";
+import MyInput from "../../UI/input/myInput/myInput";
 
 const OrderListInputs = ({selectedPlace, addOrder}) => {
     const OrderLength = 9;

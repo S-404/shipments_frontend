@@ -7,12 +7,45 @@
   background-color: white;
   border-radius: var(--border-radius-val);
   transition: background-color ease-in 1s;
+  position: relative;
+}
+.dynamic-order-line .change-position__up, .dynamic-order-line .change-position__down {
+  visibility: hidden;
 }
 .dynamic-order-line:hover {
   background-color: #eaeaea;
   transition: background-color ease-in 0.5s;
 }
 .dynamic-order-line:hover .change-position__up, .dynamic-order-line:hover .change-position__down {
+  visibility: visible;
+}
+.dynamic-order-line:hover .dynamic-order-line__defer-button {
+  visibility: visible;
+}
+.dynamic-order-line .dynamic-order-line__defer-button {
+  cursor: pointer;
+  top: 0.3em;
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+}
+.dynamic-order-line .dynamic-order-line__defer-button .defer-button__icon {
+  filter: invert(22%) sepia(99%) saturate(5643%) hue-rotate(358deg) brightness(89%) contrast(126%);
+  height: 1em;
+}
+.dynamic-order-line .dynamic-order-line__defer-button .defer-button__text {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(51, 51, 51, 0.95);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin: -5px 0px 0 5px;
+  position: absolute;
+  z-index: 1;
+}
+.dynamic-order-line .dynamic-order-line__defer-button:hover .defer-button__text {
   visibility: visible;
 }
 .dynamic-order-line .dynamic-order-line__position {
