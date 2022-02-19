@@ -1,7 +1,7 @@
 import React from 'react';
-import notStarted from "../../../assets/warning.svg";
-import checked from "../../../assets/checked.svg";
-import inProcess from "../../../assets/timer.svg";
+import notStarted from "../../../../assets/warning.svg";
+import checked from "../../../../assets/checked.svg";
+import inProcess from "../../../../assets/timer.svg";
 
 const OrderStatusIcon = ({orderline}) => {
     const defineStatus = (order) => {

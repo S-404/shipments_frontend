@@ -67,5 +67,12 @@ export default class OrdersService {
         )
     }
 
+    static async updOrderPosition(param){
+        return await Fetching.queryData(
+            param,
+            'api/orders/order/position',
+            'PUT'
+        )
+    }
 
 }

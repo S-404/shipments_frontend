@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import DynamicOrderLine from "./DynamicOrderLine";
+import DynamicOrderLine from "./orderLine/DynamicOrderLine";
 import "./gatePlaceForm.scss"
 import OrderListInputs from "./OrderListInputs";
 import TruckLoadingInputs from "./TruckLoadingInputs";
-import {useFilteredShippingArea} from "../../../hooks/useShippingArea";
+import {useFilteredSortedShippingArea} from "../../../hooks/useShippingArea";
 import MySmallButton from "../../../components/UI/button/mySmallButton";
 import LoadingTimePicker from "./LoadingTimePicker";
 
@@ -17,10 +17,12 @@ const GatePlaceForm = ({
                            updatePlaceStatus,
                            updateTruck,
                            updateLoadingTime_HHMM,
-                           updateOrderLoadingStatus
+                           updateOrderLoadingStatus,
+                           increaseOrderPosition,
+                           decreaseOrderPosition
                        }) => {
 
-    const filteredShippingArea = useFilteredShippingArea(shippingArea, selectedPlace)
+    const filteredShippingArea = useFilteredSortedShippingArea(shippingArea, selectedPlace)
     const [leftToLoad, setLeftToLoad] = useState(0)
 
     useEffect(() => {
@@ -66,7 +68,10 @@ const GatePlaceForm = ({
                         </div>
                     </div>
                     :
-                    <OrderListInputs selectedPlace={selectedPlace} addOrder={addOrder}/>
+                    <OrderListInputs
+                        selectedPlace={selectedPlace}
+                        addOrder={addOrder}
+                    />
 
                 }
 
@@ -79,6 +84,8 @@ const GatePlaceForm = ({
                             selectedPlace={selectedPlace}
                             shippingArea={shippingArea}
                             updateOrderLoadingStatus={updateOrderLoadingStatus}
+                            increaseOrderPosition={increaseOrderPosition}
+                            decreaseOrderPosition={decreaseOrderPosition}
                         />
                     ))}
                 </div>

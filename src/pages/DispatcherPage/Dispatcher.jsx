@@ -224,6 +224,58 @@ const Dispatcher = () => {
         }
     }
 
+    const [changeOrderPosition,] = useFetching(async (orderline, increase) => {
+
+            let currPositionOrder = orderline.ORDER_ID;
+            let prevPosition = orderline.POSITION||0;
+            let nextPosition = orderline.POSITION + increase;
+
+            let currentPlace = Object.assign(
+                shippingArea.filter(order =>
+                    order.GATE_ID === orderline.GATE_ID &&
+                    order.PLACE_ID === orderline.PLACE_ID));
+
+            let nextPositionOrder = currentPlace
+                .filter(order => order.POSITION === nextPosition)[0]?.ORDER_ID;
+
+
+            const responseDataNext = await OrdersService.updOrderPosition({
+                ID: currPositionOrder,
+                POSITION: nextPosition
+            });
+
+            let tmpArr = Object.assign(shippingArea);
+
+            if (responseDataNext[0]?.ID && tmpArr.length > 0) {
+                let updRowIndex = tmpArr
+                    .findIndex((order) => order.ORDER_ID === orderline.ORDER_ID);
+                tmpArr[updRowIndex].POSITION = orderline.POSITION + increase;
+            }
+
+            if(nextPositionOrder){
+                const responseDataPrev = await OrdersService.updOrderPosition({
+                    ID: nextPositionOrder,
+                    POSITION: prevPosition
+                })
+                if (responseDataPrev[0]?.ID && tmpArr.length > 0) {
+                    let nextRowIndex = tmpArr
+                        .findIndex((order) => order.ORDER_ID === nextPositionOrder);
+                    tmpArr[nextRowIndex].POSITION = tmpArr[nextRowIndex].POSITION - increase;
+                }
+            }
+
+            setShippingArea([...tmpArr]);
+        })
+
+
+    const increaseOrderPosition = async (orderline) => {
+        await changeOrderPosition(orderline, 1)
+    }
+
+    const decreaseOrderPosition = async (orderline) => {
+        await changeOrderPosition(orderline, -1)
+    }
+
     if (!access?.dispatcher?.read) return (<span>You don't have permission to access</span>)
     return (
         <div className='dispatcher-form'>
@@ -249,6 +301,8 @@ const Dispatcher = () => {
                         updateTruck={updateTruck}
                         updateLoadingTime_HHMM={updateLoadingTime_HHMM}
                         updateOrderLoadingStatus={updateOrderLoadingStatus}
+                        increaseOrderPosition={increaseOrderPosition}
+                        decreaseOrderPosition={decreaseOrderPosition}
                     />
                 </MyModal>
                 <MyModal visible={historyModal} setVisible={setHistoryModal}>
