@@ -11,7 +11,7 @@ import {useSelector} from "react-redux";
 import GateHistoryForm from "../../components/History/GateHistoryForm";
 import Trucks from "../../components/Trucks/Trucks";
 import ShipmentAreaService from "../../api/ShipmentAreaService";
-import FindOrder from "../../components/FindOrder/FindOrder";
+import ShippingAreaNavPanel from "../../components/ShippingArea/NavPanel/ShippingAreaNavPanel";
 
 const Dispatcher = () => {
     const user = useSelector(state => state.user)
@@ -109,6 +109,8 @@ const Dispatcher = () => {
             setShippingArea([...shippingArea, ...newObj]);
         }
     }
+
+
 
     const removeOrder = async (orderID) => {
         if (!access?.dispatcher?.ordersListManage) {
@@ -282,18 +284,17 @@ const Dispatcher = () => {
 
             {isShippingAreaLoading || isGatesPlacesLoading ?
                 <div className='dispatcher-form__loader-div'><MyLoader/></div> : null}
-
-            <FindOrder
+            <ShippingAreaNavPanel
                 shippingArea={shippingArea}
                 setPlaceModal={setPlaceModal}
                 setSelectedPlace={setSelectedPlace}
             />
-
             <div className='dispatcher-form__shipping-area'>
                 <MyModal visible={placeModal} setVisible={setPlaceModal}>
                     <GatePlaceForm
                         selectedPlace={selectedPlace}
                         shippingArea={shippingArea}
+                        setShippingArea={setShippingArea}
                         removeOrder={removeOrder}
                         removeOrders={removeOrders}
                         addOrder={addOrder}

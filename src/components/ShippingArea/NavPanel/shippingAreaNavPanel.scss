@@ -1,0 +1,79 @@
+.dispatcher-form__dispatcher-nav-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 15px;
+  border-radius: var(--border-radius-val);
+  margin: 5px;
+
+  .dispatcher-nav-panel__find-order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .find-order__input {
+      max-width: 150px;
+    }
+
+    .find-order__places {
+      display: flex;
+      flex-direction: row;
+
+      .find-order__place {
+        margin: 0 15px;
+        padding: 5px;
+        background-color: #c5c5c5;
+        border: 1px solid #c5c5c5;
+        border-radius: var(--border-radius-val);
+        cursor: pointer;
+      }
+
+      .find-order__place:hover {
+        border-color: black;
+      }
+
+      .find-order__place:active {
+        background-color: #9f9f9f;
+      }
+    }
+
+  }
+
+  .dispatcher-nav-panel__deferred-orders{
+    .deferred-orders__order-list-form{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: space-between;
+      min-height: 200px;
+      .order-list-form__header{
+
+      }
+      .order-list-form__orders{
+        .orders__order{
+
+        }
+      }
+      .order-list-form__counter{
+
+      }
+    }
+    .deferred-orders__deferred-counter{
+      padding: 15px;
+      background-color: #c9c9c9;
+      color: #464646;
+      border-radius: var(--border-radius-val);
+      cursor: pointer;
+      &:hover{
+        background-color: #e1e1e1;
+      }
+      &:active{
+        background-color: #9b9b9b;
+      }
+    }
+
+  }
+}
+

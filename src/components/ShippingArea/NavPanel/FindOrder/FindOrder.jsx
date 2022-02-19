@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import MyInput from "../UI/input/myInput/myInput";
+import MyInput from "../../../UI/input/myInput/myInput";
 
 const FindOrder = ({shippingArea, setPlaceModal, setSelectedPlace}) => {
 
@@ -36,7 +36,7 @@ const FindOrder = ({shippingArea, setPlaceModal, setSelectedPlace}) => {
     }
 
     return (
-        <div className='dispatcher-form__find-order'>
+        <div className='dispatcher-nav-panel__find-order'>
             <div className='find-order__input'>
                 <MyInput
                     value={orderNum}
