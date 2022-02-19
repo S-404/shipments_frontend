@@ -9,6 +9,9 @@
   transition: background-color ease-in 1s;
   position: relative;
 }
+.dynamic-order-line .change-position__up, .dynamic-order-line .change-position__down {
+  visibility: hidden;
+}
 .dynamic-order-line:hover {
   background-color: #eaeaea;
   transition: background-color ease-in 0.5s;

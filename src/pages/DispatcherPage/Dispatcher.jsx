@@ -111,7 +111,6 @@ const Dispatcher = () => {
     }
 
 
-
     const removeOrder = async (orderID) => {
         if (!access?.dispatcher?.ordersListManage) {
             alert(`you don't have permission access`)
@@ -228,46 +227,46 @@ const Dispatcher = () => {
 
     const [changeOrderPosition,] = useFetching(async (orderline, increase) => {
 
-            let currPositionOrder = orderline.ORDER_ID;
-            let prevPosition = orderline.POSITION||0;
-            let nextPosition = orderline.POSITION + increase;
+        let currPositionOrder = orderline.ORDER_ID;
+        let prevPosition = Math.max(orderline.POSITION || 0, 1);
+        let nextPosition = Math.max(prevPosition + increase, 1);
+        console.log(prevPosition, increase, nextPosition)
+        let currentPlace = Object.assign(
+            shippingArea.filter(order =>
+                order.GATE_ID === orderline.GATE_ID &&
+                order.PLACE_ID === orderline.PLACE_ID));
 
-            let currentPlace = Object.assign(
-                shippingArea.filter(order =>
-                    order.GATE_ID === orderline.GATE_ID &&
-                    order.PLACE_ID === orderline.PLACE_ID));
-
-            let nextPositionOrder = currentPlace
-                .filter(order => order.POSITION === nextPosition)[0]?.ORDER_ID;
+        let nextPositionOrder = currentPlace
+            .filter(order => order.POSITION === nextPosition)[0]?.ORDER_ID;
 
 
-            const responseDataNext = await OrdersService.updOrderPosition({
-                ID: currPositionOrder,
-                POSITION: nextPosition
-            });
+        const responseDataNext = await OrdersService.updOrderPosition({
+            ID: currPositionOrder,
+            POSITION: nextPosition
+        });
 
-            let tmpArr = Object.assign(shippingArea);
+        let tmpArr = Object.assign(shippingArea);
 
-            if (responseDataNext[0]?.ID && tmpArr.length > 0) {
-                let updRowIndex = tmpArr
-                    .findIndex((order) => order.ORDER_ID === orderline.ORDER_ID);
-                tmpArr[updRowIndex].POSITION = orderline.POSITION + increase;
+        if (responseDataNext[0]?.ID && tmpArr.length > 0) {
+            let updRowIndex = tmpArr
+                .findIndex((order) => order.ORDER_ID === orderline.ORDER_ID);
+            tmpArr[updRowIndex].POSITION = responseDataNext[0]?.POSITION;
+        }
+
+        if (nextPositionOrder) {
+            const responseDataPrev = await OrdersService.updOrderPosition({
+                ID: nextPositionOrder,
+                POSITION: prevPosition
+            })
+            if (responseDataPrev[0]?.ID && tmpArr.length > 0) {
+                let nextRowIndex = tmpArr
+                    .findIndex((order) => order.ORDER_ID === nextPositionOrder);
+                tmpArr[nextRowIndex].POSITION = responseDataPrev[0]?.POSITION;
             }
+        }
 
-            if(nextPositionOrder){
-                const responseDataPrev = await OrdersService.updOrderPosition({
-                    ID: nextPositionOrder,
-                    POSITION: prevPosition
-                })
-                if (responseDataPrev[0]?.ID && tmpArr.length > 0) {
-                    let nextRowIndex = tmpArr
-                        .findIndex((order) => order.ORDER_ID === nextPositionOrder);
-                    tmpArr[nextRowIndex].POSITION = tmpArr[nextRowIndex].POSITION - increase;
-                }
-            }
-
-            setShippingArea([...tmpArr]);
-        })
+        setShippingArea([...tmpArr]);
+    })
 
 
     const increaseOrderPosition = async (orderline) => {

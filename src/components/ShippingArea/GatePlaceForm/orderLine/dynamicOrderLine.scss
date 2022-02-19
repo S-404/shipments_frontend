@@ -10,7 +10,7 @@
   position: relative;
 
   .change-position__up, .change-position__down {
-    //visibility:hidden;
+    visibility:hidden;
   }
 
   &:hover {
@@ -19,12 +19,16 @@
 
     .change-position__up, .change-position__down {
       visibility: visible;
+
+
     }
 
     .dynamic-order-line__defer-button {
       visibility: visible;
     }
   }
+
+
 
 
   .dynamic-order-line__defer-button {
