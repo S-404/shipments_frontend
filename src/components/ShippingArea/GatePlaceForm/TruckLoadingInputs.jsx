@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TruckAssign from "./TruckAssign";
-import MySmallButton from "../../../components/UI/button/mySmallButton";
+import MySmallButton from "../../UI/button/mySmallButton";
 import {isOrdersInPlace} from "../../../helpers/statuses";
 
 

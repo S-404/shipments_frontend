@@ -1,6 +1,6 @@
 import React from 'react';
 import GatePlace from "./GatePlace";
-import history_svg from "../../../assets/history_icon.svg"
+import history_svg from "../../assets/history_icon.svg"
 
 const Gate = ({
                   gate,

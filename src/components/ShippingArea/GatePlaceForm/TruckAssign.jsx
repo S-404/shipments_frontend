@@ -1,7 +1,7 @@
 import React from 'react';
-import MyInput from "../../../components/UI/input/myInput/myInput";
+import MyInput from "../../UI/input/myInput/myInput";
 import {isValidInput} from "../../../helpers/validation";
-import MySmallButton from "../../../components/UI/button/mySmallButton";
+import MySmallButton from "../../UI/button/mySmallButton";
 
 const TruckAssign = ({truck,setTruck,assignTruck}) => {
     function putTruckNum(value){

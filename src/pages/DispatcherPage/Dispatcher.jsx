@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useFetching} from "../../hooks/useFetching";
 import OrdersService from "../../api/OrdersService";
 import MyModal from "../../components/UI/modal/myModal";
-import GatePlaceForm from "./GatePlaceForm/GatePlaceForm";
-import Gates from "./ShippingArea/Gates";
+import GatePlaceForm from "../../components/ShippingArea/GatePlaceForm/GatePlaceForm";
+import Gates from "../../components/ShippingArea/Gates";
 import "./dispatcherPage.scss"
 import MyLoader from "../../components/UI/loader/myLoader/myLoader";
 import {useInterval} from "../../hooks/useInterval";
@@ -11,7 +11,7 @@ import {useSelector} from "react-redux";
 import GateHistoryForm from "../../components/History/GateHistoryForm";
 import Trucks from "../../components/Trucks/Trucks";
 import ShipmentAreaService from "../../api/ShipmentAreaService";
-import FindOrder from "../../components/findOrder/findOrder";
+import FindOrder from "../../components/FindOrder/FindOrder";
 
 const Dispatcher = () => {
     const user = useSelector(state => state.user)

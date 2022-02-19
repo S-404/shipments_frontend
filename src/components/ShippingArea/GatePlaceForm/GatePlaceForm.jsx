@@ -4,7 +4,7 @@ import "./gatePlaceForm.scss"
 import OrderListInputs from "./OrderListInputs";
 import TruckLoadingInputs from "./TruckLoadingInputs";
 import {useFilteredSortedShippingArea} from "../../../hooks/useShippingArea";
-import MySmallButton from "../../../components/UI/button/mySmallButton";
+import MySmallButton from "../../UI/button/mySmallButton";
 import LoadingTimePicker from "./LoadingTimePicker";
 
 

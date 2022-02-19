@@ -1,5 +1,5 @@
 import React from 'react';
-import MySmallButton from "../../../../components/UI/button/mySmallButton";
+import MySmallButton from "../../../UI/button/mySmallButton";
 import OrderStatusIcon from "./OrderStatusIcon";
 import OrderNum from "./OrderNum";
 import OrderWeight from "./OrderWeight";

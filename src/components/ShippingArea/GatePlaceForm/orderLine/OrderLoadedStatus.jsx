@@ -1,5 +1,5 @@
 import React from 'react';
-import MyCheckBox from "../../../../components/UI/checkbox/myCheckBox";
+import MyCheckBox from "../../../UI/checkbox/myCheckBox";
 
 const OrderLoadedStatus = ({orderline,changeStatus}) => {
     return (

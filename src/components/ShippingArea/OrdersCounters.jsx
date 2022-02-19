@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import OrdersCounter from "./OrdersCounter";
-import {inPlaceOrders, notStartedOrders, placeHasDuplicatedOrder} from "../../../helpers/orders";
+import {inPlaceOrders, notStartedOrders, placeHasDuplicatedOrder} from "../../helpers/orders";
 
 const OrdersCounters = ({ordersList,shippingArea}) => {
 
