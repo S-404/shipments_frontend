@@ -126,7 +126,9 @@
 
   .dynamic-order-line__weight {
     display: flex;
+    font-size: smaller;
     justify-content: center;
+    align-items: center;
   }
 
   .dynamic-order-line__loaded-status {
