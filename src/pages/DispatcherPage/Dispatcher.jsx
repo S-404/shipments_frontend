@@ -287,6 +287,7 @@ const Dispatcher = () => {
                 shippingArea={shippingArea}
                 setPlaceModal={setPlaceModal}
                 setSelectedPlace={setSelectedPlace}
+                gatesPlaces={gatesPlaces}
             />
             <div className='dispatcher-form__shipping-area'>
                 <MyModal visible={placeModal} setVisible={setPlaceModal}>
