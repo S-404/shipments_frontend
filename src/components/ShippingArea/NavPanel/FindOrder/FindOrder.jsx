@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import MyInput from "../../../UI/input/myInput/myInput";
 
-const FindOrder = ({shippingArea, setPlaceModal, setSelectedPlace}) => {
+const FindOrder = ({shippingArea, setPlaceModal, setSelectedPlace, gatesPlaces}) => {
 
     const [orderNum, setOrderNum] = useState('')
     const [places, setPlaces] = useState([])
@@ -20,17 +20,18 @@ const FindOrder = ({shippingArea, setPlaceModal, setSelectedPlace}) => {
     }, [orderNum, shippingArea])
 
 
+    function selectPlace(place) {
 
-    function selectPlace(place){
-        console.log(place)
+        const selectedPlace = gatesPlaces.filter(gatePlace => gatePlace.ID === place.PLACE_ID)
+
         setSelectedPlace({
-            PLACE_ID: place.ID,
+            PLACE_ID: place.PLACE_ID,
             GATE: place.GATE,
             PLACE: place.PLACE,
-            IS_LOADING: place.IS_LOADING,
-            TRUCK: place.TRUCK,
-            LOADING_TIME_HH: place.LOADING_TIME_HH,
-            LOADING_TIME_MM: place.LOADING_TIME_MM,
+            IS_LOADING: selectedPlace[0].IS_LOADING,
+            TRUCK: selectedPlace[0].TRUCK,
+            LOADING_TIME_HH: selectedPlace[0].LOADING_TIME_HH,
+            LOADING_TIME_MM: selectedPlace[0].LOADING_TIME_MM,
         });
         setPlaceModal(true);
     }
@@ -52,7 +53,7 @@ const FindOrder = ({shippingArea, setPlaceModal, setSelectedPlace}) => {
                     <div
                         key={`find-order_place${place.PLACE_ID}`}
                         className='find-order__place'
-                        onClick={()=>selectPlace(place)}
+                        onClick={() => selectPlace(place)}
                     >
                         GATE {place.GATE} - {place.PLACE}
                     </div>

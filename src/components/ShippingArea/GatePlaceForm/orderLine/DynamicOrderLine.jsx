@@ -43,6 +43,7 @@ const DynamicOrderLine = ({
                     />
                     <OrderStatusIcon orderline={orderline}/>
                     <OrderNum orderline={orderline} shippingArea={shippingArea}/>
+                    <OrderWeight orderline={orderline}/>
                     <div className='dynamic-order-line__button'>
                         <MySmallButton text='remove' onClick={() => removeOrder(orderline.ORDER_ID)}/>
                     </div>
