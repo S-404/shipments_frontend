@@ -16,6 +16,16 @@
   display: flex;
   justify-content: center;
 }
+.picker-form .picker-form__input-div {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.picker-form .picker-form__input-div .input-div__clear {
+  position: absolute;
+  right: 1em;
+}
 .picker-form .picker-form__locations {
   background-color: #ababab;
   padding: 5px;

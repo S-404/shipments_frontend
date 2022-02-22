@@ -1,5 +1,5 @@
 
-:root{
+:root {
   --fontsize: 45px;
   --formwidth: 500px;
 }
@@ -8,15 +8,30 @@
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  //width: var(--formwidth);
 
-  .picker-form__barcode{
+
+  .picker-form__barcode {
     margin: auto;
     width: 60%;
   }
+
   .picker-form__loader-div {
     display: flex;
     justify-content: center;
+  }
+
+  .picker-form__input-div {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .input-div__input {
+
+    }
+    .input-div__clear{
+      position: absolute;
+      right: 1em;
+    }
   }
 
   .picker-form__locations {
@@ -24,11 +39,13 @@
     padding: 5px;
     border-radius: var(--border-radius-val);
     margin: 15px 0;
+
     .locations__order-num {
       font-size: var(--fontsize);
       margin: 15px 0;
       text-align: center;
     }
+
     .locations__list {
       .list__location {
         font-size: var(--fontsize);
@@ -40,25 +57,27 @@
       }
     }
   }
-  input{
+
+  input {
     font-size: var(--fontsize);
   }
 }
+
 @media (min-height: 900px) {
-  :root{
+  :root {
     --fontsize: 65px;
   }
 }
 
 @media (min-height: 1200px) {
-  :root{
+  :root {
     --fontsize: 85px;
     --formwidth: 800px;
   }
 }
 
 @media (min-height: 2000px) {
-  :root{
+  :root {
     --fontsize: 105px;
     --formwidth: 1000px;
   }
