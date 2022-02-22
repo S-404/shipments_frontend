@@ -25,10 +25,6 @@
 .about-page .about-page__working-method .working-method__header {
   margin: 10px 0;
 }
-.about-page .about-page__working-method .working-method__method-blocks {
-  overflow-y: scroll;
-  max-height: 600px;
-}
 .about-page .about-page__working-method .working-method__method-blocks .method-blocks__method-block {
   max-width: 600px;
   background-color: #fff;
