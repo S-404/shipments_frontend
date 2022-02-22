@@ -1,84 +1,103 @@
 
 :root {
-  --fontsize: 45px;
-  --formwidth: 500px;
+  --fontsize: 4vh;
+  --formwidth: 25vw;
+  --pickerBorderRadius: 2vh;
 }
 
-.picker-form {
+@mixin roundedDiv{
+  margin: .5vh;
+  border-radius: var(--pickerBorderRadius);
+  padding: 1vh;
+}
+
+.picker-page {
+
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  height: 100vh;
 
 
-  .picker-form__barcode {
-    margin: auto;
-    width: 60%;
-  }
-
-  .picker-form__loader-div {
+  .picker-page__find-place {
     display: flex;
-    justify-content: center;
-  }
-
-  .picker-form__input-div {
+    flex-direction: column;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    .input-div__input {
+    top: 5vh;
+    width: var(--formwidth) ;
+    justify-content: center;
+
+    .find-place__barcode {
 
     }
-    .input-div__clear{
-      position: absolute;
-      right: 1em;
+
+    .find-place__loader-div {
+
     }
-  }
 
-  .picker-form__locations {
-    background-color: #ababab;
-    padding: 5px;
-    border-radius: var(--border-radius-val);
-    margin: 15px 0;
+    .find-place__input-div {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
 
-    .locations__order-num {
       font-size: var(--fontsize);
-      margin: 15px 0;
-      text-align: center;
-    }
 
-    .locations__list {
-      .list__location {
-        font-size: var(--fontsize);
-        text-align: center;
-        margin: 15px 0;
-        border-radius: 5px;
-        padding: 15px;
-        background-color: #eaeaea;
+      .input-div__input {
+        width: 100%;
+
+        & input {
+          font-size: var(--fontsize);
+        }
+
+      }
+
+      .input-div__clear {
+        position: absolute;
+        right: .3em;
       }
     }
-  }
 
-  input {
-    font-size: var(--fontsize);
-  }
-}
+    .find-place__locations {
+      * {
+        font-size: var(--fontsize);
+      }
 
-@media (min-height: 900px) {
-  :root {
-    --fontsize: 65px;
-  }
-}
+      .locations__order-num {
+        @include roundedDiv();
+        background-color: #b0b0b0;
 
-@media (min-height: 1200px) {
-  :root {
-    --fontsize: 85px;
-    --formwidth: 800px;
-  }
-}
+        .order-num__order-line {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .order-line__criteria {
 
-@media (min-height: 2000px) {
-  :root {
-    --fontsize: 105px;
-    --formwidth: 1000px;
+          }
+
+          .order-line__num {
+
+          }
+        }
+      }
+
+      .locations__list {
+        @include roundedDiv();
+        background-color: #b0b0b0;
+        .list__location {
+          @include roundedDiv();
+          background-color: #f3f3f3;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .find-place__cancel-button {
+      @include roundedDiv();
+      font-size: calc(var(--fontsize) * .8 );
+    }
+
   }
 }

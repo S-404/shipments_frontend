@@ -7,6 +7,7 @@ import scanBarcode from "../../assets/scan_barcode.svg";
 import MyButton from "../../components/UI/button/myButton";
 import ClearButton from "../../components/UI/button/clearButton";
 import {useInterval} from "../../hooks/useInterval";
+import LocationsList from "./LocationsList";
 
 const FindPlace = ({maxLength, criteria, placeholder, minLength}) => {
 
@@ -53,9 +54,9 @@ const FindPlace = ({maxLength, criteria, placeholder, minLength}) => {
 
 
     return (
-        <div className='picker-form'>
-            <img className='picker-form__barcode' alt='scanBarcode' src={scanBarcode}/>
-            <div className='picker-form__input-div'>
+        <div className='picker-page__find-place'>
+            <img className='find-place__barcode' alt='scanBarcode' src={scanBarcode}/>
+            <div className='find-place__input-div'>
                 <div className='input-div__input'>
                     <MyInput
                         labeltext={inputNum.length ? `put ${maxLength}-digit ${criteria}` : null}
@@ -70,32 +71,19 @@ const FindPlace = ({maxLength, criteria, placeholder, minLength}) => {
                 </div>
             </div>
             {isLocationLoading ?
-                <div className='picker-form__loader-div'><MyLoader/></div>
+                <div className='find-place__loader-div'><MyLoader/></div>
                 :
-                <div className='picker-form__locations'>
-                    <div className='locations__order-num'>
-                        {locations.length ?
-                            `${criteria}: ${locations[0].ORDER_NUM}` :
-                            <div>
-                                <p>{criteria}</p>
-                                <p>{searchedNum}</p>
-                                <p>is not found</p>
-                            </div>
-
-                        }
-                    </div>
-                    <div className='locations__list'>
-                        {locations.map((location, index) => (
-                            <div className='list__location'
-                                 key={index + location}>
-                                {`GATE: ${location.GATE} - ${location.PLACE} - ${location.POSITION ? location.POSITION : 1}`}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <LocationsList
+                    locations={locations}
+                    searchedNum={searchedNum}
+                    criteria={criteria}
+                />
             }
             {locations.length && searchedNum && criteria === 'order' ?
-                <MyButton onClick={uncheckIsInPlace}>Cancel</MyButton>
+                <div className='find-place__cancel-button'>
+                    <MyButton onClick={uncheckIsInPlace}>Cancel</MyButton>
+                </div>
+
                 : null
             }
         </div>

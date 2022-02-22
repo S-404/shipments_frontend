@@ -9,7 +9,7 @@ const FindByOrder = () => {
     if (!access?.picker?.read) return (<span>You don't have permission to access</span>)
 
     return (
-        <div className='find-location'>
+        <div className='picker-page'>
             <FindPlace
                 criteria={findPlaceMode.criteria}
                 maxLength={findPlaceMode.maxLength}
@@ -17,6 +17,7 @@ const FindByOrder = () => {
                 placeholder={`put ${findPlaceMode.maxLength}-digit ${findPlaceMode.criteria}`}
             />
         </div>
+
     );
 };
 

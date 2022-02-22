@@ -52,6 +52,10 @@
   display: flex;
   flex-direction: row;
 }
+.dynamic-order-line .dynamic-order-line__position .position__number {
+  min-width: 1.5em;
+  text-align: center;
+}
 .dynamic-order-line .dynamic-order-line__position .position__change-position {
   display: flex;
   flex-direction: column;
