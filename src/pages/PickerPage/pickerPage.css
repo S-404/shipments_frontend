@@ -1,6 +1,6 @@
 :root {
   --fontsize: 4vh;
-  --formwidth: 25vw;
+  --formwidth: 40vw;
   --pickerBorderRadius: 2vh;
 }
 
@@ -16,6 +16,10 @@
   top: 5vh;
   width: var(--formwidth);
   justify-content: center;
+  align-items: center;
+}
+.picker-page .picker-page__find-place .find-place__barcode {
+  width: 50%;
 }
 .picker-page .picker-page__find-place .find-place__input-div {
   position: relative;
@@ -24,9 +28,6 @@
   align-items: center;
   justify-content: center;
   font-size: var(--fontsize);
-}
-.picker-page .picker-page__find-place .find-place__input-div .input-div__input {
-  width: 100%;
 }
 .picker-page .picker-page__find-place .find-place__input-div .input-div__input input {
   font-size: var(--fontsize);
