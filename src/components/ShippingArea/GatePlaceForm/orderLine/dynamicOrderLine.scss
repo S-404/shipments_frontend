@@ -10,7 +10,7 @@
   position: relative;
 
   .change-position__up, .change-position__down {
-    visibility:hidden;
+    visibility: hidden;
   }
 
   &:hover {
@@ -27,8 +27,6 @@
       visibility: visible;
     }
   }
-
-
 
 
   .dynamic-order-line__defer-button {
@@ -70,7 +68,8 @@
     flex-direction: row;
 
     .position__number {
-
+      min-width: 1.5em;
+      text-align: center;
     }
 
     .position__change-position {
