@@ -55,7 +55,9 @@ const FindPlace = ({maxLength, criteria, placeholder, minLength}) => {
 
     return (
         <div className='picker-page__find-place'>
-            <img className='find-place__barcode' alt='scanBarcode' src={scanBarcode}/>
+            <div className='find-place__barcode'>
+                <img  alt='scanBarcode' src={scanBarcode}/>
+            </div>
             <div className='find-place__input-div'>
                 <div className='input-div__input'>
                     <MyInput

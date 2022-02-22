@@ -1,7 +1,7 @@
 
 :root {
   --fontsize: 4vh;
-  --formwidth: 25vw;
+  --formwidth: 40vw;
   --pickerBorderRadius: 2vh;
 }
 
@@ -25,9 +25,10 @@
     top: 5vh;
     width: var(--formwidth) ;
     justify-content: center;
+    align-items: center;
 
     .find-place__barcode {
-
+      width: 50%;
     }
 
     .find-place__loader-div {
@@ -44,7 +45,6 @@
       font-size: var(--fontsize);
 
       .input-div__input {
-        width: 100%;
 
         & input {
           font-size: var(--fontsize);
