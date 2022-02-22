@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import MyInput from "../../components/UI/input/myInput/myInput";
 import MyLoader from "../../components/UI/loader/myLoader/myLoader";
 import {useFetching} from "../../hooks/useFetching";
 import OrdersService from "../../api/OrdersService";
 import scanBarcode from "../../assets/scan_barcode.svg";
 import MyButton from "../../components/UI/button/myButton";
+import ClearButton from "../../components/UI/button/clearButton";
+import {useInterval} from "../../hooks/useInterval";
 
-const FindPlace = ({maxLength, criteria}) => {
+const FindPlace = ({maxLength, criteria, placeholder, minLength}) => {
 
     const defaultLocations = [{ORDER_NUM: '', GATE: '', PLACE: ''}]
 
@@ -18,12 +20,14 @@ const FindPlace = ({maxLength, criteria}) => {
     const [fetchLocation, isLocationLoading] = useFetching(async () => {
         const responseData = await OrdersService.getOrderLocation({inputNum}, criteria);
         setLocations(responseData);
-        setInputNum('');
         if (responseData[0]?.ORDER_NUM && criteria === 'order') {
             await OrdersService.updOrderStatus({
                 ORDER_NUM: inputNum,
                 IS_INPLACE: 1
             });
+        }
+        if (responseData[0]?.ORDER_NUM) {
+            setInputNum('');
         }
     });
 
@@ -39,26 +43,32 @@ const FindPlace = ({maxLength, criteria}) => {
 
     })
 
-
-    useEffect(async () => {
-            if (inputNum.length === maxLength) {
-                setSearchedNum(inputNum)
-                await fetchLocation()
-            }
+    useInterval(async () => {
+        if (inputNum.length >= minLength && inputNum !== searchedNum) {
+            setSearchedNum(inputNum)
+            await fetchLocation()
         }
-        , [inputNum])
+    }, 1000)
+
 
 
     return (
         <div className='picker-form'>
             <img className='picker-form__barcode' alt='scanBarcode' src={scanBarcode}/>
-            <MyInput
-                labeltext={inputNum.length ? `put ${maxLength}-digit ${criteria}` : null}
-                placeholder={`put ${maxLength}-digit ${criteria}`}
-                value={inputNum}
-                maxLength={maxLength}
-                onChange={(e) => setInputNum(e.target.value)}
-            />
+            <div className='picker-form__input-div'>
+                <div className='input-div__input'>
+                    <MyInput
+                        labeltext={inputNum.length ? `put ${maxLength}-digit ${criteria}` : null}
+                        placeholder={placeholder}
+                        value={inputNum}
+                        maxLength={maxLength}
+                        onChange={(e) => setInputNum(e.target.value)}
+                    />
+                </div>
+                <div className='input-div__clear'>
+                    {inputNum.length ? <ClearButton onClick={() => setInputNum('')}/> : null}
+                </div>
+            </div>
             {isLocationLoading ?
                 <div className='picker-form__loader-div'><MyLoader/></div>
                 :
@@ -78,7 +88,7 @@ const FindPlace = ({maxLength, criteria}) => {
                         {locations.map((location, index) => (
                             <div className='list__location'
                                  key={index + location}>
-                                {`GATE: ${location.GATE} - ${location.PLACE} - ${location.POSITION ? location.POSITION : 0}`}
+                                {`GATE: ${location.GATE} - ${location.PLACE} - ${location.POSITION ? location.POSITION : 1}`}
                             </div>
                         ))}
                     </div>
