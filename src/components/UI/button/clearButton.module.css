@@ -1,7 +1,7 @@
 .clearButton{
     background-color: #5d5d5d;
-    width: 2em;
-    height: 2em;
+    width: 1em;
+    height: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,6 +11,6 @@
 
 .clearButton__x{
     font-weight:bold;
-    font-size: 1.1em;
+    font-size: .5em;
     color: white;
 }

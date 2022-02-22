@@ -9,7 +9,7 @@ const FindByPickId = () => {
     if (!access?.picker?.read) return ( <span>You don't have permission to access</span>)
 
     return (
-        <div className='picker-form'>
+        <div className='picker-page'>
         <FindPlace
             criteria={findPlaceMode.criteria}
             maxLength={findPlaceMode.maxLength}
